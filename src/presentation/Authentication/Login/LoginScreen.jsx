@@ -19,15 +19,13 @@ const LoginForm = ({className}) => {
         <form className={className}>
             <h1 className="text-[32px] text-onBackground w-full xl:text-start text-center font-semibold">Login</h1>
             <input placeholder="John@nahrainuniv.edu.iq"
-                   className="mt-[48px] max-w-full w-full p-[16px] rounded-[8px] bg-transparent border border-strokeGrey focus:outline-none focus:border-secondary placeholder-onBackgroundCaption"
+                   className="transition-colors text-onBackground mt-[48px] max-w-full w-full p-[16px] rounded-[8px] bg-transparent border border-strokeGrey focus:outline-none focus:border-secondary placeholder-onBackgroundCaption"
                    type="email"/>
 
-            <div className="relative mt-[16px]">
-                <input placeholder="Enter Password"
-                       className=" max-w-full w-full p-[16px] rounded-lg bg-transparent border border-strokeGrey focus:outline-none focus:border-secondary placeholder-onBackgroundCaption"
-                       type="password"/>
-                <IcEye className="absolute top-[16px] right-[16px]"/>
-            </div>
+            <div className="relative mt-4 text-onBackground">
+                <input type="password" id="password"  className="w-full bg-transparent pl-4 pr-12 py-4 border border-strokeGrey rounded-lg focus:outline-none focus:border-secondary transition-colors" placeholder="Password"/>
+                <button className="block w-7 h-7 text-center text-xl leading-0 absolute top-4 right-4 focus:outline-none transition-colors" ><i><IcEye/></i></button>
+                </div>
             <a href="#" className="flex flex-wrap underline text-[16px] mt-[16px] text-onBackground">Forgot
                 Password?</a>
             <button className="bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mt-6">Login
@@ -42,7 +40,7 @@ const LoginForm = ({className}) => {
                 <IcGoogle/>
                 <p className="text-logo text-2xl">Google</p>
             </button>
-            <p className="mt-6 text-onBackground">Don’t have an Account?&nbsp;
+            <p className="mt-6 text-onBackground w-fit xl:mx-0 mx-auto">Don’t have an Account?&nbsp;
                 <a href="#" className="text-secondary underline">Signup</a>
             </p>
         </form>
