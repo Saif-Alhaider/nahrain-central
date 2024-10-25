@@ -1,11 +1,11 @@
 import 'output.css';
 import React from "react";
-import {LoginScreen} from "./Authentication/Login/LoginScreen";
+import {TotpScreen} from "./Authentication/TOTP/TotpScreen";
 
 function App() {
     return (
-        <div>
-        <LoginScreen/>
+        <div className="bg-orange-500 w-full">
+        <TotpScreen/>
         </div>
     );
 }

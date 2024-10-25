@@ -7,7 +7,7 @@ import {IcGoogle} from "../../component/ic_google";
 
 export const LoginScreen = () => {
     return (
-        <BaseAuthentication image={LoginImage}
+        <BaseAuthentication image={LoginImage} imageClassName="mt-8"
                             description={"Nahrain Central is an academic platform for professors and students to manage grades, schedules, and\n" +
                                 "                    attendance. It centralizes academic tasks in one place to streamline the educational process."}
         ><LoginForm/></BaseAuthentication>
