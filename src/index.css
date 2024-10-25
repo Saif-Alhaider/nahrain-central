@@ -1,13 +1,73 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.light {
+    --primary: 76, 175, 80, 1;
+    --background: 250, 249, 246, 1;
+    --card: 237, 237, 237, 1;
+    --secondary: 63, 152, 181, 1;
+    --on-background: 0, 0, 0, 0.86;
+    --selected-item: 76, 175, 80, 0.25;
+    --stroke-grey: 136, 136, 136, 1;
+    --logo: 0, 0, 0, 1;
+    --on-background-caption: 0, 0, 0, 0.64;
+    --error: 255, 0, 0, 1;
+    --on-primary: 255, 255, 255, 0.86;
+    --invert: brightness(0) invert(1);
 }
 
+.dark {
+    --primary: 76, 175, 80, 1;
+    --background: 25, 25, 25, 1;
+    --card: 49, 49, 49, 1;
+    --secondary: 63, 152, 181, 1;
+    --on-background: 255, 255, 255, 0.86;
+    --selected-item: 76, 175, 80, 0.25;
+    --stroke-grey: 136, 136, 136, 1;
+    --logo: 255, 255, 255, 1;
+    --on-background-caption: 255, 255, 255, 0.64;
+    --error: 255, 0, 0, 1;
+    --on-primary: 255, 255, 255, 0.86;
+    --invert: brightness(0) invert(1);
+}
+
+.light .authentication-image {
+    filter: invert(0);
+    mix-blend-mode: multiply;
+}
+
+.dark .authentication-image {
+    filter: invert(1);
+    mix-blend-mode: difference;
+}
+
+.fill-primary {
+    fill: rgba(var(--primary));
+}
+
+.fill-logo {
+    fill: rgba(var(--logo));
+}
+
+
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: "Noto Sans", BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
