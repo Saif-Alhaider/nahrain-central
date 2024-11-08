@@ -2,8 +2,8 @@ import React from "react";
 import 'output.css';
 import {BaseAuthentication} from "../BaseAuthentication";
 import LoginImage from "../Login/resources/Design.png";
-import {IcEye} from "../../component/ic_eye";
-import {IcGoogle} from "../../component/ic_google";
+import {IcEye} from "presentation/Common/component/ic_eye";
+import {IcGoogle} from "presentation/Common/component/ic_google";
 
 export const LoginScreen = () => {
     return (

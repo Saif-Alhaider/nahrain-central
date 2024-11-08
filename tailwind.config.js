@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       screens:{
-        'windows': { 'raw': '(min-height: 705px)' },
+        'tablet': { 'raw': '(max-height: 642px)' },
       },
       colors:{
         primary: 'rgba(var(--primary))',
