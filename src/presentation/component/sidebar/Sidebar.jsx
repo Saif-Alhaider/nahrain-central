@@ -9,7 +9,7 @@ import {ReactComponent as IcMenuDots} from './resources/ic_menu_dots.svg'
 
 export const Sidebar = () => {
     return (
-        <div className="w-[364px] h-dvh sticky dark p-8 bg-card flex flex-col justify-between">
+        <div className="w-[320px] h-dvh sticky light p-8 bg-card flex flex-col justify-between">
            <div className="upperSidebar">
                <Logo className="w-28 h-8 unselectable"/>
                <hr className="flex-1 border-[0.5px] my-6 border-strokeGrey unselectable"/>
