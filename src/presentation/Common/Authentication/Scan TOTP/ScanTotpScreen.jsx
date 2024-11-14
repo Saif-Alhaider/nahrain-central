@@ -9,13 +9,15 @@ export const ScanTotpScreen = () => {
             image={finishSignup}
             imageClassName="translate-y-44 scale-150"
             description="Professors can publish student grades on Nahrain Central, allowing students to easily view their results and track their academic progress through the platform.">
-            <h1 className="text-[32px] text-onBackground w-full xl:text-start text-center font-semibold">configure
+            <h1 className="xl:text-[32px] lg:text-[32px] text-[24px] text-onBackground  xl:text-start text-center font-semibold">configure
                 authenticator app</h1>
-            <img src={QrCode} alt="qr code" className="w-48 h-48 my-4 mx-auto"/>
-            <p className="text-sm text-onBackgroundCaption mt-6 xl:text-start text-center">Enter the verification code
+            <div className="h-auto my-6">
+                <img src={QrCode} alt="qr code" className="w-40 mx-auto"/>
+            </div>
+            <p className="text-sm text-onBackgroundCaption xl:text-start text-center">Enter the verification code
                 displayed in the Google Authenticator app or TOTP app, then proceed.</p>
-            <h1 className="text-[24px] text-onBackground w-full text-start mt-4 font-semibold">Enter Verification Code</h1>
-            <div className="flex flex-row justify-between w-full xl:mt-6 mt-8 h-16 xl:gap-8 gap-4">
+            <h1 className="text-[24px] text-onBackground  text-start mt-4 font-semibold">Enter Verification Code</h1>
+            <div className="flex flex-row justify-between xl:my-6 mt-2 mb-4 h-16 w-full xl:gap-8 gap-4">
                 {Array.from({length: 6}).map((_, index) => (
                     <input
                         type="number"
@@ -24,13 +26,15 @@ export const ScanTotpScreen = () => {
                         inputMode="numeric"
                         maxLength="1"
                         key={index} // Use a unique key for each element
-                        className="border-2 border-strokeGrey text-2xl font-semibold rounded-lg max-w-14 aspect-[3/4] w-full h-auto bg-transparent text-center text-onBackground focus:outline-none focus:border-secondary"
+                        className="border-2 border-strokeGray text-2xl font-semibold rounded-lg min-w-10 max-w-12 flex-grow aspect-[3/4] h-auto bg-transparent text-center text-onBackground focus:outline-none focus:border-secondary"
                     ></input>
                 ))}
             </div>
-            <button className="bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mt-6">Continue
+            <button
+                className="bg-primary text-onPrimary flex-grow max-h-14 w-full rounded-lg text-[24px]">Continue
             </button>
-            <button className="border-2 border-strokeGrey w-full max-w-full text-white h-14 rounded-lg text-[24px] mt-4">Skip
+            <button
+                className="border-2 border-strokeGray text-white flex-grow w-full max-h-14 rounded-lg text-[24px] mt-4">Skip
             </button>
         </BaseAuthentication>
     )

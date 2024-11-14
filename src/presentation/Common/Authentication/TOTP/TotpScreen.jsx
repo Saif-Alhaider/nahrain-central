@@ -20,7 +20,7 @@ export const TotpScreen = () => {
                         inputMode="numeric"
                         maxLength="1"
                         key={index} // Use a unique key for each element
-                        className="border-2 border-strokeGrey text-2xl font-semibold rounded-lg max-w-14 aspect-[3/4] w-full h-auto bg-transparent text-center text-onBackground focus:outline-none focus:border-secondary"
+                        className="border-2 border-strokeGray text-2xl font-semibold rounded-lg max-w-14 aspect-[3/4] w-full h-auto bg-transparent text-center text-onBackground focus:outline-none focus:border-secondary"
                     ></input>
                 ))}
             </div>

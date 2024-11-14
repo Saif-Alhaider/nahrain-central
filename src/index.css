@@ -9,11 +9,12 @@
     --secondary: 63, 152, 181, 1;
     --on-background: 0, 0, 0, 0.86;
     --selected-item: 76, 175, 80, 0.25;
-    --stroke-grey: 136, 136, 136, 1;
+    --stroke-gray: 136, 136, 136, 1;
     --logo: 0, 0, 0, 1;
     --on-background-caption: 0, 0, 0, 0.64;
     --error: 255, 0, 0, 1;
     --on-primary: 255, 255, 255, 0.86;
+    --soft-gray: 196, 196, 196, 1;
     --invert: brightness(0) invert(1);
 }
 
@@ -24,11 +25,12 @@
     --secondary: 63, 152, 181, 1;
     --on-background: 255, 255, 255, 0.86;
     --selected-item: 76, 175, 80, 0.25;
-    --stroke-grey: 136, 136, 136, 1;
+    --stroke-gray: 136, 136, 136, 1;
     --logo: 255, 255, 255, 1;
     --on-background-caption: 255, 255, 255, 0.64;
     --error: 255, 0, 0, 1;
     --on-primary: 255, 255, 255, 0.86;
+    --soft-gray: 196, 196, 196, 1;
     --invert: brightness(0) invert(1);
 }
 
@@ -42,12 +44,23 @@
     mix-blend-mode: difference;
 }
 
+.fill-onBackground {
+    fill: rgba(var(--on-background));
+}
+
 .fill-primary {
     fill: rgba(var(--primary));
 }
 
 .fill-logo {
     fill: rgba(var(--logo));
+}
+
+.unselectable{
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 
@@ -62,10 +75,16 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-touch-callout:none;
+    -webkit-touch-callout: none;
+    background-color: rgba(var(--background));
 }
 
-
+.dark-page{
+    background-color: var(--background);
+}
+html{
+    overscroll-behavior: none;
+}
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -82,3 +101,30 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+/* ===== Scrollbar CSS ===== */
+
+/* Chrome, Edge, and Safari */
+@supports not (-webkit-touch-callout: none) {
+    /* Apply only to non-Safari browsers */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+    }
+}
+
+.appbar{
+    min-height: 56px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+

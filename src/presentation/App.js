@@ -1,15 +1,20 @@
 import 'output.css';
 import React from "react";
-import {TotpScreen} from "./Authentication/TOTP/TotpScreen";
-import {LoginScreen} from "./Authentication/Login/LoginScreen";
-import {FinishSignup} from "./Authentication/Finish Signup/FinishSignup";
-import {ScanTotpScreen} from "./Authentication/Scan TOTP/ScanTotpScreen";
+
+import {BrowserRouter} from "react-router-dom";
+import {GradesScreen} from "./Prof/Grades/GradesScreen";
+import {MainScaffold} from "./Common/component/MainScaffold";
+import {SettingsScreen} from "./Common/Settings/SettingsScreen";
+
 
 function App() {
+
+    document.body.classList.add('dark');
+
     return (
-        <div className="bg-orange-500 w-full">
-        <ScanTotpScreen/>
-        </div>
+        <BrowserRouter>
+            <MainScaffold title={"Settings"} child={<SettingsScreen/>}/>
+        </BrowserRouter>
     );
 }
 

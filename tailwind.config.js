@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       screens:{
-        'windows': { 'raw': '(min-height: 705px)' },
+        'tablet': { 'raw': '(max-height: 642px)' },
       },
       colors:{
         primary: 'rgba(var(--primary))',
@@ -13,11 +13,12 @@ module.exports = {
         secondary: 'rgba(var(--secondary))',
         onBackground: 'rgba(var(--on-background))',
         selectedItem: 'rgba(var(--selected-item))',
-        strokeGrey: 'rgba(var(--stroke-grey))',
+        strokeGray: 'rgba(var(--stroke-gray))',
         logo: 'rgba(var(--logo))',
         onBackgroundCaption: 'rgba(var(--on-background-caption))',
         error: 'rgba(var(--error))',
         onPrimary: 'rgba(var(--on-primary))',
+        softGray: 'rgba(var(--soft-gray))',
       },
     },
   },
