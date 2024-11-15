@@ -3,7 +3,7 @@ import 'output.css'
 import 'index.css'
 import {ThemeModeCard} from "./ThemeModeCard";
 import {ThemeSplitModeCard} from "./ThemeSplitModeCard";
-import {DropDown} from "../component/DropDown";
+import {DropDown} from "../../component/DropDown";
 
 
 export const SettingsScreen = () => {

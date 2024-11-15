@@ -1,4 +1,4 @@
-import Logo from "../component/Logo";
+import Logo from "../../component/Logo";
 import React from "react";
 import 'output.css';
 

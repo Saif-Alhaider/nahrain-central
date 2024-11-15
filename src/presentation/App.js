@@ -4,7 +4,8 @@ import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import {GradesScreen} from "./Prof/Grades/GradesScreen";
 import {MainScaffold} from "./Common/component/MainScaffold";
-import {SettingsScreen} from "./Common/Settings/SettingsScreen";
+import {SettingsScreen} from "./Common/screens/Settings/SettingsScreen";
+import {NotFound404} from "./Common/screens/NotFound404/NotFound404";
 
 
 function App() {
@@ -13,7 +14,6 @@ function App() {
 
     return (
         <BrowserRouter>
-            <MainScaffold title={"Settings"} child={<SettingsScreen/>}/>
         </BrowserRouter>
     );
 }

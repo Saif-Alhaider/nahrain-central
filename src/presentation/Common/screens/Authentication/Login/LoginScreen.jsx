@@ -1,7 +1,7 @@
 import React from "react";
 import 'output.css';
 import {BaseAuthentication} from "../BaseAuthentication";
-import LoginImage from "../Login/resources/Design.png";
+import LoginImage from "./resources/Design.png";
 import {IcEye} from "presentation/Common/component/ic_eye";
 import {IcGoogle} from "presentation/Common/component/ic_google";
 
