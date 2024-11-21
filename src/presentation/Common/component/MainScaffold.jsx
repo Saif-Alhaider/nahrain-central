@@ -33,7 +33,7 @@ export const MainScaffold = () => {
                 <ProfSidebar currentScreen={currentScreen} onDismiss={toggleVisibility}
                              isVisible={isVisible}/>
             </div>
-            <div className='flex flex-col gap-14 w-full h-full lg:overflow-y-scroll'>
+            <div className={`flex flex-col gap-14 w-full h-full lg:overflow-y-scroll ${isVisible ? "overflow-hidden" : "overflow-y-scroll"}`}>
                 <div className={`${showAppbar} bg-background`}/>
                 <Outlet/>
             </div>
