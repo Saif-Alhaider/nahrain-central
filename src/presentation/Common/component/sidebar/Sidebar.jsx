@@ -5,11 +5,11 @@ import 'output.css';
 import {ReactComponent as IcMenuDots} from 'presentation/Common/component/sidebar/resources/ic_menu_dots.svg'
 
 
-export const Sidebar = ({onDismiss,className,isVisible, theme,children}) => {
+export const Sidebar = ({onDismiss, className, isVisible, theme, children}) => {
     return (
         <div className={className}>
             <div
-                className={`${theme} ${isVisible ? 'start-0' : 'start-[-320px]'}  transition-all ease-linear delay-150 overflow-y-scroll z-10 fixed lg:sticky min-w-[320px] h-dvh py-4 px-6 bg-card flex flex-col justify-between`}>
+                className={`${theme} ${isVisible ? 'start-0' : 'start-[-320px]'} z-10 transition-all ease-linear delay-150 overflow-y-scroll lg:sticky fixed min-w-[320px] h-dvh py-4 px-6 bg-card flex flex-col justify-between`}>
                 <div className="upperSidebar flex-grow h-full overflow-y-auto scrollbar flex flex-col">
                     <Logo className="w-28 h-8 unselectable shrink-0"/>
                     <hr className="border-[0.5px] mt-6 border-strokeGray unselectable"/>
@@ -32,7 +32,8 @@ export const Sidebar = ({onDismiss,className,isVisible, theme,children}) => {
                     </div>
                 </div>
             </div>
-            <div onClick={onDismiss} className={`bg-black size-full lg:hidden fixed ${isVisible ?'opacity-65':'opacity-0 pointer-events-none'} transition-opacity delay-150 ease-linear`}/>
+            <div onClick={onDismiss}
+                 className={`bg-black size-full lg:hidden fixed ${isVisible ? 'opacity-65' : 'opacity-0 pointer-events-none'} transition-opacity delay-150 ease-linear`}/>
         </div>
     )
 }

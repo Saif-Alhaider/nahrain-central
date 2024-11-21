@@ -116,11 +116,12 @@ export const GradesScreen = ({className}) => {
                 <DropDown text="Freshman" items={['Sophomore', 'Junior', 'Senior']}/>
                 <DropDown text="Theoratical and Practical" items={["Theoratical", "Practical"]}/>
             </div>
-            <div className="mt-4 border border-onBackgroundCaption rounded-t-lg overflow-hidden">
+            <div className="mt-4 border border-onBackgroundCaption rounded-t-lg">
                 <h1 className="text-onBackground bg-card h-12 ps-4 flex items-center visible sm:hidden">Current
                     Grades</h1>
                 <TableReact className="rounded-t-lg"/>
             </div>
+            <div className='w-full h-4 bg-background'/>
         </div>
     )
 }
