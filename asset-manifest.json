@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/nahrain-central/static/css/main.4e768e82.css",
-    "main.js": "/nahrain-central/static/js/main.bc6ab90d.js",
+    "main.css": "/nahrain-central/static/css/main.e63b670b.css",
+    "main.js": "/nahrain-central/static/js/main.0fa004ad.js",
     "static/js/453.f204c28b.chunk.js": "/nahrain-central/static/js/453.f204c28b.chunk.js",
-    "static/js/312.28d1729e.chunk.js": "/nahrain-central/static/js/312.28d1729e.chunk.js",
+    "static/media/notFound.png": "/nahrain-central/static/media/notFound.c102acd449f05804e8a4.png",
     "static/media/ic_mark.svg": "/nahrain-central/static/media/ic_mark.8f84f7da610a977e353771f6cf0fdb36.svg",
     "static/media/ic_crown.svg": "/nahrain-central/static/media/ic_crown.93501c4a3cbff192ce968e87ec4728ae.svg",
     "static/media/ic_users_group.svg": "/nahrain-central/static/media/ic_users_group.d048d994c7de37dca7218189bb5e7017.svg",
@@ -16,13 +16,12 @@
     "static/media/ic_hamburger_menu.svg": "/nahrain-central/static/media/ic_hamburger_menu.7d309d3393bd4b408b6190fbb5017832.svg",
     "static/media/ic_user.svg": "/nahrain-central/static/media/ic_user.55705b41db981341f2c410ab248a522e.svg",
     "static/media/ic_arrow_down.svg": "/nahrain-central/static/media/ic_arrow_down.0c938a037e4ed9d03d90d93170c66c47.svg",
-    "main.4e768e82.css.map": "/nahrain-central/static/css/main.4e768e82.css.map",
-    "main.bc6ab90d.js.map": "/nahrain-central/static/js/main.bc6ab90d.js.map",
-    "453.f204c28b.chunk.js.map": "/nahrain-central/static/js/453.f204c28b.chunk.js.map",
-    "312.28d1729e.chunk.js.map": "/nahrain-central/static/js/312.28d1729e.chunk.js.map"
+    "main.e63b670b.css.map": "/nahrain-central/static/css/main.e63b670b.css.map",
+    "main.0fa004ad.js.map": "/nahrain-central/static/js/main.0fa004ad.js.map",
+    "453.f204c28b.chunk.js.map": "/nahrain-central/static/js/453.f204c28b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e768e82.css",
-    "static/js/main.bc6ab90d.js"
+    "static/css/main.e63b670b.css",
+    "static/js/main.0fa004ad.js"
   ]
 }
