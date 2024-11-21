@@ -138,7 +138,7 @@ export const PublishGradesCard = () => {
                     and edit grades before final publication.</p>
             </div>
             <button
-                className="bg-primary text-onPrimary text-nowrap rounded-lg xl:text-2xl text-base px-4 py-2 h-12 ">Publish
+                className="bg-primary text-onPrimary text-nowrap rounded-lg xl:text-2xl text-xl px-4 py-2 h-12 ">Publish
                 Grades
             </button>
         </div>

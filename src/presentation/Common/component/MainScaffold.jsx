@@ -7,15 +7,16 @@ import {Outlet, useLocation} from "react-router-dom";
 
 export const MainScaffold = () => {
     const titles = {
-        '/': 'Home',
-        '/lectures-schedule': 'Lectures Schedule',
-        '/recorded-lectures': 'Recorded Lectures',
-        '/record-absence': 'Record Absence',
-        '/exams': 'Exams',
-        '/grades': 'Grades',
-        '/settings': 'Settings',
-        '/contact-me': 'Contact Me',
+        '/nahrain-central': 'Home',
+        '/nahrain-central/lectures-schedule': 'Lectures Schedule',
+        '/nahrain-central/recorded-lectures': 'Recorded Lectures',
+        '/nahrain-central/record-absence': 'Record Absence',
+        '/nahrain-central/exams': 'Exams',
+        '/nahrain-central/grades': 'Grades',
+        '/nahrain-central/settings': 'Settings',
+        '/nahrain-central/contact-me': 'Contact Me',
     };
+
     const location = useLocation();
     const currentScreen = titles[location.pathname] || '404 - Page Not Found';
     const showAppbar = 'block lg:hidden'
