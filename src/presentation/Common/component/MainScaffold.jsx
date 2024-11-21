@@ -7,6 +7,7 @@ import {Outlet, useLocation} from "react-router-dom";
 
 export const MainScaffold = () => {
     const titles = {
+        '/nahrain-central/': 'Home',
         '/nahrain-central': 'Home',
         '/nahrain-central/lectures-schedule': 'Lectures Schedule',
         '/nahrain-central/recorded-lectures': 'Recorded Lectures',
