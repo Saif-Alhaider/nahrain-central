@@ -15,16 +15,19 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/nahrain-central' element={<MainScaffold/>}>
-                    <Route index={true} element={<div></div>}/>
-                    <Route path='grades' element={<GradesScreen/>}/>
-                    <Route path='settings' element={<SettingsScreen/>}/>
-                    <Route path='*'/>
+                <Route path='/'>
+                    <Route path='/nahrain-central' element={<MainScaffold/>}>
+                        <Route index={true} element={<div></div>}/>
+                        <Route path='grades' element={<GradesScreen/>}/>
+                        <Route path='settings' element={<SettingsScreen/>}/>
+                    </Route>
+                    <Route path='*' element={<NotFound404/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
     );
 }
+
 export default App;
 
 

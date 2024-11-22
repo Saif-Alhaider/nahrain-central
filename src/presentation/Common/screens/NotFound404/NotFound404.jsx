@@ -2,6 +2,7 @@ import 'output.css'
 import 'index.css'
 import notFoundImg from 'presentation/Common/screens/NotFound404/resources/notFound.png'
 import React from "react";
+import {Link} from "react-router-dom";
 
 export const NotFound404 = () => {
     return (
@@ -11,11 +12,10 @@ export const NotFound404 = () => {
                 <p className={"text-onBackgroundCaption lg:text-[24px] text-[14px] max-w-[757px] text-center mt-1"}>Oops! The page you’re looking for doesn’t exist. It might have been removed, had its name changed, or
                     is
                     temporarily unavailable. Please check the URL or go back to the homepage.</p>
-                <a className={"text-secondary mt-6 lg:text-[24px] text-[16px] font-medium cursor-pointer"}>Go Back Home</a>
+                <Link to='/nahrain-central' className={"text-secondary mt-6 lg:text-[24px] text-[16px] font-medium cursor-pointer"}>Go Back Home</Link>
             </div>
             <div className={"min-w-[1000px] max-w-full h-[591px]"}>
                 <img src={notFoundImg} alt="auth"  className={` mx-auto authentication-image object-cover object-left`}/>
-
             </div>
         </div>
     )
