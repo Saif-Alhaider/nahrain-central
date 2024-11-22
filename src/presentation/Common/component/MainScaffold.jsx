@@ -2,7 +2,7 @@ import {Appbar} from "./appbar/Appbar";
 import {ProfSidebar} from "./sidebar/ProfSidebar";
 import 'output.css'
 import 'index.css'
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Outlet, useLocation} from "react-router-dom";
 
 export const MainScaffold = () => {
@@ -23,9 +23,19 @@ export const MainScaffold = () => {
     const showAppbar = 'block lg:hidden'
     const [isVisible, setIsVisible] = useState(false);
 
+
     const toggleVisibility = () => {
         setIsVisible((prev) => !prev);
     };
+
+    useEffect(() => {
+        if (isVisible) {
+            document.body.style.overflow = "hidden";
+        } else  {
+            document.body.style.overflow = "";
+        }
+    }, [isVisible]);
+
     return (
         <div className={`w-full h-dvh flex flex-row relative bg-background dark lg:overflow-hidden`}>
             <div className={`z-40`}>
@@ -35,7 +45,7 @@ export const MainScaffold = () => {
                 <ProfSidebar currentScreen={currentScreen} onDismiss={toggleVisibility}
                              isVisible={isVisible}/>
             </div>
-            <div className={`flex flex-col gap-14 w-full h-full lg:overflow-y-scroll ${isVisible ? "overflow-hidden" : "overflow-y-scroll"}`}>
+            <div  className={`flex flex-col gap-14 w-full h-full lg:overflow-y-scroll `}>
                 <div className={`${showAppbar} bg-background`}/>
                 <Outlet/>
             </div>
