@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/nahrain-central/static/css/main.7e0b3dca.css",
-    "main.js": "/nahrain-central/static/js/main.c1d41936.js",
+    "main.css": "/nahrain-central/static/css/main.189e0d02.css",
+    "main.js": "/nahrain-central/static/js/main.79f1948f.js",
     "static/js/453.f204c28b.chunk.js": "/nahrain-central/static/js/453.f204c28b.chunk.js",
     "static/media/notFound.png": "/nahrain-central/static/media/notFound.c102acd449f05804e8a4.png",
     "static/media/image 1.png": "/nahrain-central/static/media/image 1.0b3a47fc3a89dda4c412.png",
@@ -18,12 +18,12 @@
     "static/media/ic_hamburger_menu.svg": "/nahrain-central/static/media/ic_hamburger_menu.7d309d3393bd4b408b6190fbb5017832.svg",
     "static/media/ic_user.svg": "/nahrain-central/static/media/ic_user.55705b41db981341f2c410ab248a522e.svg",
     "static/media/ic_arrow_down.svg": "/nahrain-central/static/media/ic_arrow_down.0c938a037e4ed9d03d90d93170c66c47.svg",
-    "main.7e0b3dca.css.map": "/nahrain-central/static/css/main.7e0b3dca.css.map",
-    "main.c1d41936.js.map": "/nahrain-central/static/js/main.c1d41936.js.map",
+    "main.189e0d02.css.map": "/nahrain-central/static/css/main.189e0d02.css.map",
+    "main.79f1948f.js.map": "/nahrain-central/static/js/main.79f1948f.js.map",
     "453.f204c28b.chunk.js.map": "/nahrain-central/static/js/453.f204c28b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7e0b3dca.css",
-    "static/js/main.c1d41936.js"
+    "static/css/main.189e0d02.css",
+    "static/js/main.79f1948f.js"
   ]
 }
