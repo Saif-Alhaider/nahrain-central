@@ -9,7 +9,9 @@ export const Sidebar = ({onDismiss, className, isVisible, theme, children}) => {
     return (
         <div className={className}>
             <div
-                className={`${theme} ${isVisible ? 'start-0' : 'start-[-320px]'} z-10 transition-all ease-linear delay-150 overflow-y-scroll lg:sticky fixed min-w-[320px] h-dvh py-4 px-6 bg-card flex flex-col justify-between`}>
+                className={`${theme} ${isVisible ? '' : '-translate-x-[320px]'}  lg:translate-x-0 
+z-10 transition-transform duration-150 ease-linear overflow-y-scroll lg:sticky fixed min-w-[320px] h-dvh py-4 px-6 bg-card flex flex-col justify-between`
+                }>
                 <div className="upperSidebar flex-grow h-full overflow-y-auto scrollbar flex flex-col">
                     <Logo className="w-28 h-8 unselectable shrink-0"/>
                     <hr className="border-[0.5px] mt-6 border-strokeGray unselectable"/>
