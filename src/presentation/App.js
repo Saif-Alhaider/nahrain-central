@@ -1,5 +1,5 @@
 import 'output.css';
-import React from "react";
+import React, {useContext} from "react";
 
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {GradesScreen} from "./Prof/Grades/GradesScreen";
@@ -8,27 +8,33 @@ import {SettingsScreen} from "./Common/screens/Settings/SettingsScreen";
 import {NotFound404} from "./Common/screens/NotFound404/NotFound404";
 import {ProfRecordedLectures} from "./Prof/ProfRecordedLectures/ProfRecordedLectures";
 import {ExamsScreen} from "./Prof/Exams/ExamsScreen";
+import {NahrainThemeContext} from "../context/NahrainThemeContext";
 
 
 function App() {
 
-    document.body.classList.add('dark');
+
+    const {currentTheme} = useContext(NahrainThemeContext)
+
+    document.body.classList.add(currentTheme);
 
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/'>
-                    <Route path='/nahrain-central' element={<MainScaffold />}>
-                        <Route index={true} element={<div></div>}/>
-                        <Route path='recorded-lectures' element={<ProfRecordedLectures/>}/>
-                        <Route path='grades' element={<GradesScreen/>}/>
-                        <Route path='exams' element={<ExamsScreen/>}/>
-                        <Route path='settings' element={<SettingsScreen/>}/>
+        <div className={`${currentTheme === "deviceTheme"? "light" : currentTheme} transition-colors duration-300 ease-linear`}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/'>
+                        <Route path='/nahrain-central' element={<MainScaffold/>}>
+                            <Route index={true} element={<div></div>}/>
+                            <Route path='recorded-lectures' element={<ProfRecordedLectures/>}/>
+                            <Route path='grades' element={<GradesScreen/>}/>
+                            <Route path='exams' element={<ExamsScreen/>}/>
+                            <Route path='settings' element={<SettingsScreen/>}/>
+                        </Route>
+                        <Route path='*' element={<NotFound404/>}/>
                     </Route>
-                    <Route path='*' element={<NotFound404/>}/>
-                </Route>
-            </Routes>
-        </BrowserRouter>
+                </Routes>
+            </BrowserRouter>
+        </div>
     );
 }
 

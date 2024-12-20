@@ -38,8 +38,8 @@ export const MainScaffold = () => {
 
     return (
         <div className={`w-full h-dvh flex flex-row relative bg-background lg:overflow-hidden`}>
-            <div className={`z-40`}>
-                <div className={showAppbar}>
+            <div className={`z-40 `}>
+                <div className={`${showAppbar} `}>
                     <Appbar title={currentScreen} className='!z-0 w-full' onClick={toggleVisibility}/>
                 </div>
                 <ProfSidebar currentScreen={currentScreen} onDismiss={toggleVisibility}

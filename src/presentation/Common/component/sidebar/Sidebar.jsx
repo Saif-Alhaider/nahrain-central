@@ -10,8 +10,12 @@ export const Sidebar = ({onDismiss, className, isVisible, theme, children}) => {
         <div className={className}>
             <div
                 className={`${theme} ${isVisible ? '' : '-translate-x-[320px]'}  lg:translate-x-0 
-z-10 transition-transform duration-150 ease-in-out overflow-y-scroll lg:sticky fixed min-w-[320px] h-dvh py-4 px-6 bg-card flex flex-col justify-between`
-                }>
+z-10  overflow-y-scroll lg:sticky fixed min-w-[320px] h-dvh py-4 px-6  bg-card flex flex-col justify-between`
+                }
+                style={{
+                    transition: 'transform 150ms cubic-bezier(0.4, 0, 0.2, 1),background-color 200ms linear',
+                }}
+            >
                 <div className="upperSidebar flex-grow h-full overflow-y-auto scrollbar flex flex-col">
                     <Logo className="w-28 h-8 unselectable shrink-0"/>
                     <hr className="border-[0.5px] mt-6 border-strokeGray unselectable"/>

@@ -6,7 +6,7 @@ import {ReactComponent as IcClock} from "./resources/ic_clock.svg";
 import {ReactComponent as IcNoteBook} from "./resources/ic_notebook.svg";
 
 export const ExamsScreen = ({className}) => {
-    return (<div className={`${className} w-full  bg-background p-6`}>
+    return (<div className={`${className} w-full bg-background p-6`}>
         <DetailedActionCard title={"Create New Exam"}
                             description={"Design and schedule a new exam. Specify the course, date, and details to ensure a seamless evaluation process."}
                             buttonTitle={"Create New Exam"}

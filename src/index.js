@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'index.css';
-import App from 'presentation/App.js';
 import reportWebVitals from 'reportWebVitals';
+import App from "./presentation/App";
+import {NahrainThemeProvider} from "./context/NahrainThemeContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <App />
+        <NahrainThemeProvider>
+            <App/>
+        </NahrainThemeProvider>
     </React.StrictMode>
 );
 
