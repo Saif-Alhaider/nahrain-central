@@ -63,7 +63,7 @@ const ExamCard = ({
                 <div className={"flex flex-row gap-2"}>
                     <div className={"relative w-[60px]"}>
                         <img src={"https://picsum.photos/200"} alt={"avatar"}
-                             className={"rounded-[50%] size-6 relative z-40"}/>
+                             className={"rounded-[50%] size-6 relative z-[31]"}/>
                         <img src={"https://picsum.photos/201"} alt={"avatar"}
                              className={"rounded-[50%] size-6 absolute top-0 left-[12px] z-30"}/>
                         <img src={"https://picsum.photos/202"} alt={"avatar"}

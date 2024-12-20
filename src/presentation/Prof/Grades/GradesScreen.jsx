@@ -100,7 +100,7 @@ const products = [
 
 export const GradesScreen = ({className}) => {
     return (
-        <div className={`${className} w-full h-full bg-background p-6`}>
+        <div className={`${className} w-full bg-background p-6`}>
             <DetailedActionCard title={"Publish Grades"}
                                 description={"Click to publish exam grades for all students. You can review and edit grades before final publication."}
                                 buttonTitle={"Publish Grades"}
@@ -133,7 +133,7 @@ export const GradesScreen = ({className}) => {
 
 
 export const Chip = ({className, text, count, isActive}) => {
-    let chipColor = isActive ? "bg-secondary text-onPrimary" : "bg-card text-onBackground"
+    let chipColor = isActive ? "bg-primary text-onPrimary" : "bg-card text-onBackground"
     return (
         <div
             className={`${className} ${chipColor} px-4 py-2 flex flex-row align-middle rounded-full w-fit cursor-pointer`}>

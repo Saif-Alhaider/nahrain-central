@@ -13,8 +13,8 @@ export const SettingsScreen = () => {
         return localStorage.getItem('theme') || 'light';
     });
     return (
-        <div className={'bg-background scroll-smooth transition-colors duration-200 ease-linear h-dvh'}>
-            <div className='flex flex-col gap-4 mt-6 mx-6'>
+        <div className={'bg-background scroll-smooth transition-colors duration-200 ease-linear py-6 '}>
+            <div className='flex flex-col gap-4 mx-6'>
                 <h1 className='font-bold text-[24px] text-onBackground'>Appearance</h1>
                 <p className='text-onBackgroundCaption text-[20px]'>change how your public dashboard looks and
                     feels.</p>
