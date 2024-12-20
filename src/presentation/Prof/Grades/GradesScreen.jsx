@@ -2,6 +2,7 @@ import "output.css"
 import 'index.css'
 import React, {useCallback, useEffect, useRef, useState} from "react";
 import {DropDown} from "presentation/Common/component/DropDown"
+import {DetailedActionCard} from "../../Common/component/DetailedActionCard";
 
 
 const products = [
@@ -100,7 +101,10 @@ const products = [
 export const GradesScreen = ({className}) => {
     return (
         <div className={`${className} w-full h-full bg-background p-6`}>
-            <PublishGradesCard/>
+            <DetailedActionCard title={"Publish Grades"}
+                                description={"Click to publish exam grades for all students. You can review and edit grades before final publication."}
+                                buttonTitle={"Publish Grades"}
+            />
             <div className="mt-6">
                 <h1 className="text-[24px] font-medium text-onBackground">Current Grades</h1>
                 <p className="text-onBackgroundCaption mt-2">This table shows the current grades for all students. You
@@ -114,7 +118,7 @@ export const GradesScreen = ({className}) => {
             <div className="flex flex-wrap gap-2 xl:mt-8 mt-6">
                 <DropDown text="Homework and Exams" items={["Homework", "Exams"]}/>
                 <DropDown text="Freshman" items={['Sophomore', 'Junior', 'Senior']}/>
-                <DropDown text="Theoratical and Practical" items={["Theoratical", "Practical"]}/>
+                <DropDown text="Theoretical and Lab" items={["Theoretical", "Lab"]}/>
             </div>
             <div className="mt-4 border border-onBackgroundCaption rounded-t-lg">
                 <h1 className="text-onBackground bg-card h-12 ps-4 flex items-center visible sm:hidden">Current
@@ -126,24 +130,7 @@ export const GradesScreen = ({className}) => {
     )
 }
 
-export const PublishGradesCard = () => {
-    let smallWindow = "flex-col gap-4"
-    return (
-        <div
-            className={`flex xl:items-center items-stretch lg:xl:flex-row ${smallWindow}  py-8 px-4 rounded-2xl border-2 border-strokeGray justify-between`}>
-            <div>
-                <h1 className="text-onBackground text-[24px]">Publish Grades</h1>
-                <p className="text-onBackgroundCaption mt-2">Click to publish exam grades for all students. You can
-                    review
-                    and edit grades before final publication.</p>
-            </div>
-            <button
-                className="bg-primary text-onPrimary text-nowrap rounded-lg xl:text-2xl text-xl px-4 py-2 h-12 ">Publish
-                Grades
-            </button>
-        </div>
-    )
-}
+
 
 export const Chip = ({className, text, count, isActive}) => {
     let chipColor = isActive ? "bg-secondary text-onPrimary" : "bg-card text-onBackground"
@@ -162,8 +149,6 @@ export const Chip = ({className, text, count, isActive}) => {
         </div>
     )
 }
-
-
 
 
 const TableReact = () => {

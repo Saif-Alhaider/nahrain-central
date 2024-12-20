@@ -28,7 +28,7 @@ z-10 transition-transform duration-150 ease-in-out overflow-y-scroll lg:sticky f
                              alt="Rounded avatar" draggable={false}/>
                         <div className="w-[140px] ">
                             <h1 className="text-onBackground text-[24px]">محمد خالد</h1>
-                            <p className="text-strokeGray text-[12px] w-full text-nowrap overflow-hidden overflow-ellipsis">mohammadKhalid@nahrain.iq</p>
+                            <p className="text-onBackgroundCaption text-[12px] w-full text-nowrap overflow-hidden overflow-ellipsis">mohammadKhalid@nahrain.iq</p>
                         </div>
                         <IcMenuDots className="text-onBackground flex-grow cursor-pointer"/>
                     </div>
