@@ -9,11 +9,9 @@ export const Appbar = ({title, onClick, className}) => {
         <Slide appear={false} direction="down" in={!trigger}
                className={`${className} !bg-background !text-onBackground !transition !duration-200 !ease-linear`}>
             <AppBar elevation={0}>
-                <Toolbar variant='dense' disableGutters className="h-14 px-4">
-                    <Button onClick={onClick} className="p-0 inline-flex items-center justify-center">
-                        <IcHamburgerMenu className="text-onBackground p-2 bg-card box-content rounded-lg transition duration-200 ease-linear"/>
-                    </Button>
-                    <p className="text-2xl ms-1">{title}</p>
+                <Toolbar variant='dense' disableGutters className="h-14 px-6">
+                    <IcHamburgerMenu onClick={onClick} className="text-onBackground cursor-pointer p-2 bg-card box-content rounded-lg transition duration-200 ease-linear"/>
+                    <p className="text-2xl ms-2">{title}</p>
                 </Toolbar>
             </AppBar>
         </Slide>

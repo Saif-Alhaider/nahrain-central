@@ -19,7 +19,7 @@ function App() {
     document.body.classList.add(currentTheme);
 
     return (
-        <div className={`${currentTheme === "deviceTheme"? "light" : currentTheme} transition-colors duration-300 ease-linear`}>
+        <div className={`${currentTheme === "deviceTheme" || currentTheme === "undefined"  ? "light" : currentTheme} transition-colors duration-300 ease-linear`}>
             <BrowserRouter>
                 <Routes>
                     <Route path='/'>
