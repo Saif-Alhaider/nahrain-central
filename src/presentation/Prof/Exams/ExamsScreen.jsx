@@ -51,15 +51,15 @@ const ExamCard = ({
                 </div>
                 <div className={`w-[1.5px] bg-strokeGray h-[inherit]`}/>
                 <div className={`flex flex-col gap-2 w-fit`}>
-                    <div className={`flex flex-row gap-2 items-center `}><IcBook/> <p className={"line-clamp-1"}>{assessmentType} - {examFormat}</p>
+                    <div className={`flex flex-row gap-2 items-center text-onBackground`}><IcBook/> <p className={"line-clamp-1"}>{assessmentType} - {examFormat}</p>
                     </div>
-                    <div className={`flex flex-row gap-2 items-center`}><IcClock/> <p>{startTime} - {endTime}</p></div>
-                    <div className={`flex flex-row gap-2 items-center`}><IcNoteBook className={"size-8"}/> <p
-                        className={"line-clamp-1"}>{material} - {stage}</p></div>
+                    <div className={`flex flex-row gap-2 items-center text-onBackground`}><IcClock/> <p>{startTime} - {endTime}</p></div>
+                    <div className={`flex flex-row gap-2 items-center text-onBackground`}><IcNoteBook className={"size-8"}/> <p
+                        className={"line-clamp-1 "}>{material} - {stage}</p></div>
                 </div>
             </div>
             <div className={"flex flex-col gap-2"}>
-                <p className={"text-[20px] font-semibold"}>{title}</p>
+                <p className={"text-[20px] font-semibold text-onBackground"}>{title}</p>
                 <div className={"flex flex-row gap-2"}>
                     <div className={"relative w-[60px]"}>
                         <img src={"https://picsum.photos/200"} alt={"avatar"}

@@ -12,7 +12,7 @@ import {ExamsScreen} from "./Prof/Exams/ExamsScreen";
 
 function App() {
 
-    document.body.classList.add('light');
+    document.body.classList.add('dark');
 
     return (
         <BrowserRouter>
