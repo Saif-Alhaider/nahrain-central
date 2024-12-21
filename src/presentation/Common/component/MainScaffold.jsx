@@ -34,21 +34,28 @@ export const MainScaffold = () => {
     useEffect(() => {
         if (isVisible) {
             document.body.style.overflow = "hidden";
-        } else  {
+        } else {
             document.body.style.overflow = "";
         }
     }, [isVisible]);
 
+    const scrollContainerRef = useRef();
+
+
     return (
-        <div className={`w-full h-dvh transition-colors duration-200 ease-linear  flex flex-row relative bg-background lg:overflow-hidden`}>
+        <div
+            className={`w-full h-dvh transition-colors duration-200 ease-linear flex flex-row relative bg-background lg:overflow-hidden`}>
             <div className={`z-40 `}>
                 <div className={`${showAppbar} `}>
-                    <Appbar title={currentScreen} className='!z-0 w-full' onClick={toggleVisibility}/>
+                    <Appbar target={scrollContainerRef.current} title={currentScreen} className='!z-0 w-full'
+                            onClick={toggleVisibility}/>
                 </div>
                 <ProfSidebar currentScreen={currentScreen} onDismiss={toggleVisibility}
                              isVisible={isVisible}/>
             </div>
-            <div  className={`flex flex-col gap-14 w-full h-full lg:overflow-y-scroll`}>
+            {/*TODO: OverflowScroll is Preventing the Appbar from hiding it should be fixed in near future*/}
+            <div ref={scrollContainerRef}
+                 className={`flex flex-col gap-14 w-full h-full overflow-y-auto`}>
                 <div className={`${showAppbar} bg-background`}/>
                 <Outlet/>
             </div>

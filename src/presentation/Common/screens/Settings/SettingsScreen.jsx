@@ -17,7 +17,7 @@ export const SettingsScreen = () => {
 
     const direction = supportedLanguages[currentLanguage].direction
     return (
-        <div className={'bg-background scroll-smooth transition-colors duration-200 ease-linear py-6 h-fit'}
+        <div className={'bg-background transition-colors duration-200 ease-linear py-6 h-fit'}
              dir={direction}>
             <div className='flex flex-col gap-4 mx-6'>
                 <h1 className='font-bold text-[24px] text-onBackground'>{t("appearance")}</h1>

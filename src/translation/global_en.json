@@ -1,4 +1,5 @@
 {
+
   "home": "Home",
   "settings": "Settings",
   "lectures_schedule":"Lectures Schedule",
@@ -26,5 +27,21 @@
   "enable_animations":"Enable Animations",
   "enable_or_disable_animations_in_the_interface_to_improve_performance":"Enable or disable animations in the interface to improve performance.",
   "oops_the_page_youre_looking_for_doesnt_exist_it_might_have_been_removed_had_its_name_changed_or_is_temporarily_unavailable_please_check_the_url_or_go_back_to_the_homepage":"Oops! The page you’re looking for doesn’t exist. It might have been removed, had its name changed, or is temporarily unavailable. Please check the URL or go back to the homepage.",
-  "go_back_home":"Go Back Home"
+  "go_back_home":"Go Back Home",
+  "publish_grades":"Publish Grades",
+  "click_to_publish_exam_grades_for_all_students_you_can_review_and_edit_grades_before_final_publication":"Click to publish exam grades for all students. You can review and edit grades before final publication.",
+  "current_grades":"Current Grades",
+  "this_table_shows_the_current_grades_for_all_students_you_can_modify_the_grades_or_add_new_ones_for_each_exam":"This table shows the current grades for all students. You can modify the grades or add new ones for each exam.",
+  "none_carried_students":"None Carried Students",
+  "carried_students":"Carried Students",
+  "homework": "Homework",
+  "homework_and_exams": "Homework and Exams",
+  "freshman": "Freshman",
+  "sophomore": "Sophomore",
+  "junior": "Junior",
+  "senior": "Senior",
+  "theoretical_and_lab":"Theoretical and Lab",
+  "theoretical": "theoretical",
+  "Lab": "lab"
+
 }

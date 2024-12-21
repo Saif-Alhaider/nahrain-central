@@ -4,6 +4,7 @@ import React, {useCallback, useEffect, useRef, useState} from "react";
 import {DropDown} from "presentation/Common/component/DropDown"
 import {DetailedActionCard} from "../../Common/component/DetailedActionCard";
 import {MenuItem} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 
 const products = [
@@ -100,40 +101,39 @@ const products = [
 
 
 export const GradesScreen = ({className}) => {
+    const [t, i18] = useTranslation("global");
     return (
         <div className={`${className} w-full bg-background p-6`}>
-            <DetailedActionCard title={"Publish Grades"}
-                                description={"Click to publish exam grades for all students. You can review and edit grades before final publication."}
-                                buttonTitle={"Publish Grades"}
+            <DetailedActionCard title={t("publish_grades")}
+                                description={t("click_to_publish_exam_grades_for_all_students_you_can_review_and_edit_grades_before_final_publication")}
+                                buttonTitle={t("publish_grades")}
             />
             <div className="mt-6">
-                <h1 className="text-[24px] font-medium text-onBackground">Current Grades</h1>
-                <p className="text-onBackgroundCaption mt-2">This table shows the current grades for all students. You
-                    can modify the grades or add new ones for
-                    each exam.</p>
+                <h1 className="text-[24px] font-medium text-onBackground">{t("current_grades")}</h1>
+                <p className="text-onBackgroundCaption mt-2">{t("this_table_shows_the_current_grades_for_all_students_you_can_modify_the_grades_or_add_new_ones_for_each_exam")}</p>
             </div>
             <div className="flex flex-wrap gap-2 xl:mt-6 mt-4">
-                <Chip text="None Carried Students" count={36} isActive={true}/>
-                <Chip text="Carried Students" count={4} isActive={false}/>
+                <Chip text={t("none_carried_students")} count={36} isActive={true}/>
+                <Chip text={t("carried_students")} count={4} isActive={false}/>
             </div>
             <div className="flex flex-wrap gap-2 xl:mt-8 mt-6">
                 <DropDown
-                    currentValue="Homework and Exams"
-                    items={["Homework and Exams", "Homework", "Exams"].map((item) => (
+                    currentValue={t("homework_and_exams")}
+                    items={[t("homework_and_exams"), t("homework"), t("exams")].map((item) => (
                         <MenuItem value={item} key={item}>{item}</MenuItem>
                     ))}
                 />
 
                 <DropDown
-                    currentValue="Freshman"
-                    items={["Freshman", "Sophomore", "Junior", "Senior"].map((item) => (
+                    currentValue={t("freshman")}
+                    items={[t("freshman"), t("sophomore"), t("junior"), t("senior")].map((item) => (
                         <MenuItem value={item} key={item}>{item}</MenuItem>
                     ))}
                 />
 
                 <DropDown
-                    currentValue="Theoretical and Lab"
-                    items={["Theoretical and Lab", "Theoretical", "Lab"].map((item) => (
+                    currentValue={t("theoretical_and_lab")}
+                    items={[t("theoretical_and_lab"), t("theoretical"), t("lab")].map((item) => (
                         <MenuItem value={item} key={item}>{item}</MenuItem>
                     ))}
                 />
@@ -193,7 +193,7 @@ const TableReact = () => {
         <table
             className={`w-full flex flex-row bg-background overflow-hidden text-onBackground rounded-t-lg ${
                 isWrapped ? 'inline-table' : ''
-            } ${isWrapped ? 'text-center' : 'text-left'}`}
+            } ${isWrapped ? 'text-center' : 'text-start'}`}
             ref={divRef}>
             <thead>
             {products?.map((data, index) => (
@@ -201,15 +201,15 @@ const TableReact = () => {
                     className={`flex flex-col ${isWrapped ? 'table-row mb-0' : ''} ${index === 0 ? (isWrapped ? 'flex' : '') : (isWrapped ? 'hidden' : '')} ${thBg}`}
                     key={index}
                 >
-                    <th className="py-3 px-4  rounded-none ">
+                    <th className={`py-3 px-4 rounded-none ${isWrapped ? 'text-center' : 'text-start'}`}>
                         Name
                     </th>
-                    <th className="py-3 px-4 ">
+                    <th className={`py-3 px-4 ${isWrapped ? 'text-center' : 'text-start'}`}>
                         Absence Hours
                     </th>
                     {data.exams.map((exam, examIndex) => (
                         <th key={examIndex}
-                            className={`py-3 px-4 ${examIndex === data.exams.length - 1 ? lastBody : ''}`}>
+                            className={`py-3 px-4 ${isWrapped ? 'text-center' : 'text-start'} ${examIndex === data.exams.length - 1 ? lastBody : ''}`}>
                             {exam.name}
                             <span className="text-xs text-onBackgroundCaption"> ({exam.percentage}%)</span>
                         </th>

@@ -3,8 +3,10 @@ import 'output.css'
 import 'index.css'
 import {ReactComponent as IcHamburgerMenu} from "./ic_hamburger_menu.svg";
 
-export const Appbar = ({title, onClick, className}) => {
-    const trigger = useScrollTrigger();
+export const Appbar = ({title, onClick, className,target}) => {
+    const trigger = useScrollTrigger({
+        target:target,
+    });
     return (
         <Slide appear={false} direction="down" in={!trigger}
                className={`${className} !bg-background !text-onBackground !transition !duration-200 !ease-linear`}>

@@ -15,7 +15,7 @@ import {supportedLanguages} from "../translation/supportedLanguages";
 function App() {
 
     const [theme, setTheme] = useState("light");
-    const {currentTheme, setCurrentTheme, currentLanguage, setCurrentLanguage} = useContext(NahrainThemeContext)
+    const {currentTheme, currentLanguage} = useContext(NahrainThemeContext)
 
     const direction = supportedLanguages[currentLanguage].direction
 
@@ -27,11 +27,12 @@ function App() {
         return () => mediaQuery.removeEventListener("change", handleChange);
     }, []);
 
+    document.body.classList.add("light");
 
 
     return (
         <div
-            className={`${currentTheme === "deviceTheme" ? theme : currentTheme}`} dir={direction}>
+            className={`${currentTheme === "deviceTheme" ? theme : currentTheme} ${direction}`} dir={direction}>
             <BrowserRouter>
                 <Routes>
                     <Route path='/'>

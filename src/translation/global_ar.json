@@ -26,6 +26,20 @@
   "enable_animations": "تمكين الرسوم المتحركة",
   "enable_or_disable_animations_in_the_interface_to_improve_performance": "تمكين أو تعطيل الرسوم المتحركة في الواجهة لتحسين الأداء.",
   "oops_the_page_youre_looking_for_doesnt_exist_it_might_have_been_removed_had_its_name_changed_or_is_temporarily_unavailable_please_check_the_url_or_go_back_to_the_homepage":"عذراً! الصفحة التي تبحث عنها غير موجودة. قد تكون أُزيلت أو تم تغيير اسمها أو أنها غير متاحة مؤقتًا. يرجى التحقق من الرابط أو العودة إلى الصفحة الرئيسية.",
-  "go_back_home":"العودة الى الرئيسية"
-
+  "go_back_home":"العودة الى الرئيسية",
+  "publish_grades":"نشر الدرجات",
+  "click_to_publish_exam_grades_for_all_students_you_can_review_and_edit_grades_before_final_publication":"انقر لنشر درجات الامتحان لجميع الطلاب. يمكنك مراجعة وتعديل الدرجات قبل النشر النهائي",
+  "current_grades":"الدرجات الحالية",
+  "this_table_shows_the_current_grades_for_all_students_you_can_modify_the_grades_or_add_new_ones_for_each_exam":"يعرض هذا الجدول الدرجات الحالية لجميع الطلاب. يمكنك تعديل الدرجات",
+  "none_carried_students":"الطلاب الغير المحملين",
+  "carried_students":"الطلاب المحملين",
+  "homework": "الواجبات",
+  "homework_and_exams": "الامتحانات و الواجبات",
+  "freshman": "مرحلة أولى",
+  "sophomore": "مرحلة ثانية",
+  "junior": "مرحلة ثالثة",
+  "senior": "مرحلة رابعة",
+  "theoretical_and_lab": "النظري والمختبر",
+  "theoretical": "نظري",
+  "lab": "مختبر"
 }
