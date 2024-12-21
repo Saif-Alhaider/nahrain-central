@@ -139,8 +139,7 @@ export const GradesScreen = ({className}) => {
                 />
             </div>
             <div className="mt-4 border border-onBackgroundCaption rounded-t-lg">
-                <h1 className="text-onBackground bg-card h-12 ps-4 flex items-center visible sm:hidden">Current
-                    Grades</h1>
+                <h1 className="text-onBackground bg-card h-12 ps-4 flex items-center visible sm:hidden rounded-t-lg">{t("current_grades")}</h1>
                 <TableReact className="rounded-t-lg"/>
             </div>
             <div className='w-full h-4 bg-background'/>
