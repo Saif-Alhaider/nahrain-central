@@ -4,6 +4,7 @@ import LectureImage from "./resources/image 1.png"
 import {ReactComponent as IcList} from "./resources/ic_list.svg"
 import {DropDown} from "../../Common/component/DropDown";
 import React from "react";
+import {MenuItem} from "@mui/material";
 
 export const ProfRecordedLectures = () => {
     return (<div className={"w-full h-full p-6"}>
@@ -12,8 +13,19 @@ export const ProfRecordedLectures = () => {
                 className="bg-primary text-onPrimary text-nowrap rounded-lg text-xl px-4 py-2 ">Publish a Lecture
             </button>
             <div className={"flex flex-row gap-2"}>
-                <DropDown text={"All"} items={["First Course", "Second Course",]}/>
-                <DropDown text={"Lab"} items={["Theoretical"]}/>
+                <DropDown
+                    currentValue="All"
+                    items={["All", "First Course", "Second Course"].map((item) => (
+                        <MenuItem value={item} key={item}>{item}</MenuItem>
+                    ))}
+                />
+
+                <DropDown
+                    currentValue="Lab"
+                    items={["Lab", "Theoretical"].map((item) => (
+                        <MenuItem value={item} key={item}>{item}</MenuItem>
+                    ))}
+                />
             </div>
         </div>
         <div

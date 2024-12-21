@@ -10,15 +10,15 @@ export const MainScaffold = () => {
     const [t, i18] = useTranslation("global");
 
     const titles = {
-        '/nahrain-central/': 'Home',
-        '/nahrain-central': 'Home',
-        '/nahrain-central/lectures-schedule': 'Lectures Schedule',
-        '/nahrain-central/recorded-lectures': 'Recorded Lectures',
-        '/nahrain-central/record-absence': 'Record Absence',
-        '/nahrain-central/exams': 'Exams',
-        '/nahrain-central/grades': 'Grades',
+        '/nahrain-central/': t("home"),
+        '/nahrain-central': t("home"),
+        '/nahrain-central/lectures-schedule': t('lectures_schedule'),
+        '/nahrain-central/recorded-lectures': t('recorded_lectures'),
+        '/nahrain-central/record-absence': t('record_absence'),
+        '/nahrain-central/exams': t('exams'),
+        '/nahrain-central/grades': t('grades'),
         '/nahrain-central/settings': t("settings"),
-        '/nahrain-central/contact-me': 'Contact Me',
+        '/nahrain-central/contact-me': t('contact_me'),
     };
 
     const location = useLocation();
