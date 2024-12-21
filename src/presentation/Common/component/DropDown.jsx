@@ -4,10 +4,11 @@ import 'index.css'
 import {ReactComponent as IcArrowIcon} from 'presentation/Common/component/ic_arrow_down.svg';
 import {FormControl, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 
-export const DropDown = ({text, items,className}) => {
-    const [newText, setNewText] = React.useState(text);
+export const DropDown = ({currentValue: currentValue, items, onValueChange, className}) => {
+    const [newText, setNewText] = React.useState(currentValue);
     const handleChange = (event: SelectChangeEvent) => {
         setNewText(event.target.value);
+        onValueChange?.(event.target.value);
     };
     return (
         <FormControl className={className}>
@@ -33,12 +34,7 @@ export const DropDown = ({text, items,className}) => {
                 onChange={handleChange}
                 displayEmpty
                 variant={'outlined'}>
-                <MenuItem value={text}>
-                    {text}
-                </MenuItem>
-                {items.map((item) => {
-                    return (<MenuItem value={item}>{item}</MenuItem>)
-                })}
+                {items}
             </Select>
         </FormControl>
     )

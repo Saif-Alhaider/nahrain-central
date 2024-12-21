@@ -3,6 +3,7 @@ import 'index.css'
 import React, {useCallback, useEffect, useRef, useState} from "react";
 import {DropDown} from "presentation/Common/component/DropDown"
 import {DetailedActionCard} from "../../Common/component/DetailedActionCard";
+import {MenuItem} from "@mui/material";
 
 
 const products = [
@@ -116,9 +117,26 @@ export const GradesScreen = ({className}) => {
                 <Chip text="Carried Students" count={4} isActive={false}/>
             </div>
             <div className="flex flex-wrap gap-2 xl:mt-8 mt-6">
-                <DropDown text="Homework and Exams" items={["Homework", "Exams"]}/>
-                <DropDown text="Freshman" items={['Sophomore', 'Junior', 'Senior']}/>
-                <DropDown text="Theoretical and Lab" items={["Theoretical", "Lab"]}/>
+                <DropDown
+                    currentValue="Homework and Exams"
+                    items={["Homework and Exams", "Homework", "Exams"].map((item) => (
+                        <MenuItem value={item} key={item}>{item}</MenuItem>
+                    ))}
+                />
+
+                <DropDown
+                    currentValue="Freshman"
+                    items={["Freshman", "Sophomore", "Junior", "Senior"].map((item) => (
+                        <MenuItem value={item} key={item}>{item}</MenuItem>
+                    ))}
+                />
+
+                <DropDown
+                    currentValue="Theoretical and Lab"
+                    items={["Theoretical and Lab", "Theoretical", "Lab"].map((item) => (
+                        <MenuItem value={item} key={item}>{item}</MenuItem>
+                    ))}
+                />
             </div>
             <div className="mt-4 border border-onBackgroundCaption rounded-t-lg">
                 <h1 className="text-onBackground bg-card h-12 ps-4 flex items-center visible sm:hidden">Current

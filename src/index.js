@@ -4,13 +4,20 @@ import 'index.css';
 import reportWebVitals from 'reportWebVitals';
 import App from "./presentation/App";
 import {NahrainThemeProvider} from "./context/NahrainThemeContext";
+import "./translation/i18n";
+import {I18nextProvider} from "react-i18next";
+import i18next from "i18next";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
     <React.StrictMode>
-        <NahrainThemeProvider>
-            <App/>
-        </NahrainThemeProvider>
+        <I18nextProvider i18n={i18next}>
+            <NahrainThemeProvider>
+                <App/>
+            </NahrainThemeProvider>
+        </I18nextProvider>
+
     </React.StrictMode>
 );
 

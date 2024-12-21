@@ -4,8 +4,11 @@ import 'output.css'
 import 'index.css'
 import React, {useEffect, useRef, useState} from "react";
 import {Outlet, useLocation} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 export const MainScaffold = () => {
+    const [t, i18] = useTranslation("global");
+
     const titles = {
         '/nahrain-central/': 'Home',
         '/nahrain-central': 'Home',
@@ -14,7 +17,7 @@ export const MainScaffold = () => {
         '/nahrain-central/record-absence': 'Record Absence',
         '/nahrain-central/exams': 'Exams',
         '/nahrain-central/grades': 'Grades',
-        '/nahrain-central/settings': 'Settings',
+        '/nahrain-central/settings': t("settings"),
         '/nahrain-central/contact-me': 'Contact Me',
     };
 
@@ -37,7 +40,7 @@ export const MainScaffold = () => {
     }, [isVisible]);
 
     return (
-        <div className={`w-full h-dvh flex flex-row relative bg-background lg:overflow-hidden`}>
+        <div className={`w-full h-dvh transition-colors duration-200 ease-linear  flex flex-row relative bg-background lg:overflow-hidden`}>
             <div className={`z-40 `}>
                 <div className={`${showAppbar} `}>
                     <Appbar title={currentScreen} className='!z-0 w-full' onClick={toggleVisibility}/>

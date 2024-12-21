@@ -1,0 +1,21 @@
+{
+  "home": "الرئيسية",
+  "settings": "الاعدادات",
+  "appearance": "المظهر",
+  "change_how_your_public_dashboard_looks_and_feels": "تغيير ألوان واجهة المستخدم بما يناسب تفضيلاتك أو بيئة استخدامك.",
+  "theme": "التنسيق",
+  "change_the_user_interface_colors_to_match_your_preferences_or_usage_environment": "تغيير ألوان واجهة المستخدم بما يناسب تفضيلاتك أو بيئة استخدامك",
+  "system_theme": "الوضع التلقائي",
+  "based_on_system_settings": "بناءً على إعدادات النظام.",
+  "dark_theme": "الوضع الداكن",
+  "comfortable_for_the_eyes_in_low_light": "مريح للعينين في الإضاءة المنخفضة.",
+  "light_theme": "الوضع الفاتح",
+  "enhances_visibility_in_bright_lighting": "يعزز الرؤية في الإضاءة الساطعة.",
+  "language": "اللغة",
+  "the_default_language_for_displaying_the_main_dashboard": "اللغة الافتراضية لعرض لوحة التحكم الرئيسية.",
+  "time": "الوقت",
+  "specify_whether_you_want_to_display_the_time_in_12_hour_or_24_hour_format": "حدد ما إذا كنت تريد عرض الوقت بتنسيق 12 ساعة أو 24 ساعة.",
+  "enable_animations": "تمكين الرسوم المتحركة",
+  "enable_or_disable_animations_in_the_interface_to_improve_performance": "تمكين أو تعطيل الرسوم المتحركة في الواجهة لتحسين الأداء."
+
+}

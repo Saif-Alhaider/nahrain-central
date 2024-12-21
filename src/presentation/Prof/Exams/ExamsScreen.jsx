@@ -4,6 +4,7 @@ import React from "react";
 import {ReactComponent as IcBook} from "./resources/ic_book.svg";
 import {ReactComponent as IcClock} from "./resources/ic_clock.svg";
 import {ReactComponent as IcNoteBook} from "./resources/ic_notebook.svg";
+import {MenuItem} from "@mui/material";
 
 export const ExamsScreen = ({className}) => {
     return (<div className={`${className} w-full bg-background p-6`}>
@@ -13,9 +14,26 @@ export const ExamsScreen = ({className}) => {
         />
 
         <div className="flex flex-wrap gap-2 xl:mt-8 mt-6">
-            <DropDown text="Freshman" items={['Sophomore', 'Junior', 'Senior']}/>
-            <DropDown text="Theoretical and Lab" items={["Theoretical", "Lab"]}/>
-            <DropDown text="Homework and Exams" items={["Homework", "Exams", "Quiz"]}/>
+            <DropDown
+                currentValue="Freshman"
+                items={["Freshman","Sophomore", "Junior", "Senior"].map((item) => (
+                    <MenuItem value={item} key={item}>{item}</MenuItem>
+                ))}
+            />
+
+            <DropDown
+                currentValue="Theoretical and Lab"
+                items={["Theoretical and Lab","Theoretical", "Lab"].map((item) => (
+                    <MenuItem value={item} key={item}>{item}</MenuItem>
+                ))}
+            />
+
+            <DropDown
+                currentValue="Homework and Exams"
+                items={["Homework and Exams","Homework", "Exams", "Quiz"].map((item) => (
+                    <MenuItem value={item} key={item}>{item}</MenuItem>
+                ))}
+            />
         </div>
         <div className={"flex flex-col gap-4 mt-4 h-fit"}>
             <ExamCard title="Nyquist Theorem and QAM Analysis" dayOfWeek="WED" dayOfMonth={24}

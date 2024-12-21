@@ -1,0 +1,20 @@
+{
+  "home": "Home",
+  "settings": "settings",
+  "appearance": "Appearance",
+  "change_how_your_public_dashboard_looks_and_feels": "change how your public dashboard looks and feels.",
+  "theme": "Theme",
+  "change_the_user_interface_colors_to_match_your_preferences_or_usage_environment": "change the user interface colors to match your preferences or usage environment.",
+  "system_theme": "System Theme",
+  "based_on_system_settings": "Based on system settings.",
+  "dark_theme":"Dark Theme",
+  "comfortable_for_the_eyes_in_low_light":"Comfortable for the eyes in low light.",
+  "light_theme":"Light Theme",
+  "enhances_visibility_in_bright_lighting":"Enhances visibility in bright lighting.",
+  "language":"Language",
+  "the_default_language_for_displaying_the_main_dashboard":"The default language for displaying the main dashboard.",
+  "time":"Time",
+  "specify_whether_you_want_to_display_the_time_in_12_hour_or_24_hour_format":"Specify whether you want to display the time in 12-hour or 24-hour format.",
+  "enable_animations":"Enable Animations",
+  "enable_or_disable_animations_in_the_interface_to_improve_performance":"Enable or disable animations in the interface to improve performance."
+}

@@ -9,12 +9,15 @@ import {NotFound404} from "./Common/screens/NotFound404/NotFound404";
 import {ProfRecordedLectures} from "./Prof/ProfRecordedLectures/ProfRecordedLectures";
 import {ExamsScreen} from "./Prof/Exams/ExamsScreen";
 import {NahrainThemeContext} from "../context/NahrainThemeContext";
+import {supportedLanguages} from "../translation/supportedLanguages";
 
 
 function App() {
 
-    const { currentTheme } = useContext(NahrainThemeContext);
     const [theme, setTheme] = useState("light");
+    const {currentTheme, setCurrentTheme, currentLanguage, setCurrentLanguage} = useContext(NahrainThemeContext)
+
+    const direction = supportedLanguages[currentLanguage].direction
 
     useEffect(() => {
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -22,13 +25,13 @@ function App() {
         setTheme(mediaQuery.matches ? "dark" : "light");
         mediaQuery.addEventListener("change", handleChange);
         return () => mediaQuery.removeEventListener("change", handleChange);
-    }, []); // Run only once after the initial render
+    }, []);
 
 
 
     return (
         <div
-            className={`${currentTheme === "deviceTheme" ? theme : currentTheme}`}>
+            className={`${currentTheme === "deviceTheme" ? theme : currentTheme}`} dir={direction}>
             <BrowserRouter>
                 <Routes>
                     <Route path='/'>
