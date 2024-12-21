@@ -9,6 +9,7 @@ export const NahrainThemeProvider = ({children}) => {
     const [currentTheme,setCurrentTheme ] = useState(() => {
         return localStorage.getItem('theme') || 'light';
     });
+
     useEffect(() => {
         localStorage.setItem('theme', currentTheme);
     }, [currentTheme]);

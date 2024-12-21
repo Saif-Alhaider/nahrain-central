@@ -1,5 +1,5 @@
 import 'output.css';
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {GradesScreen} from "./Prof/Grades/GradesScreen";
@@ -13,13 +13,22 @@ import {NahrainThemeContext} from "../context/NahrainThemeContext";
 
 function App() {
 
+    const { currentTheme } = useContext(NahrainThemeContext);
+    const [theme, setTheme] = useState("light");
 
-    const {currentTheme} = useContext(NahrainThemeContext)
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const handleChange = (event) => setTheme(event.matches ? "dark" : "light");
+        setTheme(mediaQuery.matches ? "dark" : "light");
+        mediaQuery.addEventListener("change", handleChange);
+        return () => mediaQuery.removeEventListener("change", handleChange);
+    }, []); // Run only once after the initial render
 
-    document.body.classList.add(currentTheme);
+
 
     return (
-        <div className={`${currentTheme === "deviceTheme" || currentTheme === "undefined"  ? "light" : currentTheme} transition-colors duration-300 ease-linear`}>
+        <div
+            className={`${currentTheme === "deviceTheme" ? theme : currentTheme}`}>
             <BrowserRouter>
                 <Routes>
                     <Route path='/'>
