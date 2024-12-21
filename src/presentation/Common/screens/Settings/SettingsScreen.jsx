@@ -9,7 +9,6 @@ import {useTranslation} from "react-i18next";
 import {supportedLanguages} from "../../../../translation/supportedLanguages";
 import i18next from "i18next";
 import {MenuItem} from "@mui/material";
-import {Component} from "@react-buddy/ide-toolbox";
 
 
 export const SettingsScreen = () => {

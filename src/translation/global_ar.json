@@ -16,6 +16,8 @@
   "time": "الوقت",
   "specify_whether_you_want_to_display_the_time_in_12_hour_or_24_hour_format": "حدد ما إذا كنت تريد عرض الوقت بتنسيق 12 ساعة أو 24 ساعة.",
   "enable_animations": "تمكين الرسوم المتحركة",
-  "enable_or_disable_animations_in_the_interface_to_improve_performance": "تمكين أو تعطيل الرسوم المتحركة في الواجهة لتحسين الأداء."
+  "enable_or_disable_animations_in_the_interface_to_improve_performance": "تمكين أو تعطيل الرسوم المتحركة في الواجهة لتحسين الأداء.",
+  "oops_the_page_youre_looking_for_doesnt_exist_it_might_have_been_removed_had_its_name_changed_or_is_temporarily_unavailable_please_check_the_url_or_go_back_to_the_homepage":"عذراً! الصفحة التي تبحث عنها غير موجودة. قد تكون أُزيلت أو تم تغيير اسمها أو أنها غير متاحة مؤقتًا. يرجى التحقق من الرابط أو العودة إلى الصفحة الرئيسية.",
+  "go_back_home":"العودة الى الرئيسية"
 
 }

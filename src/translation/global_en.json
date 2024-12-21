@@ -16,5 +16,7 @@
   "time":"Time",
   "specify_whether_you_want_to_display_the_time_in_12_hour_or_24_hour_format":"Specify whether you want to display the time in 12-hour or 24-hour format.",
   "enable_animations":"Enable Animations",
-  "enable_or_disable_animations_in_the_interface_to_improve_performance":"Enable or disable animations in the interface to improve performance."
+  "enable_or_disable_animations_in_the_interface_to_improve_performance":"Enable or disable animations in the interface to improve performance.",
+  "oops_the_page_youre_looking_for_doesnt_exist_it_might_have_been_removed_had_its_name_changed_or_is_temporarily_unavailable_please_check_the_url_or_go_back_to_the_homepage":"Oops! The page you’re looking for doesn’t exist. It might have been removed, had its name changed, or is temporarily unavailable. Please check the URL or go back to the homepage.",
+  "go_back_home":"Go Back Home"
 }
