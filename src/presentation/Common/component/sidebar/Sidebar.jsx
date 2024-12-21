@@ -5,11 +5,11 @@ import 'output.css';
 import {ReactComponent as IcMenuDots} from 'presentation/Common/component/sidebar/resources/ic_menu_dots.svg'
 
 
-export const Sidebar = ({onDismiss, className, isVisible, theme, children}) => {
+export const Sidebar = ({onDismiss, className, isVisible, children}) => {
     return (
         <div className={className}>
             <div
-                className={`${theme} ${isVisible ? '' : 'ltr:-translate-x-[320px] rtl:translate-x-[320px]'}  lg:translate-x-0 
+                className={`${isVisible ? '' : 'ltr:-translate-x-[320px] rtl:translate-x-[320px]'}  lg:translate-x-0 
 z-10  overflow-y-scroll lg:sticky fixed min-w-[320px] h-dvh py-4 px-6  bg-card flex flex-col justify-between`
                 }
                 style={{
