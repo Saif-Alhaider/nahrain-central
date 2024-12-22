@@ -5,7 +5,9 @@ export const NahrainThemeContext = createContext({
     currentTheme: "light",
     setCurrentTheme: () => null,
     currentLanguage: Object.keys(supportedLanguages)[0],
-    setCurrentLanguage: () => null
+    setCurrentLanguage: () => null,
+    currentFont: "font-notoSans",
+    setCurrentFont: () => null
 })
 
 export const NahrainThemeProvider = ({children}) => {
@@ -15,6 +17,10 @@ export const NahrainThemeProvider = ({children}) => {
     const [currentLanguage, setCurrentLanguage] = useState(() => {
         return localStorage.getItem('language') || Object.keys(supportedLanguages)[0];
     });
+    
+    const [currentFont, setCurrentFont] = useState(() => {
+        return localStorage.getItem('font') || "font-notoSans";
+    });
 
     useEffect(() => {
         localStorage.setItem('theme', currentTheme);
@@ -22,8 +28,12 @@ export const NahrainThemeProvider = ({children}) => {
     useEffect(() => {
         localStorage.setItem('language', currentLanguage);
     }, [currentLanguage]);
+    
+    useEffect(() => {
+        localStorage.setItem('font', currentFont);
+    }, [currentFont]);
 
-    const value = {setCurrentTheme, currentTheme, currentLanguage, setCurrentLanguage}
+    const value = {setCurrentTheme, currentTheme, currentLanguage, setCurrentLanguage,currentFont,setCurrentFont}
 
     return <NahrainThemeContext.Provider value={value}>{children}</NahrainThemeContext.Provider>
 }

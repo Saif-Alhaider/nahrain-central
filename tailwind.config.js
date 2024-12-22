@@ -20,6 +20,10 @@ module.exports = {
         onPrimary: 'rgba(var(--on-primary))',
         softGray: 'rgba(var(--soft-gray))',
       },
+      fontFamily:{
+        notoSans:"Noto Sans",
+        rubik:"Rubik"
+      }
     },
   },
   plugins: [],

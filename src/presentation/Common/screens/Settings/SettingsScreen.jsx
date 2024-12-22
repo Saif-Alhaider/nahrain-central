@@ -12,7 +12,7 @@ import {MenuItem} from "@mui/material";
 
 
 export const SettingsScreen = () => {
-    const {currentTheme, setCurrentTheme, currentLanguage, setCurrentLanguage} = useContext(NahrainThemeContext)
+    const {currentTheme, setCurrentTheme, currentLanguage, setCurrentLanguage, currentFont, setCurrentFont} = useContext(NahrainThemeContext)
     const [t, i18] = useTranslation("global");
 
     const direction = supportedLanguages[currentLanguage].direction
@@ -88,6 +88,8 @@ export const SettingsScreen = () => {
     )
 
     function onLanguageValueChange(languageCode) {
+        setCurrentLanguage(languageCode)
+        languageCode === "ar" ? setCurrentFont("font-rubik") : setCurrentFont("font-notoSans")
         setCurrentLanguage(languageCode)
         i18next.changeLanguage(languageCode)
     }
