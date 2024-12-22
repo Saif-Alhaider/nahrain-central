@@ -34,7 +34,7 @@ export const ProfSidebar = ({currentScreen, onDismiss, className, isVisible}) =>
                     <MenuItem onDismiss={onDismiss} icon={IcUsersGroup} to='/nahrain-central/record-absence'
                               text={t('record_absence')} isActive={currentScreen === t('record_absence')}/>
                     <MenuItem onDismiss={onDismiss} icon={IcCrown} to='/nahrain-central/exams' text={t('exams')}
-                              isActive={currentScreen === t('exams')}/>
+                              isActive={currentScreen === t('exams') || currentScreen === t("announcement")}/>
                     <MenuItem onDismiss={onDismiss} icon={IcMark} to='/nahrain-central/grades' text={t('grades')}
                               isActive={currentScreen === t('grades')}/>
                 </div>

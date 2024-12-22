@@ -6,8 +6,3 @@ export const COMMON_ROUTES = {
     LOGIN:"/login",
     SIGNUP:"/signup",
 }
-
-export const Theme={
-    LIGHT:"light",
-    DARK:"dark"
-}

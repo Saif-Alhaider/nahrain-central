@@ -5,6 +5,7 @@ import {ReactComponent as IcBook} from "./resources/ic_book.svg";
 import {ReactComponent as IcClock} from "./resources/ic_clock.svg";
 import {ReactComponent as IcNoteBook} from "./resources/ic_notebook.svg";
 import {MenuItem} from "@mui/material";
+import {Link} from "react-router-dom";
 
 export const ExamsScreen = ({className}) => {
     return (<div className={`${className} w-full bg-background p-6`}>
@@ -16,32 +17,37 @@ export const ExamsScreen = ({className}) => {
         <div className="flex flex-wrap gap-2 xl:mt-8 mt-6">
             <DropDown
                 currentValue="Freshman"
-                items={["Freshman","Sophomore", "Junior", "Senior"].map((item) => (
+                items={["Freshman", "Sophomore", "Junior", "Senior"].map((item) => (
                     <MenuItem value={item} key={item}>{item}</MenuItem>
                 ))}
             />
 
             <DropDown
                 currentValue="Theoretical and Lab"
-                items={["Theoretical and Lab","Theoretical", "Lab"].map((item) => (
+                items={["Theoretical and Lab", "Theoretical", "Lab"].map((item) => (
                     <MenuItem value={item} key={item}>{item}</MenuItem>
                 ))}
             />
 
             <DropDown
                 currentValue="Homework and Exams"
-                items={["Homework and Exams","Homework", "Exams", "Quiz"].map((item) => (
+                items={["Homework and Exams", "Homework", "Exams", "Quiz"].map((item) => (
                     <MenuItem value={item} key={item}>{item}</MenuItem>
                 ))}
             />
         </div>
         <div className={"flex flex-col gap-4 mt-4 h-fit"}>
-            <ExamCard title="Nyquist Theorem and QAM Analysis" dayOfWeek="WED" dayOfMonth={24}
-                      examFormat={"Lab"} assessmentType={"Quiz 2"} startTime={"10:00"} endTime={"10:30"}
-                      material={"Communication 2"} stage={"Sophomore"}/>
-            <ExamCard title="Analog Modulation" dayOfWeek="MON" dayOfMonth={22}
-                      examFormat={"Theoretical"} assessmentType={"Midterm 2"} startTime={"10:00"} endTime={"10:30"}
-                      material={"Communication 1"} stage={"Junior"}/>
+            <Link to='/nahrain-central/announcement' className={"cursor-pointer"}>
+                <ExamCard title="Nyquist Theorem and QAM Analysis" dayOfWeek="WED" dayOfMonth={24}
+                          examFormat={"Lab"} assessmentType={"Quiz 2"} startTime={"10:00"} endTime={"10:30"}
+                          material={"Communication 2"} stage={"Sophomore"}/>
+            </Link>
+
+            <Link to='/nahrain-central/announcement' className={"cursor-pointer"}>
+                <ExamCard title="Analog Modulation" dayOfWeek="MON" dayOfMonth={22}
+                          examFormat={"Theoretical"} assessmentType={"Midterm 2"} startTime={"10:00"} endTime={"10:30"}
+                          material={"Communication 1"} stage={"Junior"}/>
+            </Link>
         </div>
     </div>)
 }
@@ -69,10 +75,13 @@ const ExamCard = ({
                 </div>
                 <div className={`w-[1.5px] bg-strokeGray h-[inherit]`}/>
                 <div className={`flex flex-col gap-2 w-fit`}>
-                    <div className={`flex flex-row gap-2 items-center text-onBackground`}><IcBook/> <p className={"line-clamp-1"}>{assessmentType} - {examFormat}</p>
+                    <div className={`flex flex-row gap-2 items-center text-onBackground`}><IcBook/> <p
+                        className={"line-clamp-1"}>{assessmentType} - {examFormat}</p>
                     </div>
-                    <div className={`flex flex-row gap-2 items-center text-onBackground`}><IcClock/> <p>{startTime} - {endTime}</p></div>
-                    <div className={`flex flex-row gap-2 items-center text-onBackground`}><IcNoteBook className={"size-8"}/> <p
+                    <div className={`flex flex-row gap-2 items-center text-onBackground`}><IcClock/>
+                        <p>{startTime} - {endTime}</p></div>
+                    <div className={`flex flex-row gap-2 items-center text-onBackground`}><IcNoteBook
+                        className={"size-8"}/> <p
                         className={"line-clamp-1 "}>{material} - {stage}</p></div>
                 </div>
             </div>

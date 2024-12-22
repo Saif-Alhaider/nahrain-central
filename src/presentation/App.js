@@ -10,6 +10,7 @@ import {ProfRecordedLectures} from "./Prof/ProfRecordedLectures/ProfRecordedLect
 import {ExamsScreen} from "./Prof/Exams/ExamsScreen";
 import {NahrainThemeContext} from "../context/NahrainThemeContext";
 import {supportedLanguages} from "../translation/supportedLanguages";
+import {AnnouncementScreen} from "./Common/screens/Announcement/AnnouncementScreen";
 
 
 function App() {
@@ -29,7 +30,6 @@ function App() {
 
     document.body.classList.add("light");
 
-
     return (
         <div
             className={`${currentTheme === "deviceTheme" ? theme : currentTheme} ${direction} ${currentFont}`} dir={direction}>
@@ -42,6 +42,7 @@ function App() {
                             <Route path='grades' element={<GradesScreen/>}/>
                             <Route path='exams' element={<ExamsScreen/>}/>
                             <Route path='settings' element={<SettingsScreen/>}/>
+                            <Route path='announcement' element={<AnnouncementScreen/>}/>
                         </Route>
                         <Route path='*' element={<NotFound404/>}/>
                     </Route>

@@ -168,7 +168,7 @@ export const Chip = ({className, text, count, isActive}) => {
 }
 
 
-const TableReact = () => {
+export const TableReact = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const divRef = useRef(null);
 

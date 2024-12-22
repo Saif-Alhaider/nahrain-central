@@ -19,6 +19,7 @@ export const MainScaffold = () => {
         '/nahrain-central/grades': t('grades'),
         '/nahrain-central/settings': t("settings"),
         '/nahrain-central/contact-me': t('contact_me'),
+        '/nahrain-central/announcement': t('announcement'),
     };
 
     const location = useLocation();
