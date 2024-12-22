@@ -12,7 +12,14 @@ import {MenuItem} from "@mui/material";
 
 
 export const SettingsScreen = () => {
-    const {currentTheme, setCurrentTheme, currentLanguage, setCurrentLanguage, currentFont, setCurrentFont} = useContext(NahrainThemeContext)
+    const {
+        currentTheme,
+        setCurrentTheme,
+        currentLanguage,
+        setCurrentLanguage,
+        currentFont,
+        setCurrentFont
+    } = useContext(NahrainThemeContext)
     const [t, i18] = useTranslation("global");
 
     const direction = supportedLanguages[currentLanguage].direction
@@ -34,24 +41,33 @@ export const SettingsScreen = () => {
                     <div className={'flex flex-col w-[209px] cursor-pointer'} onClick={() => {
                         setCurrentTheme("light")
                     }}>
-                        <ThemeModeCard
-                            className={`light p-6 box-content bg-softGray rounded-xl ${currentTheme === "light" ? "border-4 border-primary" : ""}`}/>
+                        <div
+                            className={`light p-6  bg-softGray box-content rounded-xl ${currentTheme === "light" ? "shadow-[inset_0_0_0_4px_theme('colors.primary')]" : ""}`}>
+                            <ThemeModeCard
+                                className={`light`}/>
+                        </div>
                         <h1 className={'font-medium text-[20px] text-onBackground mt-4'}>{t("light_theme")}</h1>
                         <p className={'text-onBackgroundCaption text-[16px] leading-8 mt-2'}>{t("enhances_visibility_in_bright_lighting")}</p>
                     </div>
                     <div className={'flex flex-col w-[209px] cursor-pointer'} onClick={() => {
                         setCurrentTheme("dark")
                     }}>
-                        <ThemeModeCard
-                            className={`dark p-6 box-content bg-softGray rounded-xl ${currentTheme === "dark" ? "border-4 border-primary" : ""}`}/>
+                        <div
+                            className={`light p-6  bg-softGray box-content rounded-xl ${currentTheme === "dark" ? "shadow-[inset_0_0_0_4px_theme('colors.primary')]" : ""}`}>
+                            <ThemeModeCard
+                                className={`dark`}/>
+                        </div>
                         <h1 className={'font-medium text-[20px] text-onBackground mt-4'}>{t("dark_theme")}</h1>
                         <p className={'text-onBackgroundCaption text-[16px] leading-8 mt-2'}>{t("comfortable_for_the_eyes_in_low_light")}</p>
                     </div>
                     <div className={'flex flex-col w-[209px] cursor-pointer'} onClick={() => {
                         setCurrentTheme("deviceTheme")
                     }}>
-                        <ThemeSplitModeCard
-                            className={`p-6 box-content bg-softGray rounded-xl ${currentTheme === "deviceTheme" ? "border-4 border-primary" : ""}`}/>
+                        <div
+                            className={`p-6  bg-softGray box-content rounded-xl ${currentTheme === "deviceTheme" ? "shadow-[inset_0_0_0_4px_theme('colors.primary')]" : ""}`}>
+                            <ThemeSplitModeCard/>
+                        </div>
+
                         <h1 className={'font-medium text-[20px] text-onBackground mt-4'}>{t("system_theme")}</h1>
                         <p className={'text-onBackgroundCaption text-[16px] leading-8 mt-2'}>{t("based_on_system_settings")}</p>
                     </div>
