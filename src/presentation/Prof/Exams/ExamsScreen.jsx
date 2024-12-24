@@ -6,8 +6,10 @@ import {ReactComponent as IcClock} from "./resources/ic_clock.svg";
 import {ReactComponent as IcNoteBook} from "./resources/ic_notebook.svg";
 import {MenuItem} from "@mui/material";
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 export const ExamsScreen = ({className}) => {
+    const [t] = useTranslation("global");
     return (<div className={`${className} w-full bg-background p-6`}>
         <DetailedActionCard title={"Create New Exam"}
                             description={"Design and schedule a new exam. Specify the course, date, and details to ensure a seamless evaluation process."}
@@ -16,22 +18,22 @@ export const ExamsScreen = ({className}) => {
 
         <div className="flex flex-wrap gap-2 xl:mt-8 mt-6">
             <DropDown
-                currentValue="Freshman"
-                items={["Freshman", "Sophomore", "Junior", "Senior"].map((item) => (
+                currentValue={t("freshman")}
+                items={[t("freshman"), t("sophomore"), t("junior"), t("senior")].map((item) => (
                     <MenuItem value={item} key={item}>{item}</MenuItem>
                 ))}
             />
 
             <DropDown
-                currentValue="Theoretical and Lab"
-                items={["Theoretical and Lab", "Theoretical", "Lab"].map((item) => (
+                currentValue={t("theoretical_and_lab")}
+                items={[t("theoretical_and_lab"), t("theoretical"), t("lab")].map((item) => (
                     <MenuItem value={item} key={item}>{item}</MenuItem>
                 ))}
             />
 
             <DropDown
-                currentValue="Homework and Exams"
-                items={["Homework and Exams", "Homework", "Exams", "Quiz"].map((item) => (
+                currentValue={t("homework_and_exams")}
+                items={[t("homework_and_exams"), t("homework"), t("exams")].map((item) => (
                     <MenuItem value={item} key={item}>{item}</MenuItem>
                 ))}
             />
@@ -65,6 +67,8 @@ const ExamCard = ({
                       material,
                       stage
                   }) => {
+    const [t] = useTranslation("global");
+
     return (
         <div
             className={`${className} flex flex-wrap px-6 py-4 rounded-2xl gap-6 border-[1px] border-strokeGray`}>
@@ -98,7 +102,7 @@ const ExamCard = ({
                         <img src={"https://picsum.photos/203"} alt={"avatar"}
                              className={"rounded-[50%] size-6 absolute top-0 left-[36px] z-10"}/>
                     </div>
-                    <p className={"text-[16px] text-secondary"}>view all students</p>
+                    <p className={"text-[16px] text-secondary"}>{t("view_all_students")}</p>
                 </div>
 
             </div>

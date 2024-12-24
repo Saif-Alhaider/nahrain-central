@@ -2,21 +2,21 @@ import {BaseAuthentication} from "../BaseAuthentication";
 import finishSignup from "../Finish Signup/resources/finishSignup.png";
 import React from "react";
 import QrCode from './resources/QR Code.png'
+import {useTranslation} from "react-i18next";
 
 export const ScanTotpScreen = () => {
+    const [t] = useTranslation("global");
     return (
         <BaseAuthentication
             image={finishSignup}
             imageClassName="translate-y-44 scale-150"
-            description="Professors can publish student grades on Nahrain Central, allowing students to easily view their results and track their academic progress through the platform.">
-            <h1 className="xl:text-[32px] lg:text-[32px] text-[24px] text-onBackground  xl:text-start text-center font-semibold">configure
-                authenticator app</h1>
+            description={t('professors_can_publish_student_grades')}>
+            <h1 className="xl:text-[32px] lg:text-[32px] text-[24px] text-onBackground  xl:text-start text-center font-semibold">{t("configure_authenticator_app")}</h1>
             <div className="h-auto my-6">
                 <img src={QrCode} alt="qr code" className="w-40 mx-auto"/>
             </div>
-            <p className="text-sm text-onBackgroundCaption xl:text-start text-center">Enter the verification code
-                displayed in the Google Authenticator app or TOTP app, then proceed.</p>
-            <h1 className="text-[24px] text-onBackground  text-start mt-4 font-semibold">Enter Verification Code</h1>
+            <p className="text-sm text-onBackgroundCaption xl:text-start text-center">{t("enter_verification_code_displayed_in_google_authenticator")}</p>
+            <h1 className="text-[24px] text-onBackground  text-start mt-4 font-semibold">{t('enter_verification_code')}</h1>
             <div className="flex flex-row justify-between xl:my-6 mt-2 mb-4 h-16 w-full xl:gap-8 gap-4">
                 {Array.from({length: 6}).map((_, index) => (
                     <input
@@ -31,10 +31,10 @@ export const ScanTotpScreen = () => {
                 ))}
             </div>
             <button
-                className="bg-primary text-onPrimary flex-grow max-h-14 w-full rounded-lg text-[24px]">Continue
+                className="bg-primary text-onPrimary flex-grow max-h-14 w-full rounded-lg text-[24px]">{t('continue')}
             </button>
             <button
-                className="border-2 border-strokeGray text-white flex-grow w-full max-h-14 rounded-lg text-[24px] mt-4">Skip
+                className="border-2 border-strokeGray text-white flex-grow w-full max-h-14 rounded-lg text-[24px] mt-4">{t('skip')}
             </button>
         </BaseAuthentication>
     )

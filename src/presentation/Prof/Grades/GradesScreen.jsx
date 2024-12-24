@@ -99,7 +99,6 @@ const products = [
     }
 ]
 
-
 export const GradesScreen = ({className}) => {
     const [t, i18] = useTranslation("global");
     return (
@@ -146,8 +145,6 @@ export const GradesScreen = ({className}) => {
         </div>
     )
 }
-
-
 
 export const Chip = ({className, text, count, isActive}) => {
     let chipColor = isActive ? "bg-primary text-onPrimary" : "bg-card text-onBackground"
@@ -240,6 +237,3 @@ export const TableReact = () => {
         </table>
     );
 };
-
-//https://saif-alhaider.github.io/nahrain-central/
-//https://saif-alhaider.github.io/nahrain-central
