@@ -11,10 +11,6 @@ import {ExamsScreen} from "./Prof/Exams/ExamsScreen";
 import {NahrainThemeContext} from "../context/NahrainThemeContext";
 import {supportedLanguages} from "../translation/supportedLanguages";
 import {AnnouncementScreen} from "./Common/screens/Announcement/AnnouncementScreen";
-import {LoginScreen} from "./Common/screens/Authentication/Login/LoginScreen";
-import {FinishSignup} from "./Common/screens/Authentication/Finish Signup/FinishSignup";
-import {ScanTotpScreen} from "./Common/screens/Authentication/Scan TOTP/ScanTotpScreen";
-import {TotpScreen} from "./Common/screens/Authentication/TOTP/TotpScreen";
 
 
 function App() {

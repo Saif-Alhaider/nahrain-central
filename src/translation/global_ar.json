@@ -71,5 +71,9 @@
   "enter_verification_code": "ادخل رمز التأكيد",
   "continue": "اكمل",
   "skip": "تخط",
-  "enter_the_6_digit_security_code_from_your_authenticator_app": "أدخل رمز الأمان المكون من 6 أرقام من تطبيق المصادقة الخاص بك."
+  "enter_the_6_digit_security_code_from_your_authenticator_app": "أدخل رمز الأمان المكون من 6 أرقام من تطبيق المصادقة الخاص بك.",
+  "first_course": "الكورس الاول",
+  "second_course": "الكورس الثاني",
+  "first_and_second_course": "الكورس الاول و الثاني",
+  "publish_a_lecture": "نشر محاضرة"
 }

@@ -72,5 +72,9 @@
   "enter_verification_code": "Enter Verification Code",
   "continue": "Continue",
   "skip": "Skip",
-  "enter_the_6_digit_security_code_from_your_authenticator_app": "Enter the 6-digit security code from your authenticator app."
+  "enter_the_6_digit_security_code_from_your_authenticator_app": "Enter the 6-digit security code from your authenticator app.",
+  "first_course": "First Course",
+  "second_course": "Second Course",
+  "first_and_second_course": "First and Second Course",
+  "publish_a_lecture": "Publish a Lecture"
 }

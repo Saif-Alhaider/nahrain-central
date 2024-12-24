@@ -5,24 +5,26 @@ import {ReactComponent as IcList} from "./resources/ic_list.svg"
 import {DropDown} from "../../Common/component/DropDown";
 import React from "react";
 import {MenuItem} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 export const ProfRecordedLectures = () => {
+    const [t] = useTranslation("global");
     return (<div className={"w-full h-full p-6"}>
         <div className="w-full flex flex-wrap gap-4 justify-between">
             <button
-                className="bg-primary text-onPrimary text-nowrap rounded-lg text-xl px-4 py-2 ">Publish a Lecture
+                className="bg-primary text-onPrimary text-nowrap rounded-lg text-xl px-4 py-2 ">{t('publish_a_lecture')}
             </button>
             <div className={"flex flex-row gap-2"}>
                 <DropDown
-                    currentValue="All"
-                    items={["All", "First Course", "Second Course"].map((item) => (
+                    currentValue={t('first_and_second_course')}
+                    items={[t('first_and_second_course'), t('first_course'), t('second_course')].map((item) => (
                         <MenuItem value={item} key={item}>{item}</MenuItem>
                     ))}
                 />
 
                 <DropDown
-                    currentValue="Lab"
-                    items={["Lab", "Theoretical"].map((item) => (
+                    currentValue={t("theoretical_and_lab")}
+                    items={[t("theoretical_and_lab"), t("theoretical"), t("lab")].map((item) => (
                         <MenuItem value={item} key={item}>{item}</MenuItem>
                     ))}
                 />
