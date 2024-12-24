@@ -76,5 +76,7 @@
   "first_course": "First Course",
   "second_course": "Second Course",
   "first_and_second_course": "First and Second Course",
-  "publish_a_lecture": "Publish a Lecture"
+  "publish_a_lecture": "Publish a Lecture",
+  "confirm_password": "Confirm Password",
+  "you_have_an_account": "You Have an Account"
 }

@@ -75,5 +75,7 @@
   "first_course": "الكورس الاول",
   "second_course": "الكورس الثاني",
   "first_and_second_course": "الكورس الاول و الثاني",
-  "publish_a_lecture": "نشر محاضرة"
+  "publish_a_lecture": "نشر محاضرة",
+  "confirm_password": "تأكيد كلمة السر",
+  "you_have_an_account": "لديك حساب"
 }

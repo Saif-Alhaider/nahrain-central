@@ -1,34 +1,44 @@
-import React from "react";
-import 'output.css';
 import {BaseAuthentication} from "../BaseAuthentication";
-import LoginImage from "./resources/Design.png";
+import React from "react";
+import {useTranslation} from "react-i18next";
 import {ReactComponent as IcEye} from "presentation/Common/component/ic_eye.svg";
 import {IcGoogle} from "presentation/Common/component/ic_google";
-import {useTranslation} from "react-i18next";
+import finishSignup from "../Finish Signup/resources/finishSignup.png";
 
-export const LoginScreen = () => {
+export const SignupScreen = () => {
     const [t, i18] = useTranslation("global");
+
     return (
-        <BaseAuthentication image={LoginImage} imageClassName="mt-8"
-                            description={t("login_description")}
-        ><LoginForm/></BaseAuthentication>
+        <BaseAuthentication image={finishSignup} imageClassName="translate-y-44 scale-150"
+                            description={t("professors_can_publish_student_grades")}
+        ><SignupForm/></BaseAuthentication>
     )
 }
 
-const LoginForm = ({className}) => {
+
+export const SignupForm = ({className}) => {
     const [t, i18] = useTranslation("global");
+
     return (
         <form className={className}>
-            <h1 className="text-[32px] text-onBackground w-full xl:text-start text-center font-semibold">{t('login')}</h1>
+            <h1 className="text-[32px] text-onBackground w-full xl:text-start text-center font-semibold">{t('signup')}</h1>
             <input placeholder="John@nahrainuniv.edu.iq"
-                   className="transition-colors text-onBackground mt-[48px] max-w-full w-full p-[16px] rounded-[8px] bg-transparent border border-strokeGray focus:outline-none focus:border-secondary placeholder-onBackgroundCaption"
+                   className="text-onBackground mt-[48px] max-w-full w-full p-[16px] rounded-[8px] bg-transparent border border-strokeGray transition-colors focus:outline-none focus:border-secondary placeholder-onBackgroundCaption"
                    type="email"/>
-
+            {/*TODO FIX THE INPUT FOCUS COLOR*/}
             <div
                 className="mt-4 text-onBackground flex flex-row items-center border border-strokeGray rounded-lg px-4 py-4">
                 <input type="password" id="password"
-                       className="w-full bg-transparent  focus:outline-none focus:border-secondary transition-colors placeholder-onBackgroundCaption"
+                       className="placeholder-onBackgroundCaption w-full bg-transparent focus:outline-none focus:border-secondary transition-colors"
                        placeholder={t("enter_password")}/>
+                <span className={`cursor-pointer`}><IcEye/></span>
+            </div>
+            {/*TODO FIX THE INPUT FOCUS COLOR*/}
+            <div
+                className="mt-4 text-onBackground flex flex-row items-center border border-strokeGray rounded-lg px-4 py-4">
+                <input type="password" id="password"
+                       className="placeholder-onBackgroundCaption w-full bg-transparent"
+                       placeholder={t("confirm_password")}/>
                 <span className={`cursor-pointer text-onBackgroundCaption`}><IcEye/></span>
             </div>
             <a href="#"
@@ -45,8 +55,8 @@ const LoginForm = ({className}) => {
                 <IcGoogle/>
                 <p className="text-logo text-2xl">Google</p>
             </button>
-            <p className="mt-6 text-onBackground w-fit xl:mx-0 mx-auto">{t("dont_have_an_account_signup")}&nbsp;
-                <a href="#" className="text-secondary underline">{t("signup")}</a>
+            <p className="mt-6 text-onBackground w-fit xl:mx-0 mx-auto">{t("you_have_an_account")}&nbsp;
+                <a href="#" className="text-secondary underline">{t("login")}</a>
             </p>
         </form>
     )
