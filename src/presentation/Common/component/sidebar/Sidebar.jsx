@@ -10,7 +10,7 @@ export const Sidebar = ({onDismiss, className, isVisible, children}) => {
         <div className={className}>
             <div
                 className={`${isVisible ? '' : 'ltr:-translate-x-[320px] rtl:translate-x-[320px]'}  lg:ltr:translate-x-0 lg:rtl:translate-x-0 
-z-10  overflow-y-scroll lg:sticky fixed min-w-[320px] h-dvh py-4 px-6  bg-card flex flex-col justify-between`
+z-10  overflow-y-scroll lg:sticky fixed min-w-[320px] h-dvh py-4 px-6 bg-card flex flex-col justify-between`
                 }
                 style={{
                     transition: 'transform 150ms cubic-bezier(0.4, 0, 0.2, 1),background-color 200ms linear',

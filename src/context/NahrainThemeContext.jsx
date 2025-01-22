@@ -7,7 +7,9 @@ export const NahrainThemeContext = createContext({
     currentLanguage: Object.keys(supportedLanguages)[0],
     setCurrentLanguage: () => null,
     currentFont: "font-notoSans",
-    setCurrentFont: () => null
+    setCurrentFont: () => null,
+    isDialogSidebarVisible: false,
+    setIsDialogSidebarVisible: () => null
 })
 
 export const NahrainThemeProvider = ({children}) => {
@@ -17,10 +19,12 @@ export const NahrainThemeProvider = ({children}) => {
     const [currentLanguage, setCurrentLanguage] = useState(() => {
         return localStorage.getItem('language') || Object.keys(supportedLanguages)[0];
     });
-    
+
     const [currentFont, setCurrentFont] = useState(() => {
         return localStorage.getItem('font') || "font-notoSans";
     });
+
+    const [isDialogSidebarVisible,setIsDialogSidebarVisible] = useState(false);
 
     useEffect(() => {
         localStorage.setItem('theme', currentTheme);
@@ -28,12 +32,12 @@ export const NahrainThemeProvider = ({children}) => {
     useEffect(() => {
         localStorage.setItem('language', currentLanguage);
     }, [currentLanguage]);
-    
+
     useEffect(() => {
         localStorage.setItem('font', currentFont);
     }, [currentFont]);
 
-    const value = {setCurrentTheme, currentTheme, currentLanguage, setCurrentLanguage,currentFont,setCurrentFont}
+    const value = {setCurrentTheme, currentTheme, currentLanguage, setCurrentLanguage, currentFont, setCurrentFont,isDialogSidebarVisible,setIsDialogSidebarVisible}
 
     return <NahrainThemeContext.Provider value={value}>{children}</NahrainThemeContext.Provider>
 }

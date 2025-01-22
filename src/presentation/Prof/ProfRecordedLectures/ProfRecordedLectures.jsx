@@ -3,16 +3,25 @@ import 'index.css'
 import LectureImage from "./resources/image 1.png"
 import {ReactComponent as IcList} from "./resources/ic_list.svg"
 import {DropDown} from "../../Common/component/DropDown";
-import React from "react";
+import React, {useContext} from "react";
 import {MenuItem} from "@mui/material";
 import {useTranslation} from "react-i18next";
+import {NahrainThemeContext} from "../../../context/NahrainThemeContext";
 
 export const ProfRecordedLectures = () => {
     const [t] = useTranslation("global");
+    const {isDialogSidebarVisible, setIsDialogSidebarVisible} = useContext(NahrainThemeContext)
+
     return (<div className={"w-full h-full p-6"}>
         <div className="w-full flex flex-wrap gap-4 justify-between">
             <button
-                className="bg-primary text-onPrimary text-nowrap rounded-lg text-xl px-4 py-2 ">{t('publish_a_lecture')}
+                className="bg-primary text-onPrimary text-nowrap rounded-lg text-xl px-4 py-2 "
+                onClick={()=> {
+                    setIsDialogSidebarVisible(!isDialogSidebarVisible)
+                }
+
+
+                }>{t('publish_a_lecture')}
             </button>
             <div className={"flex flex-row gap-2"}>
                 <DropDown
@@ -42,14 +51,14 @@ export const ProfRecordedLectures = () => {
 export const LecturesPlayListCard = ({numberOfLectures, ProfName, SubjectName}) => {
     return (<div className="min-w-[268px] sm:w-full">
         <div className={"relative cursor-pointer"}>
-                <img className="w-full  object-cover rounded-lg" src={LectureImage} alt="lecture content"/>
-                <div
-                    className={"absolute bottom-2 start-2 bg-onBackgroundCaption light flex flex-row w-fit gap-2 px-1 rounded text-onPrimary"}>
-                    <IcList/>
-                    <p>{numberOfLectures} Lectures</p>
-                </div>
+            <img className="w-full  object-cover rounded-lg" src={LectureImage} alt="lecture content"/>
+            <div
+                className={"absolute bottom-2 start-2 bg-onBackgroundCaption light flex flex-row w-fit gap-2 px-1 rounded text-onPrimary"}>
+                <IcList/>
+                <p>{numberOfLectures} Lectures</p>
             </div>
-            <h1 className="text-onBackground mt-4 text-[24px] font-medium line-clamp-1">{SubjectName}</h1>
-            <p className="mt-2 text-onBackgroundCaption">{ProfName}</p>
-        </div>)
+        </div>
+        <h1 className="text-onBackground mt-4 text-[24px] font-medium line-clamp-1">{SubjectName}</h1>
+        <p className="mt-2 text-onBackgroundCaption">{ProfName}</p>
+    </div>)
 }
