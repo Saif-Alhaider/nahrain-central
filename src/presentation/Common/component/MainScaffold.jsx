@@ -93,17 +93,17 @@ export const MainScaffold = () => {
 export const DialogSidebar = ({isVisible, onDismiss, children}) => {
     const [isMaximize, setIsMaximize] = useState(false)
     return (<div
-        className={`z-40 size-full absolute ${(isVisible) ? "" : 'pointer-events-none'}`}>
+        className={`z-40 size-full absolute ${(isVisible) ? "" : 'pointer-events-none'} `}>
         <div
             onClick={() => {
                 onDismiss()
                 setIsMaximize(false)
             }}
-            className={`bg-black size-full absolute ${isVisible ? 'opacity-65' : 'opacity-0 pointer-events-none'}  cursor-pointer transition-opacity delay-50ms ease-linear`}
+            className={`bg-black overflow-hidden size-full absolute ${isVisible ? 'opacity-65' : 'opacity-0 pointer-events-none'}  cursor-pointer transition-opacity delay-50ms ease-linear`}
         />
 
         <div
-            className={`absolute lg:w-[40%] md:w-[55%] w-[100%] h-dvh bg-card end-0 p-4 
+            className={`absolute overflow-y-scroll lg:w-[40%] md:w-[55%] w-[100%] h-dvh bg-card end-0 p-4 
                 ${isVisible ? '' : 'ltr:translate-x-full rtl:-translate-x-full'}
                 ${isMaximize ? 'w-full' : ''}
                 `}
