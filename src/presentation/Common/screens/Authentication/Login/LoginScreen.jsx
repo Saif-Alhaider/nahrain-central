@@ -2,7 +2,7 @@ import React from "react";
 import 'output.css';
 import {BaseAuthentication} from "../BaseAuthentication";
 import LoginImage from "./resources/Design.png";
-import {ReactComponent as IcEye} from "presentation/Common/component/ic_eye.svg";
+import {ReactComponent as IcEye} from "presentation/Common/resources/ic_eye.svg";
 import {IcGoogle} from "presentation/Common/component/ic_google";
 import {useTranslation} from "react-i18next";
 

@@ -1,7 +1,7 @@
 import {BaseAuthentication} from "../BaseAuthentication";
 import React from "react";
 import {useTranslation} from "react-i18next";
-import {ReactComponent as IcEye} from "presentation/Common/component/ic_eye.svg";
+import {ReactComponent as IcEye} from "presentation/Common/resources/ic_eye.svg";
 import {IcGoogle} from "presentation/Common/component/ic_google";
 import finishSignup from "../Finish Signup/resources/finishSignup.png";
 

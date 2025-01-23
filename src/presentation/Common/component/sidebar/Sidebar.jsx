@@ -9,11 +9,11 @@ export const Sidebar = ({onDismiss, className, isVisible, children}) => {
     return (
         <div className={className}>
             <div
-                className={`${isVisible ? '' : 'ltr:-translate-x-[320px] rtl:translate-x-[320px]'}  lg:ltr:translate-x-0 lg:rtl:translate-x-0 
-z-10  overflow-y-scroll lg:sticky fixed min-w-[320px] h-dvh py-4 px-6 bg-card flex flex-col justify-between`
+                className={`${isVisible ? '' : 'ltr:-translate-x-full rtl:translate-x-full'}  lg:ltr:translate-x-0 lg:rtl:translate-x-0 
+z-10  overflow-y-scroll lg:sticky fixed min-w-[288px] h-dvh py-4 px-6 bg-card flex flex-col justify-between`
                 }
                 style={{
-                    transition: 'transform 150ms cubic-bezier(0.4, 0, 0.2, 1),background-color 200ms linear',
+                    transition: 'transform 200ms cubic-bezier(0.4, 0, 0.2, 1),background-color 200ms linear',
                 }}
             >
                 <div className="upperSidebar flex-grow h-full overflow-y-auto scrollbar flex flex-col">

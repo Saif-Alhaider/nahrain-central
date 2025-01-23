@@ -12,8 +12,8 @@ export const ProfRecordedLectures = () => {
     const [t] = useTranslation("global");
     const {isDialogSidebarVisible, setIsDialogSidebarVisible} = useContext(NahrainThemeContext)
 
-    return (<div className={"w-full h-full p-6"}>
-        <div className="w-full flex flex-wrap gap-4 justify-between">
+    return (<div className={"h-fit"}>
+        <div className=" flex flex-wrap gap-4 justify-between px-6 pt-6">
             <button
                 className="bg-primary text-onPrimary text-nowrap rounded-lg text-xl px-4 py-2 "
                 onClick={()=> {
@@ -23,7 +23,7 @@ export const ProfRecordedLectures = () => {
 
                 }>{t('publish_a_lecture')}
             </button>
-            <div className={"flex flex-row gap-2"}>
+            <div className={"flex flex-wrap gap-2"}>
                 <DropDown
                     currentValue={t('first_and_second_course')}
                     items={[t('first_and_second_course'), t('first_course'), t('second_course')].map((item) => (
@@ -40,7 +40,7 @@ export const ProfRecordedLectures = () => {
             </div>
         </div>
         <div
-            className="grid  sm:grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(268px,1fr))] gap-6 mt-6 pb-6">
+            className="grid  sm:grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(268px,1fr))] gap-6 mt-6 pb-6 px-6 pt-6">
             <LecturesPlayListCard numberOfLectures={10} ProfName={"د. اسماء حميد"} SubjectName={"DSP course 1"}/>
             <LecturesPlayListCard numberOfLectures={36} ProfName={"د. اسماء حميد"} SubjectName={"DSP course 2"}/>
             <LecturesPlayListCard numberOfLectures={12} ProfName={"د. اسماء حميد"} SubjectName={"DSP Lab course 2"}/>

@@ -1,10 +1,8 @@
-import React, {useContext} from "react";
+import React from "react";
 import "output.css"
 import 'index.css'
-import {ReactComponent as IcArrowIcon} from 'presentation/Common/component/ic_arrow_down.svg';
-import {FormControl, MenuItem, Select, SelectChangeEvent} from "@mui/material";
-import {supportedLanguages} from "../../../translation/supportedLanguages";
-import {NahrainThemeContext} from "../../../context/NahrainThemeContext";
+import {ReactComponent as IcArrowIcon} from 'presentation/Common/resources/ic_arrow_down.svg';
+import {FormControl, Select, SelectChangeEvent} from "@mui/material";
 
 export const DropDown = ({currentValue: currentValue, items, onValueChange, className}) => {
     const [newText, setNewText] = React.useState(currentValue);
