@@ -78,5 +78,14 @@
   "first_and_second_course": "First and Second Course",
   "publish_a_lecture": "Publish a Lecture",
   "confirm_password": "Confirm Password",
-  "you_have_an_account": "You Have an Account"
+  "you_have_an_account": "You Have an Account",
+  "single_video_title": "A Video",
+  "single_video_description": "Share the full video link to the lectures directly.",
+  "playlist_title": "Playlist",
+  "playlist_description": "Share the playlist link and it will be added to the lectures directly.",
+  "instructions": "You can choose to add a single video or a playlist from YouTube. If you choose a video, it will be listed in a playlist associated with a specific course and lecture (theoretical or practical). If you choose a playlist, it will be added as is, specifying the course and lecture type.",
+  "next_button": "Next",
+  "success_message": "🎉 Added Successfully!",
+  "success_description": "The video has been successfully added to the playlist associated with the course and the specified lecture.",
+  "close_button": "Close"
 }
