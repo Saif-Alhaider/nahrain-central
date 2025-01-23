@@ -1,13 +1,10 @@
 {
   "files": {
-    "main.css": "/nahrain-central/static/css/main.4261f7ab.css",
-    "main.js": "/nahrain-central/static/js/main.1d0ee457.js",
+    "main.css": "/nahrain-central/static/css/main.50d9f68e.css",
+    "main.js": "/nahrain-central/static/js/main.68086c1d.js",
     "static/js/453.f204c28b.chunk.js": "/nahrain-central/static/js/453.f204c28b.chunk.js",
     "static/media/notFound.png": "/nahrain-central/static/media/notFound.c102acd449f05804e8a4.png",
     "static/media/image 1.png": "/nahrain-central/static/media/image 1.0b3a47fc3a89dda4c412.png",
-    "static/media/img_totp.png": "/nahrain-central/static/media/img_totp.677e9bdc7c9e0c3a8b7c.png",
-    "static/media/finishSignup.png": "/nahrain-central/static/media/finishSignup.e9677e953e82c60c4320.png",
-    "static/media/Design.png": "/nahrain-central/static/media/Design.e2a0a7cb3f1480b835cd.png",
     "static/media/ic_mark.svg": "/nahrain-central/static/media/ic_mark.8f84f7da610a977e353771f6cf0fdb36.svg",
     "static/media/ic_crown.svg": "/nahrain-central/static/media/ic_crown.93501c4a3cbff192ce968e87ec4728ae.svg",
     "static/media/ic_notebook.svg": "/nahrain-central/static/media/ic_notebook.8b89d9e13d2f14eee3a17bdb2c4c9df2.svg",
@@ -15,23 +12,28 @@
     "static/media/ic_settings.svg": "/nahrain-central/static/media/ic_settings.4a825d225a24bd8e925601480b4caf12.svg",
     "static/media/ic_home.svg": "/nahrain-central/static/media/ic_home.7a2ee05201d67535de5c2aa69b2bb2da.svg",
     "static/media/ic_calendar.svg": "/nahrain-central/static/media/ic_calendar.b5fc744c9b7e8ead77c971a2630d2b9f.svg",
+    "static/media/ic_playlist.svg": "/nahrain-central/static/media/ic_playlist.5a0e365cee58e2b57ec0b6563920dff9.svg",
     "static/media/ic_list.svg": "/nahrain-central/static/media/ic_list.cbf24e164ac30d1c4053d44deca14854.svg",
     "index.html": "/nahrain-central/index.html",
+    "static/media/ic_play.svg": "/nahrain-central/static/media/ic_play.0867874b5ce090dcb3ebce120c01274b.svg",
     "static/media/ic_book.svg": "/nahrain-central/static/media/ic_book.32567ebcd4083084f09311886e5c6534.svg",
     "static/media/ic_link.svg": "/nahrain-central/static/media/ic_link.214f620f0ba00abe7f1b2c2bb77c78ad.svg",
     "static/media/ic_users.svg": "/nahrain-central/static/media/ic_users.1144b12809430a7403b880d206d09175.svg",
     "static/media/ic_menu_dots.svg": "/nahrain-central/static/media/ic_menu_dots.7cfa69b6fd3ef8a6b898c829d72ff9b2.svg",
-    "static/media/ic_play.svg": "/nahrain-central/static/media/ic_play.0867874b5ce090dcb3ebce120c01274b.svg",
+    "static/media/ic_maximize.svg": "/nahrain-central/static/media/ic_maximize.e155b51b23e533898b16813a2c907422.svg",
     "static/media/ic_hamburger_menu.svg": "/nahrain-central/static/media/ic_hamburger_menu.7d309d3393bd4b408b6190fbb5017832.svg",
+    "static/media/ic_double_arrow.svg": "/nahrain-central/static/media/ic_double_arrow.c500d9a9aff9ca69a44909a113853ea2.svg",
+    "static/media/ic_minimize.svg": "/nahrain-central/static/media/ic_minimize.2b14be886f1cb0f87bbc645ee9965af0.svg",
     "static/media/ic_clock.svg": "/nahrain-central/static/media/ic_clock.2e659f6213c2d71920aea70fcabcaee6.svg",
+    "static/media/ic_divider.svg": "/nahrain-central/static/media/ic_divider.fe83ebe1ea3a018de0f9adfb941c3d68.svg",
     "static/media/ic_user.svg": "/nahrain-central/static/media/ic_user.55705b41db981341f2c410ab248a522e.svg",
     "static/media/ic_arrow_down.svg": "/nahrain-central/static/media/ic_arrow_down.0c938a037e4ed9d03d90d93170c66c47.svg",
-    "main.4261f7ab.css.map": "/nahrain-central/static/css/main.4261f7ab.css.map",
-    "main.1d0ee457.js.map": "/nahrain-central/static/js/main.1d0ee457.js.map",
+    "main.50d9f68e.css.map": "/nahrain-central/static/css/main.50d9f68e.css.map",
+    "main.68086c1d.js.map": "/nahrain-central/static/js/main.68086c1d.js.map",
     "453.f204c28b.chunk.js.map": "/nahrain-central/static/js/453.f204c28b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4261f7ab.css",
-    "static/js/main.1d0ee457.js"
+    "static/css/main.50d9f68e.css",
+    "static/js/main.68086c1d.js"
   ]
 }
