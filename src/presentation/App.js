@@ -12,6 +12,7 @@ import {NahrainThemeContext} from "../context/NahrainThemeContext";
 import {supportedLanguages} from "../translation/supportedLanguages";
 import {AnnouncementScreen} from "./Common/screens/Announcement/AnnouncementScreen";
 import {HomeScreen} from "./Prof/Home/HomeScreen";
+import {RecordAbsence} from "./Prof/Record Absence/RecordAbsence";
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
                             <Route index={true} element={<HomeScreen/>}/>
                             <Route path='recorded-lectures' element={<ProfRecordedLectures/>}/>
                             <Route path='grades' element={<GradesScreen/>}/>
-                            <Route path='record-absence' element={<div></div>}/>
+                            <Route path='record-absence' element={<RecordAbsence/>}/>
                             <Route path='lectures-schedule' element={<div></div>}/>
                             <Route path='exams' element={<ExamsScreen/>}/>
                             <Route path='settings' element={<SettingsScreen/>}/>
