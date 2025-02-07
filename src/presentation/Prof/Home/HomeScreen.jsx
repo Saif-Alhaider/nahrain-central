@@ -1,5 +1,3 @@
-import TouchRipple from "@mui/material/ButtonBase/TouchRipple";
-
 export const HomeScreen = () => {
     return (
         <div className={`size-full bg-background p-6`}>

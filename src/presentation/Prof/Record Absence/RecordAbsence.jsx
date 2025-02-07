@@ -7,6 +7,8 @@ import {Button, Drawer, IconButton, MenuItem, Paper, Popover, Typography} from "
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/RemoveOutlined";
 import {NahrainThemeContext} from "../../../context/NahrainThemeContext";
+import {useTranslation} from "react-i18next";
+import {supportedLanguages} from "../../../translation/supportedLanguages";
 
 export const RecordAbsence = () => {
     let students = [
@@ -112,9 +114,12 @@ export const AssignCard = ({className, name, imageUrl}) => {
         setStatus(newStatus);
         handleClose();
     };
+    const [t] = useTranslation("global");
+
 
     return (
-        <div className={`${className} flex flex-row gap-2 items-center justify-between bg-card p-3 rounded-xl shadow-sm w-full`}>
+        <div
+            className={`${className} flex flex-row gap-2 items-center justify-between bg-card p-3 rounded-xl shadow-sm w-full`}>
             <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-300 flex items-center justify-center">
                     {!imageLoaded &&
@@ -139,9 +144,9 @@ export const AssignCard = ({className, name, imageUrl}) => {
                 onClick={handleClick}
             >
                 <>{
-                    status === "none" ? <AttendanceButtonContent title={"Assign"} icon={<IcAssign/>}/>
-                        : status === "attended" ? <AttendanceButtonContent title={"Attended"} icon={<IcCheckMark/>}/>
-                            : <AttendanceButtonContent title={"Absence"} icon={<IcClose/>}/>}
+                    status === "none" ? <AttendanceButtonContent title={t("assign")} icon={<IcAssign/>}/>
+                        : status === "attended" ? <AttendanceButtonContent title={t("attend")} icon={<IcCheckMark/>}/>
+                            : <AttendanceButtonContent title={t("absence")} icon={<IcClose/>}/>}
                 </>
             </button>
 
@@ -160,11 +165,11 @@ export const AssignCard = ({className, name, imageUrl}) => {
                 }}
             >
                 <Paper sx={{width: "200px"}}>
-                    <MenuItem onClick={() => handleSelect("attended")}>Attended</MenuItem>
+                    <MenuItem onClick={() => handleSelect("attended")}>{t("attend")}</MenuItem>
                     <MenuItem onClick={() => {
                         setDrawerOpen(true)
                         handleClose()
-                    }}>Absence</MenuItem>
+                    }}>{t("absence")}</MenuItem>
                 </Paper>
             </Popover>
 
@@ -181,11 +186,17 @@ export const AssignCard = ({className, name, imageUrl}) => {
 export const AbsenceDrawer = ({open, onClose, onConfirm}) => {
     const [hours, setHours] = useState(.5);
 
+
     const incrementHours = () => setHours((prev) => Math.max(prev + .5))
     const decrementHours = () => setHours((prev) => Math.abs(prev - .5))
     const {
-        currentTheme
+        currentTheme,
+        currentLanguage,
+        currentFont
     } = useContext(NahrainThemeContext)
+    const [t, i18] = useTranslation("global");
+    const direction = supportedLanguages[currentLanguage].direction
+
     return (
 
         <Drawer
@@ -195,13 +206,14 @@ export const AbsenceDrawer = ({open, onClose, onConfirm}) => {
                 onClose()
                 setHours(.5)
             }}
-            className={`${currentTheme}`}
+            className={`${currentTheme} ${currentFont}`}
+            dir={direction}
         >
             <IcClose className="!text-onBackground absolute right-4 top-4 cursor-pointer" onClick={onClose}/>
 
             <div className="p-6 flex flex-col items-center gap-4 !bg-background">
                 <Typography variant="h6" className="text-onBackground font-bold">
-                    Input Absence Hours
+                    {t("input_absence_hours")}
                 </Typography>
 
                 <div className="flex items-center justify-center gap-4 ">
@@ -209,7 +221,11 @@ export const AbsenceDrawer = ({open, onClose, onConfirm}) => {
                         <CloseIcon className={`text-onBackground`}/>
                     </IconButton>
 
-                    <Typography className="w-20 text-center text-onBackground" variant="h5">{hours} hr</Typography>
+                    <div
+                        className={`w-20 flex flex-row justify-between gap-2 text-center text-onBackground`}>
+                        <Typography className="" variant="h5">{hours}</Typography>
+                        <Typography className="" variant="h5">{t("hour_abbreviation")}</Typography>
+                    </div>
 
                     <IconButton onClick={incrementHours} disabled={hours >= 12}>
                         <AddIcon className={`text-onBackground`}/>
@@ -226,13 +242,14 @@ export const AbsenceDrawer = ({open, onClose, onConfirm}) => {
                     borderRadius: "8px",
                     minWidth: "150px",
                     fontSize: "1.25rem",
+                    fontWeight:"bold",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     gap: "8px",
                     transition: "all 0.3s ease",
                 }} fullWidth onClick={() => onConfirm(hours)}>
-                    Confirm
+                    {t("confirm")}
                 </Button>
             </div>
         </Drawer>

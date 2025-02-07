@@ -87,5 +87,11 @@
   "next_button": "Next",
   "success_message": "🎉 Added Successfully!",
   "success_description": "The video has been successfully added to the playlist associated with the course and the specified lecture.",
-  "close_button": "Close"
+  "close_button": "Close",
+  "input_absence_hours": "Input Absence Hours",
+  "hour_abbreviation": "hr",
+  "confirm": "Confirm",
+  "absence": "Absence",
+  "attend": "Attend",
+  "assign": "Assign"
 }
