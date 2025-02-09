@@ -50,7 +50,8 @@ export const MainRecordAbsence = ({className}) => {
 
 
 
-    return (<div className={`${className} w-full bg-background p-6`}>
+    return (
+        <div className={`${className} w-full bg-background p-6`}>
         <DetailedActionCard
             onClick={() => {
                 setDialogSidebarChild(publishContentScreens[currentSidebarDialogScreen])
@@ -61,6 +62,8 @@ export const MainRecordAbsence = ({className}) => {
             description={t("attendance_description")}
             buttonTitle={t("attendance_button_text")}
         />
+
+            <h1 className={`text-onBackground text-2xl font-semibold mt-4`}>{t("recording_history")}</h1>
 
         <MaterialDetailedCard className={`mt-4`} dayOfWeek="MON" dayOfMonth={22}
                               examFormat={"Theoretical"} assessmentType={"Lecture"} startTime={"10:00"}
