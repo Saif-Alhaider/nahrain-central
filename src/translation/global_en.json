@@ -93,5 +93,8 @@
   "confirm": "Confirm",
   "absence": "Absence",
   "attend": "Attend",
-  "assign": "Assign"
+  "assign": "Assign",
+  "attendance_title": "Take New Attendance",
+  "attendance_description": "Each time a new attendance is taken, new data is fetched for students. If there is no internet connection, the latest data will not be available.",
+  "attendance_button_text": "Start Attendance"
 }

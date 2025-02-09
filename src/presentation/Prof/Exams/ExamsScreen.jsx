@@ -40,22 +40,22 @@ export const ExamsScreen = ({className}) => {
         </div>
         <div className={"flex flex-col gap-4 mt-4 h-fit"}>
             <Link to='/nahrain-central/announcement' className={"cursor-pointer"}>
-                <ExamCard title="Nyquist Theorem and QAM Analysis" dayOfWeek="WED" dayOfMonth={24}
-                          examFormat={"Lab"} assessmentType={"Quiz 2"} startTime={"10:00"} endTime={"10:30"}
-                          material={"Communication 2"} stage={"Sophomore"}/>
+                <MaterialDetailedCard title="Nyquist Theorem and QAM Analysis" dayOfWeek="WED" dayOfMonth={24}
+                                      examFormat={"Lab"} assessmentType={"Quiz 2"} startTime={"10:00"} endTime={"10:30"}
+                                      material={"Communication 2"} stage={"Sophomore"}/>
             </Link>
 
             <Link to='/nahrain-central/announcement' className={"cursor-pointer"}>
-                <ExamCard title="Analog Modulation" dayOfWeek="MON" dayOfMonth={22}
-                          examFormat={"Theoretical"} assessmentType={"Midterm 2"} startTime={"10:00"} endTime={"10:30"}
-                          material={"Communication 1"} stage={"Junior"}/>
+                <MaterialDetailedCard title="Analog Modulation" dayOfWeek="MON" dayOfMonth={22}
+                                      examFormat={"Theoretical"} assessmentType={"Midterm 2"} startTime={"10:00"} endTime={"10:30"}
+                                      material={"Communication 1"} stage={"Junior"}/>
             </Link>
         </div>
     </div>)
 }
 
 
-const ExamCard = ({
+export const MaterialDetailedCard = ({
                       className,
                       title,
                       dayOfWeek,
@@ -91,19 +91,32 @@ const ExamCard = ({
             </div>
             <div className={"flex flex-col gap-2"}>
                 <p className={"text-[20px] font-semibold text-onBackground"}>{title}</p>
-                <div className={"flex flex-row gap-2"}>
-                    <div className={"relative w-[60px]"}>
-                        <img src={"https://picsum.photos/200"} alt={"avatar"}
-                             className={"rounded-[50%] size-6 relative z-[31]"}/>
-                        <img src={"https://picsum.photos/201"} alt={"avatar"}
-                             className={"rounded-[50%] size-6 absolute top-0 left-[12px] z-30"}/>
-                        <img src={"https://picsum.photos/202"} alt={"avatar"}
-                             className={"rounded-[50%] size-6 absolute top-0 left-[24px] z-20"}/>
-                        <img src={"https://picsum.photos/203"} alt={"avatar"}
-                             className={"rounded-[50%] size-6 absolute top-0 left-[36px] z-10"}/>
+                <div className="flex gap-2 rtl:flex-row-reverse">
+                    <div className="relative w-[60px]">
+                        <img
+                            src="https://picsum.photos/200"
+                            alt="avatar"
+                            className="rounded-[50%] size-6 relative z-[31]"
+                        />
+                        <img
+                            src="https://picsum.photos/201"
+                            alt="avatar"
+                            className="rounded-[50%] size-6 absolute top-0 ltr:left-[12px] rtl:right-[12px] z-30"
+                        />
+                        <img
+                            src="https://picsum.photos/202"
+                            alt="avatar"
+                            className="rounded-[50%] size-6 absolute top-0 ltr:left-[24px] rtl:right-[24px] z-20"
+                        />
+                        <img
+                            src="https://picsum.photos/203"
+                            alt="avatar"
+                            className="rounded-[50%] size-6 absolute top-0 ltr:left-[36px] rtl:right-[36px] z-10"
+                        />
                     </div>
-                    <p className={"text-[16px] text-secondary"}>{t("view_all_students")}</p>
+                    <p className="text-[16px] text-secondary">{t("view_all_students")}</p>
                 </div>
+
 
             </div>
         </div>

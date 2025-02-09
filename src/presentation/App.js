@@ -13,6 +13,7 @@ import {supportedLanguages} from "../translation/supportedLanguages";
 import {AnnouncementScreen} from "./Common/screens/Announcement/AnnouncementScreen";
 import {HomeScreen} from "./Prof/Home/HomeScreen";
 import {RecordAbsence} from "./Prof/Record Absence/RecordAbsence";
+import {MainRecordAbsence} from "./Prof/Record Absence/MainRecordAbsence";
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
                             <Route index={true} element={<HomeScreen/>}/>
                             <Route path='recorded-lectures' element={<ProfRecordedLectures/>}/>
                             <Route path='grades' element={<GradesScreen/>}/>
-                            <Route path='record-absence' element={<RecordAbsence/>}/>
+                            <Route path='record-absence' element={<MainRecordAbsence/>}/>
                             <Route path='lectures-schedule' element={<div></div>}/>
                             <Route path='exams' element={<ExamsScreen/>}/>
                             <Route path='settings' element={<SettingsScreen/>}/>
