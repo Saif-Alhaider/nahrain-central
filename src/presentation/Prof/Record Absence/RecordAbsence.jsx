@@ -1,4 +1,4 @@
-import {Fragment, useContext, useState} from "react";
+import React, {Fragment, useContext, useState} from "react";
 import {ReactComponent as IcCheckMark} from "./resources/Check Circle.svg";
 import {ReactComponent as IcAssign} from "./resources/Add Circle.svg";
 import {ReactComponent as IcClose} from "./resources/Close Circle.svg";
@@ -11,6 +11,7 @@ import {useTranslation} from "react-i18next";
 import {supportedLanguages} from "../../../translation/supportedLanguages";
 
 export const RecordAbsence = () => {
+    const [t] = useTranslation("global");
     let students = [
         {
             "name": "أحمد حسن علي",
@@ -58,7 +59,7 @@ export const RecordAbsence = () => {
 
     return (
         <div className={`size-full bg-background p-6`}>
-            <SearchBar placeholder={"بحث..."} onSearch={searchQuery => {
+            <SearchBar placeholder={t("search")+"..."} onSearch={searchQuery => {
                 setFilteredStudents(
                     students.filter(value =>
                         normalizeArabicText(value.name).includes(normalizeArabicText(searchQuery))

@@ -9,7 +9,7 @@ import {ReactComponent as IcPlay} from 'presentation/Common/component/sidebar/re
 import {ReactComponent as IcUsersGroup} from 'presentation/Common/component/sidebar/resources/ic_users_group.svg'
 import {ReactComponent as IcCrown} from 'presentation/Common/component/sidebar/resources/ic_crown.svg'
 import {ReactComponent as IcMark} from 'presentation/Common/component/sidebar/resources/ic_mark.svg'
-import {ReactComponent as IcSettings} from 'presentation/Common/component/sidebar/resources/ic_settings.svg'
+import {ReactComponent as IcSettings} from 'presentation/Common/resources/ic_settings.svg'
 import {ReactComponent as IcUser} from 'presentation/Common/component/sidebar/resources/ic_user.svg'
 import {useTranslation} from "react-i18next";
 

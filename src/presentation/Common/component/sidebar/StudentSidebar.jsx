@@ -5,7 +5,7 @@ import React from "react";
 import {ReactComponent as IcHome} from 'presentation/Common/component/sidebar/resources/ic_home.svg'
 import {ReactComponent as IcCalendar} from 'presentation/Common/component/sidebar/resources/ic_calendar.svg'
 import {ReactComponent as IcPlay} from 'presentation/Common/component/sidebar/resources/ic_play.svg'
-import {ReactComponent as IcSettings} from 'presentation/Common/component/sidebar/resources/ic_settings.svg'
+import {ReactComponent as IcSettings} from 'presentation/Common/resources/ic_settings.svg'
 import {ReactComponent as IcUser} from 'presentation/Common/component/sidebar/resources/ic_user.svg'
 
 export const StudentSidebar = () => {

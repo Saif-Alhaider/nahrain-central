@@ -12,11 +12,13 @@ import {ContentBox} from "../../Common/component/MainScaffold";
 import {ReactComponent as IcPlaylist} from 'presentation/Common/resources/ic_playlist.svg';
 import {ReactComponent as IcPlay} from 'presentation/Common/resources/ic_play.svg';
 
+
 export const ProfRecordedLectures = () => {
     const [t] = useTranslation("global");
     const {isDialogSidebarVisible, setIsDialogSidebarVisible,setDialogSidebarChild,setOnDismissSidebarDialog} = useContext(NahrainThemeContext)
 
     const [currentSidebarDialogScreen, setCurrentSidebarDialogScreen] = useState(0)
+
     const publishContentScreens = [<SelectContentType
         onClickContinue={() => setCurrentSidebarDialogScreen(currentSidebarDialogScreen + 1)}/>,
         <PublishContent onPublish={() => setCurrentSidebarDialogScreen(currentSidebarDialogScreen + 1)}/>,
@@ -24,6 +26,7 @@ export const ProfRecordedLectures = () => {
             setIsDialogSidebarVisible(false)
             wait(350).then(r => setCurrentSidebarDialogScreen(0))
         }}/>]
+
     useEffect(() => {
         setOnDismissSidebarDialog(() => () => {
             setIsDialogSidebarVisible(false)
@@ -116,7 +119,7 @@ const SelectContentType = ({onClickContinue}) => {
         </div>
 
         <button onClick={() => selectedType !== null ? onClickContinue() : null}
-                className=" bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mt-6">{t("next_button")}
+                className=" bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mb-6">{t("next_button")}
         </button>
     </div>)
 }
@@ -154,7 +157,7 @@ const PublishContent = ({onPublish}) => {
             />
         </div>
         <button onClick={onPublish}
-                className=" bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mt-6">Publish
+                className=" bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mb-6">Publish
         </button>
     </div>)
 }
@@ -168,7 +171,7 @@ export const SuccessPublish = ({onClose}) => {
             <p className={`text-sm text-onBackgroundCaption`}>{t("success_description")}</p>
         </div>
         <button onClick={onClose}
-                className=" bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mt-6">Close
+                className=" bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mb-6">Close
         </button>
     </div>)
 }

@@ -13,6 +13,7 @@ import {supportedLanguages} from "../translation/supportedLanguages";
 import {AnnouncementScreen} from "./Common/screens/Announcement/AnnouncementScreen";
 import {HomeScreen} from "./Prof/Home/HomeScreen";
 import {MainRecordAbsence} from "./Prof/Record Absence/MainRecordAbsence";
+import {RecordAbsence} from "./Prof/Record Absence/RecordAbsence";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
                             <Route path='exams' element={<ExamsScreen/>}/>
                             <Route path='settings' element={<SettingsScreen/>}/>
                             <Route path='announcement' element={<AnnouncementScreen/>}/>
+                            <Route path='take-absence' element={<RecordAbsence/>}/>
                         </Route>
                         <Route path='*' element={<NotFound404/>}/>
                     </Route>

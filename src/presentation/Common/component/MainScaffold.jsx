@@ -27,6 +27,7 @@ export const MainScaffold = () => {
         '/nahrain-central/settings': t("settings"),
         '/nahrain-central/contact-me': t('contact_me'),
         '/nahrain-central/announcement': t('announcement'),
+        '/nahrain-central/take-absence': t('record_absence'),
     };
 
     const location = useLocation();
@@ -86,7 +87,7 @@ export const DialogSidebar = ({isVisible, onDismiss, children}) => {
         />
 
         <div
-            className={`absolute overflow-y-scroll lg:w-[40%] md:w-[55%] w-[100%] h-dvh bg-card end-0 p-4 
+            className={`absolute overflow-y-hidden lg:w-[40%] md:w-[55%] w-[100%] h-dvh bg-card end-0 p-4 
                 ${isVisible ? '' : 'ltr:translate-x-full rtl:-translate-x-full'}
                 ${isMaximize ? 'w-full' : ''}
                 `}
