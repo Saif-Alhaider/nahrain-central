@@ -12,7 +12,6 @@ import {NahrainThemeContext} from "../context/NahrainThemeContext";
 import {supportedLanguages} from "../translation/supportedLanguages";
 import {AnnouncementScreen} from "./Common/screens/Announcement/AnnouncementScreen";
 import {HomeScreen} from "./Prof/Home/HomeScreen";
-import {RecordAbsence} from "./Prof/Record Absence/RecordAbsence";
 import {MainRecordAbsence} from "./Prof/Record Absence/MainRecordAbsence";
 
 

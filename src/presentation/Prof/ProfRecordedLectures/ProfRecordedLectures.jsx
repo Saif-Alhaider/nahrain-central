@@ -3,24 +3,46 @@ import 'index.css'
 import LectureImage from "./resources/image 1.png"
 import {ReactComponent as IcList} from "./resources/ic_list.svg"
 import {DropDown} from "../../Common/component/DropDown";
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {MenuItem} from "@mui/material";
 import {useTranslation} from "react-i18next";
 import {NahrainThemeContext} from "../../../context/NahrainThemeContext";
+import {wait} from "@testing-library/user-event/dist/utils";
+import {ContentBox} from "../../Common/component/MainScaffold";
+import {ReactComponent as IcPlaylist} from 'presentation/Common/resources/ic_playlist.svg';
+import {ReactComponent as IcPlay} from 'presentation/Common/resources/ic_play.svg';
 
 export const ProfRecordedLectures = () => {
     const [t] = useTranslation("global");
-    const {isDialogSidebarVisible, setIsDialogSidebarVisible} = useContext(NahrainThemeContext)
+    const {isDialogSidebarVisible, setIsDialogSidebarVisible,setDialogSidebarChild,setOnDismissSidebarDialog} = useContext(NahrainThemeContext)
+
+    const [currentSidebarDialogScreen, setCurrentSidebarDialogScreen] = useState(0)
+    const publishContentScreens = [<SelectContentType
+        onClickContinue={() => setCurrentSidebarDialogScreen(currentSidebarDialogScreen + 1)}/>,
+        <PublishContent onPublish={() => setCurrentSidebarDialogScreen(currentSidebarDialogScreen + 1)}/>,
+        <SuccessPublish onClose={() => {
+            setIsDialogSidebarVisible(false)
+            wait(350).then(r => setCurrentSidebarDialogScreen(0))
+        }}/>]
+    useEffect(() => {
+        setOnDismissSidebarDialog(() => () => {
+            setIsDialogSidebarVisible(false)
+            wait(350).then(r => setCurrentSidebarDialogScreen(0))
+        });
+    }, [setOnDismissSidebarDialog]);
+
+    useEffect(() => {
+        setDialogSidebarChild(publishContentScreens[currentSidebarDialogScreen]);
+    }, [currentSidebarDialogScreen, setDialogSidebarChild]);
 
     return (<div className={"h-fit"}>
         <div className=" flex flex-wrap gap-4 justify-between px-6 pt-6">
             <button
                 className="bg-primary text-onPrimary text-nowrap rounded-lg text-xl px-4 py-2 "
                 onClick={()=> {
+                    setDialogSidebarChild(publishContentScreens[currentSidebarDialogScreen])
                     setIsDialogSidebarVisible(!isDialogSidebarVisible)
                 }
-
-
                 }>{t('publish_a_lecture')}
             </button>
             <div className={"flex flex-wrap gap-2"}>
@@ -60,5 +82,93 @@ export const LecturesPlayListCard = ({numberOfLectures, ProfName, SubjectName}) 
         </div>
         <h1 className="text-onBackground mt-4 text-[24px] font-medium line-clamp-1">{SubjectName}</h1>
         <p className="mt-2 text-onBackgroundCaption">{ProfName}</p>
+    </div>)
+}
+
+const SelectContentType = ({onClickContinue}) => {
+    const [t, i18] = useTranslation("global");
+
+    const LectureTypes = Object.freeze({
+        SINGLE_VIDEO: "SINGLE_VIDEO", PLAYLIST: "PLAYLIST",
+    });
+
+    const [selectedType, setSelectedType] = useState(null); //of type LectureTypes
+    const maxWidth = "max-w-[700px]"
+    return (<div className={`flex flex-col h-full justify-between`}>
+        <div>
+            <div className={`flex flex-col gap-4`}>
+                <ContentBox className={`mx-auto ${maxWidth}`}
+                            onClick={() => setSelectedType(LectureTypes.SINGLE_VIDEO)}
+                            enabled={selectedType === LectureTypes.SINGLE_VIDEO}
+                            icon={<IcPlay/>}
+                            title={t("single_video_title")}
+                            description={t("single_video_description")}
+                />
+                <ContentBox className={`mx-auto ${maxWidth}`}
+                            onClick={() => setSelectedType(LectureTypes.PLAYLIST)}
+                            enabled={selectedType === LectureTypes.PLAYLIST}
+                            icon={<IcPlaylist/>}
+                            title={t("playlist_title")}
+                            description={t("playlist_description")}
+                />
+            </div>
+            <p className={`text-onBackgroundCaption mt-4 ${maxWidth} mx-auto`}>{t("instructions")}</p>
+        </div>
+
+        <button onClick={() => selectedType !== null ? onClickContinue() : null}
+                className=" bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mt-6">{t("next_button")}
+        </button>
+    </div>)
+}
+
+const PublishContent = ({onPublish}) => {
+    const [t, i18] = useTranslation("global");
+    const maxWidth = "max-w-[700px]"
+
+
+    return (<div className={`flex flex-col h-full justify-between ${maxWidth} mx-auto`}>
+        <div>
+            <div className={`flex flex-wrap gap-2 `}>
+                <DropDown
+                    currentValue={t("theoretical_and_lab")}
+                    items={[t("theoretical_and_lab"), t("theoretical"), t("lab")].map((item) => (
+                        <MenuItem value={item} key={item}>{item}</MenuItem>))}
+                />
+
+                <DropDown
+                    currentValue={t('first_and_second_course')}
+                    items={[t('first_and_second_course'), t('first_course'), t('second_course')].map((item) => (
+                        <MenuItem value={item} key={item}>{item}</MenuItem>))}
+                />
+
+                <DropDown
+                    currentValue={"Arabic"}
+                    items={["Arabic", "Ethnics", "Democracy"].map((item) => (
+                        <MenuItem value={item} key={item}>{item}</MenuItem>))}
+                />
+            </div>
+            <input
+                type="text"
+                placeholder="www.youtube.com/watch?v=..."
+                className="w-full px-4 py-2 mt-4 rounded-lg bg-transparent text-white border border-softGray focus:outline-none focus:ring-2 focus:ring-primary focus:border-green-500"
+            />
+        </div>
+        <button onClick={onPublish}
+                className=" bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mt-6">Publish
+        </button>
+    </div>)
+}
+
+export const SuccessPublish = ({onClose}) => {
+    const [t, i18] = useTranslation("global");
+
+    return (<div className={`flex flex-col justify-between h-full`}>
+        <div className={`flex flex-col gap-4`}>
+            <h1 className={`font-semibold text-[24px] text-onBackground`}>{t("success_message")}</h1>
+            <p className={`text-sm text-onBackgroundCaption`}>{t("success_description")}</p>
+        </div>
+        <button onClick={onClose}
+                className=" bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mt-6">Close
+        </button>
     </div>)
 }
