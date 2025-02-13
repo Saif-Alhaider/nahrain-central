@@ -3,9 +3,9 @@ import React from "react";
 import {useTranslation} from "react-i18next";
 import {IcGoogle} from "presentation/Common/component/ic_google";
 import finishSignup from "../Finish Signup/resources/finishSignup.png";
-import {NahrainButton} from "../../../component/NahrainButton";
-import {TextDivider} from "../../../component/TextDivider";
-import {NahrainInput} from "../../../component/NahrainInput";
+import {NahrainButton} from "presentation/Common/component/NahrainButton";
+import {TextDivider} from "presentation/Common/component/TextDivider";
+import {NahrainInput} from "presentation/Common/component/NahrainInput";
 
 export const SignupScreen = () => {
     const [t] = useTranslation("global");
