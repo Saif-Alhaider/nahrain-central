@@ -14,12 +14,13 @@ import {AnnouncementScreen} from "./Common/screens/Announcement/AnnouncementScre
 import {HomeScreen} from "./Prof/Home/HomeScreen";
 import {MainRecordAbsence} from "./Prof/Record Absence/MainRecordAbsence";
 import {RecordAbsence} from "./Prof/Record Absence/RecordAbsence";
+import {SignupScreen} from "./Common/screens/Authentication/Signup/SignupScreen";
 
 
 function App() {
 
     const [theme, setTheme] = useState("light");
-    const {currentTheme, currentLanguage,currentFont} = useContext(NahrainThemeContext)
+    const {currentTheme, currentLanguage, currentFont} = useContext(NahrainThemeContext)
 
     const direction = supportedLanguages[currentLanguage].direction
 
@@ -35,10 +36,12 @@ function App() {
 
     return (
         <div
-            className={`${currentTheme === "deviceTheme" ? theme : currentTheme} ${direction} ${currentFont}`} dir={direction}>
+            className={`${currentTheme === "deviceTheme" ? theme : currentTheme} ${direction} ${currentFont}`}
+            dir={direction}>
             <BrowserRouter>
                 <Routes>
                     <Route path='/'>
+                        <Route path='sign-up' element={<SignupScreen/>}/>
                         <Route path='/nahrain-central' element={<MainScaffold/>}>
                             <Route index={true} element={<HomeScreen/>}/>
                             <Route path='recorded-lectures' element={<ProfRecordedLectures/>}/>
