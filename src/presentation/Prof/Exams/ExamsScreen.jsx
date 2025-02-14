@@ -39,13 +39,13 @@ export const ExamsScreen = ({className}) => {
             />
         </div>
         <div className={"flex flex-col gap-4 mt-4 h-fit"}>
-            <Link to='/nahrain-central/announcement' className={"cursor-pointer"}>
+            <Link to='/announcement' className={"cursor-pointer"}>
                 <MaterialDetailedCard title="Nyquist Theorem and QAM Analysis" dayOfWeek="WED" dayOfMonth={24}
                                       examFormat={"Lab"} assessmentType={"Quiz 2"} startTime={"10:00"} endTime={"10:30"}
                                       material={"Communication 2"} stage={"Sophomore"}/>
             </Link>
 
-            <Link to='/nahrain-central/announcement' className={"cursor-pointer"}>
+            <Link to='/announcement' className={"cursor-pointer"}>
                 <MaterialDetailedCard title="Analog Modulation" dayOfWeek="MON" dayOfMonth={22}
                                       examFormat={"Theoretical"} assessmentType={"Midterm 2"} startTime={"10:00"} endTime={"10:30"}
                                       material={"Communication 1"} stage={"Junior"}/>

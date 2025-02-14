@@ -1,7 +1,7 @@
 import React from "react";
 import "output.css"
 import 'index.css'
-import {ReactComponent as IcArrowIcon} from 'presentation/Common/resources/ic_arrow_down.svg';
+import {ReactComponent as IcArrowIcon} from 'presentation/Common/resources/images/ic_arrow_down.svg';
 import {FormControl, Select, SelectChangeEvent} from "@mui/material";
 
 export const DropDown = ({currentValue: currentValue, items, onValueChange, className}) => {

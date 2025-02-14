@@ -9,8 +9,8 @@ import {useTranslation} from "react-i18next";
 import {NahrainThemeContext} from "../../../context/NahrainThemeContext";
 import {wait} from "@testing-library/user-event/dist/utils";
 import {ContentBox} from "../../Common/component/MainScaffold";
-import {ReactComponent as IcPlaylist} from 'presentation/Common/resources/ic_playlist.svg';
-import {ReactComponent as IcPlay} from 'presentation/Common/resources/ic_play.svg';
+import {ReactComponent as IcPlaylist} from 'presentation/Common/resources/images/ic_playlist.svg';
+import {ReactComponent as IcPlay} from 'presentation/Common/resources/images/ic_play.svg';
 
 
 export const ProfRecordedLectures = () => {

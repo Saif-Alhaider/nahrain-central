@@ -2,7 +2,7 @@ import React, {Fragment, useContext, useState} from "react";
 import {ReactComponent as IcCheckMark} from "./resources/Check Circle.svg";
 import {ReactComponent as IcAssign} from "./resources/Add Circle.svg";
 import {ReactComponent as IcClose} from "./resources/Close Circle.svg";
-import ProfileImage from "presentation/Common/resources/profile_picture.webp"
+import ProfileImage from "presentation/Common/resources/images/profile_picture.webp"
 import {Button, Drawer, IconButton, MenuItem, Paper, Popover, Typography} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/RemoveOutlined";

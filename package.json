@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Saif-Alhaider.github.io/nahrain-central",
+  "homepage": "https://Saif-Alhaider.github.io/",
   "name": "nahrain-central",
   "version": "0.1.0",
   "private": true,
@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "gh-pages": "^6.2.0",
     "i18next": "^24.2.0",

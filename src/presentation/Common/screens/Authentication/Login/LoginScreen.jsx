@@ -2,9 +2,10 @@ import React from "react";
 import 'output.css';
 import {BaseAuthentication} from "../BaseAuthentication";
 import LoginImage from "./resources/Design.png";
-import {ReactComponent as IcEye} from "presentation/Common/resources/ic_eye.svg";
+import {ReactComponent as IcEye} from "presentation/Common/resources/images/ic_eye.svg";
 import {IcGoogle} from "presentation/Common/component/ic_google";
 import {useTranslation} from "react-i18next";
+import {Link, useNavigate} from "react-router-dom";
 
 export const LoginScreen = () => {
     const [t, i18] = useTranslation("global");
@@ -46,7 +47,9 @@ const LoginForm = ({className}) => {
                 <p className="text-logo text-2xl">Google</p>
             </button>
             <p className="mt-6 text-onBackground w-fit xl:mx-0 mx-auto">{t("dont_have_an_account_signup")}&nbsp;
-                <a href="#" className="text-secondary underline">{t("signup")}</a>
+                <Link className="text-secondary underline" to={'/sign-up'}>
+                    {t("signup")}
+                </Link>
             </p>
         </form>
     )

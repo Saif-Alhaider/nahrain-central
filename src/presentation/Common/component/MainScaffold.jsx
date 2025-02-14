@@ -6,28 +6,27 @@ import React, {useContext, useEffect, useRef, useState} from "react";
 import {Outlet, useLocation} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {NahrainThemeContext} from "../../../context/NahrainThemeContext";
-import {ReactComponent as IcMaximize} from 'presentation/Common/resources/ic_maximize.svg';
-import {ReactComponent as IcMinimize} from 'presentation/Common/resources/ic_minimize.svg';
-import {ReactComponent as IcDoubleArrow} from 'presentation/Common/resources/ic_double_arrow.svg';
-import {ReactComponent as IcArrowDown} from 'presentation/Common/resources/ic_arrow_down.svg';
-import {ReactComponent as IcDivider} from 'presentation/Common/resources/ic_divider.svg';
+import {ReactComponent as IcMaximize} from 'presentation/Common/resources/images/ic_maximize.svg';
+import {ReactComponent as IcMinimize} from 'presentation/Common/resources/images/ic_minimize.svg';
+import {ReactComponent as IcDoubleArrow} from 'presentation/Common/resources/images/ic_double_arrow.svg';
+import {ReactComponent as IcArrowDown} from 'presentation/Common/resources/images/ic_arrow_down.svg';
+import {ReactComponent as IcDivider} from 'presentation/Common/resources/images/ic_divider.svg';
 
 
 export const MainScaffold = () => {
     const [t, i18] = useTranslation("global");
 
     const titles = {
-        '/nahrain-central/': t("home"),
-        '/nahrain-central': t("home"),
-        '/nahrain-central/lectures-schedule': t('lectures_schedule'),
-        '/nahrain-central/recorded-lectures': t('recorded_lectures'),
-        '/nahrain-central/record-absence': t('record_absence'),
-        '/nahrain-central/exams': t('exams'),
-        '/nahrain-central/grades': t('grades'),
-        '/nahrain-central/settings': t("settings"),
-        '/nahrain-central/contact-me': t('contact_me'),
-        '/nahrain-central/announcement': t('announcement'),
-        '/nahrain-central/take-absence': t('record_absence'),
+        '/': t("home"),
+        '/lectures-schedule': t('lectures_schedule'),
+        '/recorded-lectures': t('recorded_lectures'),
+        '/record-absence': t('record_absence'),
+        '/exams': t('exams'),
+        '/grades': t('grades'),
+        '/settings': t("settings"),
+        '/contact-me': t('contact_me'),
+        '/announcement': t('announcement'),
+        '/take-absence': t('record_absence'),
     };
 
     const location = useLocation();

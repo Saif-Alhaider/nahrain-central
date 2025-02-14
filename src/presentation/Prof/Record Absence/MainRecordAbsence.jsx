@@ -2,8 +2,8 @@ import {useTranslation} from "react-i18next";
 import {DetailedActionCard} from "../../Common/component/DetailedActionCard";
 import React, {useContext, useEffect, useState} from "react";
 import {MaterialDetailedCard} from "../Exams/ExamsScreen";
-import {ReactComponent as IcSettings} from 'presentation/Common/resources/ic_settings.svg'
-import {ReactComponent as IcLightbulb} from 'presentation/Common/resources/ic_lightbulb.svg'
+import {ReactComponent as IcSettings} from 'presentation/Common/resources/images/ic_settings.svg'
+import {ReactComponent as IcLightbulb} from 'presentation/Common/resources/images/ic_lightbulb.svg'
 import {ContentBox} from "../../Common/component/MainScaffold";
 import {wait} from "@testing-library/user-event/dist/utils";
 import {NahrainThemeContext} from "../../../context/NahrainThemeContext";
@@ -126,7 +126,7 @@ export const ChooseWhichStage = ({profMaterials, onNavigate}) => {
             </div>
 
             <Link
-                to={selectedType !== null ? "/nahrain-central/take-absence" : "#"}
+                to={selectedType !== null ? "/take-absence" : "#"}
                 onClick={(e) => {
                     if (selectedType === null) {
                         e.preventDefault(); // Prevent navigation if null

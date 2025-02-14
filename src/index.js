@@ -7,17 +7,19 @@ import {NahrainThemeProvider} from "./context/NahrainThemeContext";
 import "./translation/i18n";
 import {I18nextProvider} from "react-i18next";
 import i18next from "i18next";
+import {AuthProvider} from "./context/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <React.StrictMode>
         <I18nextProvider i18n={i18next}>
-            <NahrainThemeProvider>
-                <App/>
-            </NahrainThemeProvider>
+            <AuthProvider>
+                <NahrainThemeProvider>
+                    <App/>
+                </NahrainThemeProvider>
+            </AuthProvider>
         </I18nextProvider>
-
     </React.StrictMode>
 );
 
