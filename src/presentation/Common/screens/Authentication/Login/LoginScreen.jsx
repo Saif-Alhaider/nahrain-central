@@ -19,7 +19,7 @@ export const LoginScreen = () => {
 const LoginForm = ({className}) => {
     const [t, i18] = useTranslation("global");
     return (
-        <form className={className}>
+        <form className={`${className}`}>
             <h1 className="text-[32px] text-onBackground w-full xl:text-start text-center font-semibold">{t('login')}</h1>
             <input placeholder="John@nahrainuniv.edu.iq"
                    className="transition-colors text-onBackground mt-[48px] max-w-full w-full p-[16px] rounded-[8px] bg-transparent border border-strokeGray focus:outline-none focus:border-secondary placeholder-onBackgroundCaption"

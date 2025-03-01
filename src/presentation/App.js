@@ -19,6 +19,7 @@ import {PrivateRoutes} from "../routes/PrivateRoutes";
 import {LoginScreen} from "./Common/screens/Authentication/Login/LoginScreen";
 import {AuthRoutes} from "../routes/AuthRoutes";
 import {AuthContext} from "../context/AuthContext";
+import {ScanTotpScreen} from "./Common/screens/Authentication/Scan TOTP/ScanTotpScreen";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         return () => mediaQuery.removeEventListener("change", handleChange);
     }, []);
 
+
     document.body.classList.add("light");
 
     return (
@@ -47,25 +49,28 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path='/'>
-                        <Route element={<AuthRoutes accessToken={accessToken} />}>
-                            <Route path='sign-up' element={<SignupScreen />} />
-                            <Route path='totp' element={<TotpScreen />} />
-                            <Route path='login' element={<LoginScreen />} />
+                        <Route element={<AuthRoutes accessToken={accessToken}/>}>
+                            <Route path='sign-up' element={<SignupScreen/>}/>
+                            <Route path='totp' element={<TotpScreen/>}/>
+                            <Route path='login' element={<LoginScreen/>}/>
                         </Route>
 
-                        <Route element={<PrivateRoutes accessToken={accessToken} />}>
-                            <Route index element={<HomeScreen />} />
-                            <Route path='recorded-lectures' element={<ProfRecordedLectures />} />
-                            <Route path='grades' element={<GradesScreen />} />
-                            <Route path='record-absence' element={<MainRecordAbsence />} />
-                            <Route path='lectures-schedule' element={<div></div>} />
-                            <Route path='exams' element={<ExamsScreen />} />
-                            <Route path='settings' element={<SettingsScreen />} />
-                            <Route path='announcement' element={<AnnouncementScreen />} />
-                            <Route path='take-absence' element={<RecordAbsence />} />
+                        <Route path='scan-totp' element={<ScanTotpScreen/>}/>
+
+
+                        <Route element={<PrivateRoutes accessToken={accessToken}/>}>
+                            <Route index element={<HomeScreen/>}/>
+                            <Route path='recorded-lectures' element={<ProfRecordedLectures/>}/>
+                            <Route path='grades' element={<GradesScreen/>}/>
+                            <Route path='record-absence' element={<MainRecordAbsence/>}/>
+                            <Route path='lectures-schedule' element={<div></div>}/>
+                            <Route path='exams' element={<ExamsScreen/>}/>
+                            <Route path='settings' element={<SettingsScreen/>}/>
+                            <Route path='announcement' element={<AnnouncementScreen/>}/>
+                            <Route path='take-absence' element={<RecordAbsence/>}/>
                         </Route>
                     </Route>
-                    <Route path='*' element={<NotFound404 />} />
+                    <Route path='*' element={<NotFound404/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
@@ -73,6 +78,4 @@ function App() {
 }
 
 export default App;
-
-
 

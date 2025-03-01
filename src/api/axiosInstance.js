@@ -5,13 +5,32 @@ const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL_DEV,
 })
 
+axiosInstance.interceptors.request.use(
+    (config) => {
+        NahrainLogger.log(
+            `📡 Axios Request Sent:\n` +
+            `🔹 URL: ${config.baseURL}${config.url}\n` +
+            `🔹 Method: ${config.method.toUpperCase()}\n` +
+            `🔹 Headers: ${JSON.stringify(config.headers, null, 2)}\n` +
+            `🔹 Data: ${JSON.stringify(config.data, null, 2)}`
+        );
+        return config;
+    },
+    (error) => {
+        NahrainLogger.error("❌ Request Error:", error);
+        return Promise.reject(error);
+    }
+);
+
 axiosInstance.interceptors.response.use(
     (response) => {
-        NahrainLogger.log("✅ Axios Response Received:");
-        NahrainLogger.log(`🔹 URL: ${response.config.baseURL}${response.config.url}`);
-        NahrainLogger.log(`🔹 Status: ${response.status}`);
-        NahrainLogger.log(`🔹 Data:`, response.data);
-        return response; // ✅ Must return response
+        NahrainLogger.log(
+            `✅ Axios Response Received:\n` +
+            `🔹 URL: ${response.config.baseURL}${response.config.url}\n` +
+            `🔹 Status: ${response.status}\n` +
+            `🔹 Data: ${JSON.stringify(response.data, null, 2)}`
+        );
+        return response;
     },
     (error) => {
         NahrainLogger.error("❌ Axios Response Error:", error);
@@ -19,20 +38,5 @@ axiosInstance.interceptors.response.use(
     }
 );
 
-
-axiosInstance.interceptors.request.use(
-    (config) => {
-        NahrainLogger.log("📡 Axios Request Sent:");
-        NahrainLogger.log(`🔹 URL: ${config.baseURL}${config.url}`);
-        NahrainLogger.log(`🔹 Method: ${config.method.toUpperCase()}`);
-        NahrainLogger.log(`🔹 Headers:`, config.headers);
-        NahrainLogger.log(`🔹 Data:`, config.data);
-        return config;
-    },
-    (error) => {
-        NahrainLogger.error("❌ Request Error:", error);
-        return Promise.reject(error);
-    }
-)
 
 export default axiosInstance
