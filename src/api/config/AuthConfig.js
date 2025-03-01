@@ -18,3 +18,10 @@ export const TotpRequest = (totpCode) => {
         totpCode: totpCode
     }
 }
+
+export const LoginRequest = (email, password) => {
+    return {
+        email: email,
+        password: password
+    }
+}

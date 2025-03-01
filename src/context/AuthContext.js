@@ -2,7 +2,7 @@ import {createContext, useEffect, useState} from "react";
 
 export const AuthContext = createContext({
     accessToken: null,
-    setAccessToken:null
+    setAccessToken:null,
 });
 
 export const AuthProvider = ({children}) => {

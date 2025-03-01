@@ -5,8 +5,8 @@ import {useTranslation} from "react-i18next";
 import {getImageRequest, postRequest} from "../../../../../api/postRequest";
 import {AuthConfig, TotpRequest} from "../../../../../api/config/AuthConfig";
 import {AuthContext} from "../../../../../context/AuthContext";
-import InputFocusMove from "./TotpSection";
-import {CircularProgress, Snackbar, SnackbarContent} from "@mui/material";
+import TotpSection from "./TotpSection";
+import {CircularProgress} from "@mui/material";
 import {NahrainButton} from "../../../component/NahrainButton";
 import {NahrainLogger} from "../../../../../debug/NahrainLogger";
 import {useNavigate} from "react-router-dom";
@@ -19,7 +19,7 @@ export const ScanTotpScreen = () => {
     const [totpCode, setTotpCode] = useState(null);
     const {accessToken} = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(false);
-    const [snackbarState, setSnackbarState] = useState({open: false, message: ''}); // Single state for Snackbar
+    const [snackbarState, setSnackbarState] = useState({open: false, message: ''});
     const navigate = useNavigate();
 
     const hasFetched = useRef(false);
@@ -38,7 +38,7 @@ export const ScanTotpScreen = () => {
 
     const onClickSubmitTotp = useCallback(async () => {
         if (!totpCode || totpCode.length !== 6) {
-            setSnackbarState({open: true, message: t("please_fill_totp")}); // Show message for missing TOTP
+            setSnackbarState({open: true, message: t("please_fill_totp")});
             return;
         }
 
@@ -50,7 +50,7 @@ export const ScanTotpScreen = () => {
     }, [totpCode, accessToken]);
 
     const onSignupFail = (error) => {
-        setSnackbarState({open: true, message: t("totp_failed")}); // Show message for failed TOTP verification
+        setSnackbarState({open: true, message: t("totp_failed")});
         NahrainLogger.error(error);
     };
 
@@ -80,7 +80,7 @@ export const ScanTotpScreen = () => {
             <h1 className="text-[24px] text-onBackground text-start mt-4 font-semibold">
                 {t("enter_verification_code")}
             </h1>
-            <InputFocusMove className="xl:my-6 mt-2 mb-4 h-16 w-full xl:gap-8 gap-4"
+            <TotpSection className="xl:my-6 mt-2 mb-4 h-16 w-full xl:gap-8 gap-4"
                             onValueChange={code => setTotpCode(code)}
             />
 

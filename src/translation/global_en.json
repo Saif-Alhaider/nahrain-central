@@ -102,5 +102,8 @@
   "invalid_email": "Invalid email. Please use an email from nahrainuniv.edu.iq or nahrainuniv.",
   "invalid_password": "Please make sure the confirm password matches the password.",
   "please_fill_totp": "Please fill all the TOTP boxes.",
-  "totp_failed": "TOTP verification failed. Please try again."
+  "totp_failed": "TOTP verification failed. Please try again.",
+  "please_fill_email_input": "Please Fill Email Input",
+  "please_fill_password_input": "Please Fill Password Input",
+  "login_failed": "Login failed. Incorrect email or password. Please check your credentials."
 }

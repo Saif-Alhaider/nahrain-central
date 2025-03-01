@@ -1,7 +1,7 @@
 import 'output.css';
 import React, {useContext, useEffect, useState} from "react";
 
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, Outlet, Route, Routes} from "react-router-dom";
 import {GradesScreen} from "./Prof/Grades/GradesScreen";
 import {SettingsScreen} from "./Common/screens/Settings/SettingsScreen";
 import {NotFound404} from "./Common/screens/NotFound404/NotFound404";
@@ -26,7 +26,7 @@ function App() {
 
     const [theme, setTheme] = useState("light");
     const {currentTheme, currentLanguage, currentFont} = useContext(NahrainThemeContext)
-    const {accessToken} = useContext(AuthContext);
+    const {accessToken, mfa} = useContext(AuthContext);
 
 
     const direction = supportedLanguages[currentLanguage].direction
@@ -51,10 +51,9 @@ function App() {
                     <Route path='/'>
                         <Route element={<AuthRoutes accessToken={accessToken}/>}>
                             <Route path='sign-up' element={<SignupScreen/>}/>
-                            <Route path='totp' element={<TotpScreen/>}/>
                             <Route path='login' element={<LoginScreen/>}/>
+                            <Route path='totp' element={<TotpScreen/>}/>
                         </Route>
-
                         <Route path='scan-totp' element={<ScanTotpScreen/>}/>
 
 

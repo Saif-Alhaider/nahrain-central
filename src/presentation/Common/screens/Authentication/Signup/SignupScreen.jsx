@@ -7,7 +7,6 @@ import {TextDivider} from "presentation/Common/component/TextDivider";
 import {NahrainInput} from "presentation/Common/component/NahrainInput";
 import {postRequest} from "api/postRequest";
 import {AuthConfig, RegisterRequest} from "../../../../../api/config/AuthConfig";
-import {NahrainLogger} from "debug/NahrainLogger";
 import {Link, useNavigate} from "react-router-dom";
 import {IcGoogle} from "presentation/Common/component/ic_google";
 import {CircularProgress} from "@mui/material";

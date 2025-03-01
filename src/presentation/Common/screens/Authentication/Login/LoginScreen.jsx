@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useCallback, useContext, useState} from "react";
 import 'output.css';
 import {BaseAuthentication} from "../BaseAuthentication";
 import LoginImage from "./resources/Design.png";
-import {ReactComponent as IcEye} from "presentation/Common/resources/images/ic_eye.svg";
 import {IcGoogle} from "presentation/Common/component/ic_google";
 import {useTranslation} from "react-i18next";
 import {Link, useNavigate} from "react-router-dom";
+import {NahrainInput} from "../../../component/NahrainInput";
+import {AuthConfig, LoginRequest} from "../../../../../api/config/AuthConfig";
+import {postRequest} from "../../../../../api/postRequest";
+import {NahrainButton} from "../../../component/NahrainButton";
+import {CircularProgress} from "@mui/material";
+import {isNullOrBlank} from "../../../../../util/isNullOrBlank";
+import {ErrorSnackbar} from "../../../component/ErrorSnackbar";
+import {AuthContext} from "../../../../../context/AuthContext";
 
 export const LoginScreen = () => {
     const [t, i18] = useTranslation("global");
@@ -18,24 +25,68 @@ export const LoginScreen = () => {
 
 const LoginForm = ({className}) => {
     const [t, i18] = useTranslation("global");
+    const [email, setEmail] = useState(null)
+    const [password, setPassword] = useState(null)
+    const [isEmailEmpty, setIsEmailEmpty] = useState(false)
+    const [isPasswordEmpty, setIsPasswordEmpty] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [snackbarState, setSnackbarState] = useState({open: false, message: ''});
+    const {setAccessToken} = useContext(AuthContext)
+    const navigate = useNavigate();
+
+
+    const onClickLogin = useCallback(async () => {
+        setIsLoading(true)
+
+        setIsEmailEmpty(isNullOrBlank(email));
+        setIsPasswordEmpty(isNullOrBlank(password));
+
+        if (isNullOrBlank(email) || isNullOrBlank(password)) {
+            setIsLoading(false);
+            return;
+        }
+
+
+        const requestBody = LoginRequest(email, password)
+
+        await postRequest(AuthConfig.LOGIN, requestBody, onLoginSuccess, onLoginFail);
+    })
+
+    const onLoginSuccess = (data) => {
+        setIsLoading(false);
+        if (data.payload.mfaEnabled) {
+            navigate("/totp", { state: { token: data.payload.token } });
+        } else {
+            setAccessToken(data.payload.token);
+            navigate("/scan-totp", { state: { token: data.payload.token } });
+        }
+    }
+    const onLoginFail = () => {
+        setIsLoading(false)
+        setSnackbarState({open: true, message: t("login_failed")});
+    }
     return (
         <form className={`${className}`}>
             <h1 className="text-[32px] text-onBackground w-full xl:text-start text-center font-semibold">{t('login')}</h1>
-            <input placeholder="John@nahrainuniv.edu.iq"
-                   className="transition-colors text-onBackground mt-[48px] max-w-full w-full p-[16px] rounded-[8px] bg-transparent border border-strokeGray focus:outline-none focus:border-secondary placeholder-onBackgroundCaption"
-                   type="email"/>
+            <NahrainInput type={`email`} className={`mt-12`} placeholder={"John@nahrainuniv.edu.iq"}
+                          onChange={setEmail}/>
+            {isEmailEmpty ?
+                <h1 className={`animate-fade-up animate-once animate-duration-[400ms] text-error`}>{t("please_fill_email_input")}</h1> : null}
 
-            <div
-                className="mt-4 text-onBackground flex flex-row items-center border border-strokeGray rounded-lg px-4 py-4">
-                <input type="password" id="password"
-                       className="w-full bg-transparent  focus:outline-none focus:border-secondary transition-colors placeholder-onBackgroundCaption"
-                       placeholder={t("enter_password")}/>
-                <span className={`cursor-pointer text-onBackgroundCaption`}><IcEye/></span>
-            </div>
+            <NahrainInput type={`password`} className={`mt-4`} placeholder={t("enter_password")}
+                          onChange={setPassword}/>
+            {isPasswordEmpty ?
+                <h1 className={`animate-fade-up animate-once animate-duration-[400ms] text-error`}>{t("please_fill_password_input")}</h1> : null}
+
             <a href="#"
                className="flex flex-wrap underline text-[16px] mt-[16px] text-secondary">{t("forgot_password")}</a>
-            <button className="bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mt-6">{t("login")}
-            </button>
+            <NahrainButton onClick={onClickLogin}
+                           className={`mt-6`}
+                           children={
+                               isLoading ? <CircularProgress sx={{color: "var(--on-primary)"}}/> :
+                                   <p className="text-2xl ">{t("login")}</p>
+                           }
+            />
             <div className="flex items-center mt-6 w-full max-w-full">
                 <hr className="flex-grow border border-strokeGray"/>
                 <div className="mx-4 flex-shrink text-[16px] text-onBackgroundCaption">{t("or_login_with")}</div>
@@ -51,6 +102,11 @@ const LoginForm = ({className}) => {
                     {t("signup")}
                 </Link>
             </p>
+            <ErrorSnackbar
+                open={snackbarState.open}
+                onClose={() => setSnackbarState({...snackbarState, open: false})}
+                message={snackbarState.message}
+            />
         </form>
     )
 }
