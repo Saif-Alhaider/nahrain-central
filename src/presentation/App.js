@@ -20,14 +20,14 @@ import {LoginScreen} from "./Common/screens/Authentication/Login/LoginScreen";
 import {AuthRoutes} from "../routes/AuthRoutes";
 import {AuthContext} from "../context/AuthContext";
 import {ScanTotpScreen} from "./Common/screens/Authentication/Scan TOTP/ScanTotpScreen";
+import {PendingApprovalScreen} from "./Common/screens/PendingApprovalScreen";
+import {PendingApprovalRoutes} from "../routes/PendingApprovalRoutes";
 
 
 function App() {
 
     const [theme, setTheme] = useState("light");
     const {currentTheme, currentLanguage, currentFont} = useContext(NahrainThemeContext)
-    const {accessToken, mfa} = useContext(AuthContext);
-
 
     const direction = supportedLanguages[currentLanguage].direction
 
@@ -40,7 +40,7 @@ function App() {
     }, []);
 
 
-    document.body.classList.add("light");
+    document.body.classList.add(currentTheme === "deviceTheme" ? theme : currentTheme);
 
     return (
         <div
@@ -49,15 +49,18 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path='/'>
-                        <Route element={<AuthRoutes accessToken={accessToken}/>}>
+                        <Route element={<AuthRoutes/>}>
                             <Route path='sign-up' element={<SignupScreen/>}/>
                             <Route path='login' element={<LoginScreen/>}/>
                             <Route path='totp' element={<TotpScreen/>}/>
                         </Route>
                         <Route path='scan-totp' element={<ScanTotpScreen/>}/>
+                        <Route element={<PendingApprovalRoutes/>}>
+                            <Route path='pending-approval' element={<PendingApprovalScreen/>}/>
+                        </Route>
 
 
-                        <Route element={<PrivateRoutes accessToken={accessToken}/>}>
+                        <Route element={<PrivateRoutes/>}>
                             <Route index element={<HomeScreen/>}/>
                             <Route path='recorded-lectures' element={<ProfRecordedLectures/>}/>
                             <Route path='grades' element={<GradesScreen/>}/>

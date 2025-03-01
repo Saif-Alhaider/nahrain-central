@@ -1,26 +1,39 @@
 import {createContext, useEffect, useState} from "react";
+import {NahrainLogger} from "../debug/NahrainLogger";
+import {jwtDecode} from "jwt-decode";
 
 export const AuthContext = createContext({
     accessToken: null,
-    setAccessToken:null,
+    setAccessToken: null,
+    role: null,
 });
 
-export const AuthProvider = ({children}) => {
-    const [accessToken, setAccessToken] = useState(()=>{
-        const storedAccessToken = localStorage.getItem('accessToken')
+export const AuthProvider = ({ children }) => {
+    const [accessToken, setAccessToken] = useState(() => {
+        const storedAccessToken = localStorage.getItem("accessToken");
         return storedAccessToken === "null" ? null : storedAccessToken;
     });
 
-    const [signupTotp,setSignupTotp] = useState(()=>{
-        return localStorage.getItem('accessToken');
-    })
+    const [role, setRole] = useState(null);
 
     useEffect(() => {
-        localStorage.setItem('accessToken', accessToken);
+        if (accessToken) {
+            try {
+                const decoded = jwtDecode(accessToken);
+                const roles = decoded.role || [];
+                setRole(roles.length > 0 ? roles[0] : null);
+            } catch (error) {
+                NahrainLogger.error("Invalid token:", error);
+                setRole(null);
+            }
+        } else {
+            setRole(null);
+        }
+        localStorage.setItem("accessToken", accessToken);
     }, [accessToken]);
 
     return (
-        <AuthContext.Provider value={{accessToken, setAccessToken,signupTotp,setSignupTotp}}>
+        <AuthContext.Provider value={{ accessToken, setAccessToken, role }}>
             {children}
         </AuthContext.Provider>
     );
