@@ -15,12 +15,12 @@ import {useLocation, useNavigate} from "react-router-dom";
 export const TotpScreen = () => {
     const [t, i18] = useTranslation("global");
     const [totpCode, setTotpCode] = useState(null);
-    const {setAccessToken} = useContext(AuthContext);
+    const {setAccessToken,setRefreshToken} = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(false);
     const [snackbarState, setSnackbarState] = useState({open: false, message: ''});
     const navigate = useNavigate();
     const location = useLocation();
-    const {token} = location.state || {};
+    const {token,refreshToken} = location.state || {};
 
 
     const onClickSubmitTotp = useCallback(async () => {
@@ -48,6 +48,7 @@ export const TotpScreen = () => {
 
     const onNavigateHome = () => {
         setAccessToken(token)
+        setRefreshToken(refreshToken)
         navigate("/");
     }
 

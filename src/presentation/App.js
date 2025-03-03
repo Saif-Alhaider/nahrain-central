@@ -55,6 +55,7 @@ function App() {
                             <Route path='totp' element={<TotpScreen/>}/>
                         </Route>
                         <Route path='scan-totp' element={<ScanTotpScreen/>}/>
+
                         <Route element={<PendingApprovalRoutes/>}>
                             <Route path='pending-approval' element={<PendingApprovalScreen/>}/>
                         </Route>

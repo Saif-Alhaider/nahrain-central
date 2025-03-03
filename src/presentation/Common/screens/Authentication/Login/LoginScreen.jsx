@@ -31,7 +31,7 @@ const LoginForm = ({className}) => {
     const [isPasswordEmpty, setIsPasswordEmpty] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [snackbarState, setSnackbarState] = useState({open: false, message: ''});
-    const {setAccessToken} = useContext(AuthContext)
+    const {setAccessToken, setRefreshToken} = useContext(AuthContext)
     const navigate = useNavigate();
 
 
@@ -55,10 +55,11 @@ const LoginForm = ({className}) => {
     const onLoginSuccess = (data) => {
         setIsLoading(false);
         if (data.payload.mfaEnabled) {
-            navigate("/totp", { state: { token: data.payload.token } });
+            navigate("/totp", {state: {token: data.payload.token}});
         } else {
-            setAccessToken(data.payload.token);
-            navigate("/scan-totp", { state: { token: data.payload.token } });
+            setAccessToken(data.payload.token)
+            setRefreshToken(data.payload.refreshToken)
+            navigate("/scan-totp", {state: {token: data.payload.token, refreshToken: data.payload.refreshToken}});
         }
     }
     const onLoginFail = () => {

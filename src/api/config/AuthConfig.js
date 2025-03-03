@@ -2,7 +2,8 @@ export const AuthConfig = {
     REGISTER: "/auth/register",
     LOGIN: "/auth/login",
     TOTP_IMAGE: "/totp",
-    VERIFY_TOTP: "/verify-totp"
+    VERIFY_TOTP: "/verify-totp",
+    REFRESH_TOKEN:"/auth/refreshtoken"
 }
 
 

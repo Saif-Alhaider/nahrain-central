@@ -31,7 +31,7 @@ export const SignupForm = ({className}) => {
     const [isEmailValid, setIsEmailValid] = useState(true)
     const [isPasswordValid, setIsPasswordValid] = useState(true)
     const navigate = useNavigate();
-    const {setAccessToken } = useContext(AuthContext)
+    const {setAccessToken ,setRefreshToken} = useContext(AuthContext)
 
     const onClickSignup = useCallback(async () => {
         setIsLoading(true)
@@ -57,6 +57,7 @@ export const SignupForm = ({className}) => {
     const onSignupSuccess = (data) => {
         setIsLoading(false)
         setAccessToken(data.payload.token)
+        setRefreshToken(data.payload.refreshToken)
         navigate("/scan-totp", {state: data})
     }
     const onSignupFail = (error) => {
