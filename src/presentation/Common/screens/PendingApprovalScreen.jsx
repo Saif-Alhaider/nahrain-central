@@ -9,7 +9,7 @@ import {NahrainLogger} from "../../../debug/NahrainLogger";
 
 export const PendingApprovalScreen = () => {
     const [t] = useTranslation("global");
-    const {refreshToken, setAccessToken,} = useContext(AuthContext);
+    const {refreshToken, setAccessToken,setRefreshToken} = useContext(AuthContext);
 
     const hasFetched = useRef(false);
 
@@ -34,7 +34,10 @@ export const PendingApprovalScreen = () => {
     >
         <h1 className={`text-[32px] text-onBackground w-full xl:text-start text-center font-semibold`}>{t("account_created_successfully")}</h1>
         <p className={`text-lg text-onBackgroundCaption mt-4`}>{t("account_created_successfully_description")}</p>
-        <button onClick={() => setAccessToken(null)}
+        <button onClick={() => {
+            setAccessToken(null)
+            setRefreshToken(null)
+        }}
                 className={`bg-background w-fit py-2 px-4 mt-4 text-onBackground rounded text-xl font-bold`}>{t("logout")}</button>
     </BaseAuthentication>
 }
