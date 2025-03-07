@@ -1,5 +1,3 @@
-import {Appbar} from "./appbar/Appbar";
-import {ProfSidebar} from "./sidebar/ProfSidebar";
 import 'output.css'
 import 'index.css'
 import React, {useContext, useEffect, useRef, useState} from "react";
@@ -11,9 +9,9 @@ import {ReactComponent as IcMinimize} from 'presentation/Common/resources/images
 import {ReactComponent as IcDoubleArrow} from 'presentation/Common/resources/images/ic_double_arrow.svg';
 import {ReactComponent as IcArrowDown} from 'presentation/Common/resources/images/ic_arrow_down.svg';
 import {ReactComponent as IcDivider} from 'presentation/Common/resources/images/ic_divider.svg';
+import {Appbar} from "./appbar/Appbar";
 
-
-export const MainScaffold = () => {
+export const MainScaffold = ({ SidebarComponent }) => {
     const [t, i18] = useTranslation("global");
 
     const titles = {
@@ -31,9 +29,9 @@ export const MainScaffold = () => {
 
     const location = useLocation();
     const currentScreen = titles[location.pathname] || '404 - Page Not Found';
-    const showAppbar = 'block lg:hidden'
+    const showAppbar = 'block lg:hidden';
     const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-    const {isDialogSidebarVisible, dialogSidebarChild,onDismissSidebarDialog} = useContext(NahrainThemeContext);
+    const { isDialogSidebarVisible, dialogSidebarChild, onDismissSidebarDialog } = useContext(NahrainThemeContext);
 
     const toggleVisibility = () => {
         setIsSidebarVisible((prev) => !prev);
@@ -49,28 +47,42 @@ export const MainScaffold = () => {
 
     const scrollContainerRef = useRef();
 
-    return (<div
-        className={`w-full h-dvh transition-colors duration-200 ease-linear flex flex-row overflow-x-hidden relative bg-background lg:overflow-hidden`}>
-        <div className={`z-40`}>
-            <div className={`${showAppbar}`}>
-                <Appbar target={scrollContainerRef.current} title={currentScreen} className='!z-0 w-full'
-                        onClick={toggleVisibility}/>
+    return (
+        <div
+            className={`w-full h-dvh transition-colors duration-200 ease-linear flex flex-row overflow-x-hidden relative bg-background lg:overflow-hidden`}
+        >
+            <div className={`z-40`}>
+                <div className={`${showAppbar}`}>
+                    <Appbar
+                        target={scrollContainerRef.current}
+                        title={currentScreen}
+                        className='!z-0 w-full'
+                        onClick={toggleVisibility}
+                    />
+                </div>
+                {SidebarComponent && (
+                    <SidebarComponent
+                        currentScreen={currentScreen}
+                        onDismiss={toggleVisibility}
+                        isVisible={isSidebarVisible}
+                    />
+                )}
             </div>
-            <ProfSidebar currentScreen={currentScreen} onDismiss={toggleVisibility}
-                         isVisible={isSidebarVisible}/>
+
+            <DialogSidebar isVisible={isDialogSidebarVisible} onDismiss={onDismissSidebarDialog}>
+                {dialogSidebarChild}
+            </DialogSidebar>
+
+            <div
+                ref={scrollContainerRef}
+                className={`flex flex-col gap-14 w-dvw h-full overflow-x-hidden overflow-y-auto`}
+            >
+                <div className={`${showAppbar} bg-background`} />
+                <Outlet />
+            </div>
         </div>
-
-
-        <DialogSidebar isVisible={isDialogSidebarVisible}
-                       onDismiss={onDismissSidebarDialog}>{dialogSidebarChild}</DialogSidebar>
-
-        <div ref={scrollContainerRef}
-             className={`flex flex-col gap-14 w-dvw h-full overflow-x-hidden overflow-y-auto`}>
-            <div className={`${showAppbar} bg-background`}/>
-            <Outlet/>
-        </div>
-    </div>)
-}
+    );
+};
 
 
 export const DialogSidebar = ({isVisible, onDismiss, children}) => {

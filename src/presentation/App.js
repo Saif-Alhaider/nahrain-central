@@ -1,7 +1,7 @@
 import 'output.css';
 import React, {useContext, useEffect, useState} from "react";
 
-import {BrowserRouter, Navigate, Outlet, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {GradesScreen} from "./Prof/Grades/GradesScreen";
 import {SettingsScreen} from "./Common/screens/Settings/SettingsScreen";
 import {NotFound404} from "./Common/screens/NotFound404/NotFound404";
@@ -18,16 +18,19 @@ import {TotpScreen} from "./Common/screens/Authentication/TOTP/TotpScreen";
 import {PrivateRoutes} from "../routes/PrivateRoutes";
 import {LoginScreen} from "./Common/screens/Authentication/Login/LoginScreen";
 import {AuthRoutes} from "../routes/AuthRoutes";
-import {AuthContext} from "../context/AuthContext";
 import {ScanTotpScreen} from "./Common/screens/Authentication/Scan TOTP/ScanTotpScreen";
 import {PendingApprovalScreen} from "./Common/screens/PendingApprovalScreen";
 import {PendingApprovalRoutes} from "../routes/PendingApprovalRoutes";
+import {AuthContext} from "../context/AuthContext";
+import {NahrainLogger} from "../debug/NahrainLogger";
+import {StudentRecordedLectures} from "./Student/StudentRecordedLectures/StudentRecordedLectures";
 
 
 function App() {
 
     const [theme, setTheme] = useState("light");
     const {currentTheme, currentLanguage, currentFont} = useContext(NahrainThemeContext)
+    const {role} = useContext(AuthContext);
 
     const direction = supportedLanguages[currentLanguage].direction
 
@@ -41,6 +44,7 @@ function App() {
 
 
     document.body.classList.add(currentTheme === "deviceTheme" ? theme : currentTheme);
+    NahrainLogger.log(role)
 
     return (
         <div
@@ -60,25 +64,71 @@ function App() {
                             <Route path='pending-approval' element={<PendingApprovalScreen/>}/>
                         </Route>
 
+                        <Route element={<PrivateRoutes />} >
+                            <Route index element={getHomeScreen(role)} />
 
-                        <Route element={<PrivateRoutes/>}>
-                            <Route index element={<HomeScreen/>}/>
-                            <Route path='recorded-lectures' element={<ProfRecordedLectures/>}/>
-                            <Route path='grades' element={<GradesScreen/>}/>
-                            <Route path='record-absence' element={<MainRecordAbsence/>}/>
-                            <Route path='lectures-schedule' element={<div></div>}/>
-                            <Route path='exams' element={<ExamsScreen/>}/>
-                            <Route path='settings' element={<SettingsScreen/>}/>
-                            <Route path='announcement' element={<AnnouncementScreen/>}/>
-                            <Route path='take-absence' element={<RecordAbsence/>}/>
+                            {role && (
+                                <>
+                                    {/* PROF Role */}
+                                    {role.authority === 'PROF' && (
+                                        <>
+                                            <Route index element={<HomeScreen />} />
+                                            <Route path='recorded-lectures' element={<ProfRecordedLectures />} />
+                                            <Route path='grades' element={<GradesScreen />} />
+                                            <Route path='record-absence' element={<MainRecordAbsence />} />
+                                            <Route path='lectures-schedule' element={<div></div>} />
+                                            <Route path='exams' element={<ExamsScreen />} />
+                                            <Route path='settings' element={<SettingsScreen />} />
+                                            <Route path='announcement' element={<AnnouncementScreen />} />
+                                            <Route path='take-absence' element={<RecordAbsence />} />
+                                        </>
+                                    )}
+
+                                    {/* STUDENT Role */}
+                                    {role.authority === 'STUDENT' && (
+                                        <>
+                                            <Route index element={<HomeScreen />} />
+                                            <Route path='lectures-schedule' element={<div></div>} />
+                                            <Route path='recorded-lectures' element={<StudentRecordedLectures />} />
+                                            <Route path='settings' element={<SettingsScreen />} />
+
+                                        </>
+                                    )}
+
+                                    {/* ADMIN Role */}
+                                    {role.authority === 'ADMIN' && (
+                                        <>
+                                            <Route index element={<HomeScreen />} />
+                                            <Route path='settings' element={<SettingsScreen />} />
+                                            <Route path='announcement' element={<AnnouncementScreen />} />
+                                        </>
+                                    )}
+                                </>
+                            )}
                         </Route>
+
+
                     </Route>
-                    <Route path='*' element={<NotFound404/>}/>
-                </Routes>
-            </BrowserRouter>
-        </div>
-    );
+                <Route path='*' element={<NotFound404/>}/>
+            </Routes>
+        </BrowserRouter>
+</div>
+)
+    ;
 }
 
 export default App;
 
+const getHomeScreen = (role) => {
+    if (role === null) return <Navigate to="/login" replace/>;
+    switch (role.authority) {
+        case 'PROF':
+            return <HomeScreen />;
+        case 'STUDENT':
+            return <HomeScreen />;
+        case 'ADMIN':
+            return <HomeScreen />;
+        default:
+            return null;
+    }
+};

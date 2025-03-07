@@ -3,12 +3,28 @@ import 'index.css'
 import LectureImage from "./resources/image 1.png"
 import {ReactComponent as IcList} from "./resources/ic_list.svg"
 import {DropDown} from "../../Common/component/DropDown";
+import {MenuItem} from "@mui/material";
+import React from "react";
+import {useTranslation} from "react-i18next";
 
 export const StudentRecordedLectures = () => {
+    const [t] = useTranslation("global");
+
     return (<div className={"w-full h-full p-6"}>
             <div className={"flex flex-row gap-2"}>
-                <DropDown text={"First Course"} items={["Second Course", "All"]}/>
-                <DropDown text={"Lab"} items={["Theoretical"]}/>
+                <DropDown
+                    currentValue={t('first_and_second_course')}
+                    items={[t('first_and_second_course'), t('first_course'), t('second_course')].map((item) => (
+                        <MenuItem value={item} key={item}>{item}</MenuItem>
+                    ))}
+                />
+
+                <DropDown
+                    currentValue={t("theoretical_and_lab")}
+                    items={[t("theoretical_and_lab"), t("theoretical"), t("lab")].map((item) => (
+                        <MenuItem value={item} key={item}>{item}</MenuItem>
+                    ))}
+                />
             </div>
             <div
                 className="grid  sm:grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(268px,1fr))] gap-6 mt-6 pb-6">

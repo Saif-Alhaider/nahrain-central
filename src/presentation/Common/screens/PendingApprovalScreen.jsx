@@ -22,7 +22,7 @@ export const PendingApprovalScreen = () => {
             {
                 refreshToken: refreshToken
             },
-            (data) => NahrainLogger.log("Success", data),
+            (data) => setAccessToken(data.payload.token),
             (error) => NahrainLogger.error("Failed to fetch refresh token:", error.response.data),
         );
     }, []);

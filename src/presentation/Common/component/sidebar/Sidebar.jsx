@@ -3,6 +3,7 @@ import React from "react";
 import 'index.css'
 import 'output.css';
 import {ReactComponent as IcMenuDots} from 'presentation/Common/component/sidebar/resources/ic_menu_dots.svg'
+import ProfileImage from "presentation/Common/resources/images/profile_image.png";
 
 
 export const Sidebar = ({onDismiss, className, isVisible, children}) => {
@@ -28,7 +29,7 @@ z-10  overflow-y-scroll lg:sticky fixed min-w-[288px] h-dvh py-4 px-6 bg-card fl
                     <hr className="border-[0.5px] mt-6 border-strokeGray"/>
                     <div className="sidebar-profile-details mt-5 flex flex-row gap-4 items-center">
                         <img className="size-14 rounded-full object-cover"
-                             src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                             src={ProfileImage}
                              alt="Rounded avatar" draggable={false}/>
                         <div className="w-[140px] ">
                             <h1 className="text-onBackground text-[24px]">محمد خالد</h1>

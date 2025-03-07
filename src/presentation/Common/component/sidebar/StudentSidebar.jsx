@@ -1,5 +1,4 @@
 import {Sidebar} from "./Sidebar";
-import {Theme} from "../../../../routes/RoutesConstant";
 import {MenuItem} from "./MenuItem";
 import React from "react";
 import {ReactComponent as IcHome} from 'presentation/Common/component/sidebar/resources/ic_home.svg'
@@ -7,20 +6,28 @@ import {ReactComponent as IcCalendar} from 'presentation/Common/component/sideba
 import {ReactComponent as IcPlay} from 'presentation/Common/component/sidebar/resources/ic_play.svg'
 import {ReactComponent as IcSettings} from 'presentation/Common/resources/images/ic_settings.svg'
 import {ReactComponent as IcUser} from 'presentation/Common/component/sidebar/resources/ic_user.svg'
+import {useTranslation} from "react-i18next";
 
-export const StudentSidebar = () => {
+export const StudentSidebar = ({currentScreen, onDismiss, className, isVisible}) => {
+    const [t, i18] = useTranslation("global");
+
     return (
-        <Sidebar theme={Theme.DARK}>
+        <Sidebar onDismiss={onDismiss} isVisible={isVisible} className={className}>
             <div className="flex flex-col h-full">
                 <p className="text-onBackgroundCaption text-[16px] my-4">Menu</p>
                 <div className="flex flex-col gap-2 unselectable">
-                    <MenuItem icon={IcHome} text="Home" isActive={true}/>
-                    <MenuItem icon={IcCalendar} text="Lectures Schedule"/>
-                    <MenuItem icon={IcPlay} text="Recorded Lectures"/>
+                    <MenuItem onDismiss={onDismiss} icon={IcHome} text={t("home")} to='/'
+                              isActive={currentScreen === t("home")}/>
+                    <MenuItem onDismiss={onDismiss} icon={IcCalendar} to='/lectures-schedule'
+                              text={t('lectures_schedule')} isActive={currentScreen === t('lectures_schedule')}/>
+                    <MenuItem onDismiss={onDismiss} icon={IcPlay} to='/recorded-lectures'
+                              text={t('recorded_lectures')} isActive={currentScreen === t('recorded_lectures')}/>
                 </div>
                 <div className="flex-grow flex flex-col justify-end gap-2 mt-8">
-                    <MenuItem icon={IcSettings} text="Settings"/>
-                    <MenuItem icon={IcUser} text="Contact Me"/>
+                    <MenuItem onDismiss={onDismiss} icon={IcSettings} to='/settings'
+                              text={t("settings")} isActive={currentScreen === t("settings")}/>
+                    <MenuItem onDismiss={onDismiss} icon={IcUser} to='/contact-me'
+                              text={t('contact_me')} isActive={currentScreen === t('contact_me')}/>
                 </div>
             </div>
         </Sidebar>
