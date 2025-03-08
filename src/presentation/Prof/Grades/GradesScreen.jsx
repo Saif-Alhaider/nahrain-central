@@ -207,7 +207,7 @@ export const TableReact = () => {
                         <th key={examIndex}
                             className={`py-3 px-4 ${isWrapped ? 'text-center' : 'text-start'} ${examIndex === data.exams.length - 1 ? lastBody : ''}`}>
                             {exam.name}
-                            <span className="text-xs text-onBackgroundCaption"> ({exam.percentage}%)</span>
+                            <span className="text-[16px] text-onBackgroundCaption"> ({exam.percentage}%)</span>
                         </th>
                     ))}
                 </tr>

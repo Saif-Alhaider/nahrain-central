@@ -108,5 +108,8 @@
   "login_failed": "Login failed. Incorrect email or password. Please check your credentials.",
   "account_created_successfully": "The account has been successfully created!",
   "account_created_successfully_description": "Thank you for registering! Please wait for the department head to add your account to the system. You will be notified once your account is activated. The department head can add accounts for people who have registered or have not yet created an account.",
-  "logout": "Logout"
+  "logout": "Logout",
+  "dashboard": "Dashboard",
+  "users": "Users",
+  "schedule": "Schedule"
 }

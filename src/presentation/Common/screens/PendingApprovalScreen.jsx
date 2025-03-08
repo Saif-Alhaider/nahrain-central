@@ -3,7 +3,7 @@ import {BaseAuthentication} from "./Authentication/BaseAuthentication";
 import finishSignup from "./Authentication/Finish Signup/resources/finishSignup.png";
 import React, {useContext, useEffect, useRef} from "react";
 import {AuthContext} from "../../../context/AuthContext";
-import {getImageRequest, getRequest, postRequest} from "../../../api/postRequest";
+import {postRequest} from "../../../api/postRequest";
 import {AuthConfig} from "../../../api/config/AuthConfig";
 import {NahrainLogger} from "../../../debug/NahrainLogger";
 
@@ -23,7 +23,7 @@ export const PendingApprovalScreen = () => {
                 refreshToken: refreshToken
             },
             (data) => setAccessToken(data.payload.token),
-            (error) => NahrainLogger.error("Failed to fetch refresh token:", error.response.data),
+            (error) => NahrainLogger.error("Failed to fetch refresh token:"),
         );
     }, []);
 

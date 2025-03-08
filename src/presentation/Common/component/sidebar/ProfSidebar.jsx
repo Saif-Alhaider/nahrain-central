@@ -3,14 +3,14 @@ import {Sidebar} from "./Sidebar";
 import React from "react";
 import 'output.css'
 import 'index.css'
-import {ReactComponent as IcHome} from 'presentation/Common/component/sidebar/resources/ic_home.svg'
-import {ReactComponent as IcCalendar} from 'presentation/Common/component/sidebar/resources/ic_calendar.svg'
-import {ReactComponent as IcPlay} from 'presentation/Common/component/sidebar/resources/ic_play.svg'
-import {ReactComponent as IcUsersGroup} from 'presentation/Common/component/sidebar/resources/ic_users_group.svg'
-import {ReactComponent as IcCrown} from 'presentation/Common/component/sidebar/resources/ic_crown.svg'
-import {ReactComponent as IcMark} from 'presentation/Common/component/sidebar/resources/ic_mark.svg'
+import {ReactComponent as IcHome} from 'presentation/Common/resources/images/ic_home.svg'
+import {ReactComponent as IcCalendar} from 'presentation/Common/resources/images/ic_calendar.svg'
+import {ReactComponent as IcPlay} from 'presentation/Common/resources/images/ic_play.svg'
+import {ReactComponent as IcUsersGroup} from 'presentation/Common/resources/images/ic_users_group.svg'
+import {ReactComponent as IcCrown} from 'presentation/Common/resources/images/ic_crown.svg'
+import {ReactComponent as IcMark} from 'presentation/Common/resources/images/ic_mark.svg'
 import {ReactComponent as IcSettings} from 'presentation/Common/resources/images/ic_settings.svg'
-import {ReactComponent as IcUser} from 'presentation/Common/component/sidebar/resources/ic_user.svg'
+import {ReactComponent as IcUser} from 'presentation/Common/resources/images/ic_user.svg'
 import {useTranslation} from "react-i18next";
 
 

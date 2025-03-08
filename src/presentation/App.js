@@ -24,6 +24,7 @@ import {PendingApprovalRoutes} from "../routes/PendingApprovalRoutes";
 import {AuthContext} from "../context/AuthContext";
 import {NahrainLogger} from "../debug/NahrainLogger";
 import {StudentRecordedLectures} from "./Student/StudentRecordedLectures/StudentRecordedLectures";
+import {Users} from "./Admin/Users";
 
 
 function App() {
@@ -72,7 +73,6 @@ function App() {
                                     {/* PROF Role */}
                                     {role.authority === 'PROF' && (
                                         <>
-                                            <Route index element={<HomeScreen />} />
                                             <Route path='recorded-lectures' element={<ProfRecordedLectures />} />
                                             <Route path='grades' element={<GradesScreen />} />
                                             <Route path='record-absence' element={<MainRecordAbsence />} />
@@ -87,7 +87,6 @@ function App() {
                                     {/* STUDENT Role */}
                                     {role.authority === 'STUDENT' && (
                                         <>
-                                            <Route index element={<HomeScreen />} />
                                             <Route path='lectures-schedule' element={<div></div>} />
                                             <Route path='recorded-lectures' element={<StudentRecordedLectures />} />
                                             <Route path='settings' element={<SettingsScreen />} />
@@ -98,8 +97,8 @@ function App() {
                                     {/* ADMIN Role */}
                                     {role.authority === 'ADMIN' && (
                                         <>
-                                            <Route index element={<HomeScreen />} />
                                             <Route path='settings' element={<SettingsScreen />} />
+                                            <Route path='users' element={<Users />} />
                                             <Route path='announcement' element={<AnnouncementScreen />} />
                                         </>
                                     )}

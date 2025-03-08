@@ -10,12 +10,14 @@ import {ReactComponent as IcDoubleArrow} from 'presentation/Common/resources/ima
 import {ReactComponent as IcArrowDown} from 'presentation/Common/resources/images/ic_arrow_down.svg';
 import {ReactComponent as IcDivider} from 'presentation/Common/resources/images/ic_divider.svg';
 import {Appbar} from "./appbar/Appbar";
+import {NahrainLogger} from "../../../debug/NahrainLogger";
 
-export const MainScaffold = ({ SidebarComponent }) => {
+export const MainScaffold = ({ SidebarComponent,role }) => {
     const [t, i18] = useTranslation("global");
 
     const titles = {
-        '/': t("home"),
+        '/': role.authority === 'ADMIN' ? t("dashboard") : t("home"),
+        '/users': t("users"),
         '/lectures-schedule': t('lectures_schedule'),
         '/recorded-lectures': t('recorded_lectures'),
         '/record-absence': t('record_absence'),

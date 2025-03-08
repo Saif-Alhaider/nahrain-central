@@ -4,12 +4,13 @@ import {useContext} from "react";
 import {AuthContext} from "../context/AuthContext";
 import {ProfSidebar} from "../presentation/Common/component/sidebar/ProfSidebar";
 import {StudentSidebar} from "../presentation/Common/component/sidebar/StudentSidebar";
+import {AdminSidebar} from "../presentation/Common/component/sidebar/AdminSidebar";
 
 export const PrivateRoutes = () => {
-    const {role } = useContext(AuthContext);
+    const {role} = useContext(AuthContext);
 
     if (role === null || role.authority === null) {
-        return <Navigate to="/pending-approval" replace />;
+        return <Navigate to="/pending-approval" replace/>;
     }
 
     const getSidebarComponent = () => {
@@ -18,6 +19,8 @@ export const PrivateRoutes = () => {
                 return ProfSidebar;
             case 'STUDENT':
                 return StudentSidebar;
+            case 'ADMIN':
+                return AdminSidebar
             default:
                 return null;
         }
@@ -26,7 +29,7 @@ export const PrivateRoutes = () => {
     const SidebarComponent = getSidebarComponent();
 
     return (
-        <MainScaffold SidebarComponent={SidebarComponent}>
+        <MainScaffold SidebarComponent={SidebarComponent} role={role}>
             <Outlet/>
         </MainScaffold>
     );

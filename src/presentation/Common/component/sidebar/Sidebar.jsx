@@ -2,7 +2,7 @@ import Logo from "../Logo";
 import React from "react";
 import 'index.css'
 import 'output.css';
-import {ReactComponent as IcMenuDots} from 'presentation/Common/component/sidebar/resources/ic_menu_dots.svg'
+import {ReactComponent as IcMenuDots} from 'presentation/Common/resources/images/ic_menu_dots.svg'
 import ProfileImage from "presentation/Common/resources/images/profile_image.png";
 
 

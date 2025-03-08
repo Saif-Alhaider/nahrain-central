@@ -1,11 +1,11 @@
 import {Sidebar} from "./Sidebar";
 import {MenuItem} from "./MenuItem";
 import React from "react";
-import {ReactComponent as IcHome} from 'presentation/Common/component/sidebar/resources/ic_home.svg'
-import {ReactComponent as IcCalendar} from 'presentation/Common/component/sidebar/resources/ic_calendar.svg'
-import {ReactComponent as IcPlay} from 'presentation/Common/component/sidebar/resources/ic_play.svg'
+import {ReactComponent as IcHome} from 'presentation/Common/resources/images/ic_home.svg'
+import {ReactComponent as IcCalendar} from 'presentation/Common/resources/images/ic_calendar.svg'
+import {ReactComponent as IcPlay} from 'presentation/Common/resources/images/ic_play.svg'
 import {ReactComponent as IcSettings} from 'presentation/Common/resources/images/ic_settings.svg'
-import {ReactComponent as IcUser} from 'presentation/Common/component/sidebar/resources/ic_user.svg'
+import {ReactComponent as IcUser} from 'presentation/Common/resources/images/ic_user.svg'
 import {useTranslation} from "react-i18next";
 
 export const StudentSidebar = ({currentScreen, onDismiss, className, isVisible}) => {
