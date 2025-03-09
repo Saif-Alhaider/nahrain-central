@@ -26,6 +26,7 @@ import {NahrainLogger} from "../debug/NahrainLogger";
 import {StudentRecordedLectures} from "./Student/StudentRecordedLectures/StudentRecordedLectures";
 import {Users} from "./Admin/Users";
 import {Schedule} from "./Admin/Schedule";
+import {Syllabus} from "./Admin/Syllabus";
 
 
 function App() {
@@ -100,6 +101,7 @@ function App() {
                                             <Route path='settings' element={<SettingsScreen />} />
                                             <Route path='users' element={<Users />} />
                                             <Route path='schedule' element={<Schedule />} />
+                                            <Route path='syllabus' element={<Syllabus/>} />
                                             <Route path='announcement' element={<AnnouncementScreen />} />
                                         </>
                                     )}

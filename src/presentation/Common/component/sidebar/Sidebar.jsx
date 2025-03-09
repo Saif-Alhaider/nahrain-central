@@ -1,12 +1,17 @@
 import Logo from "../Logo";
-import React from "react";
+import React, {useContext} from "react";
 import 'index.css'
 import 'output.css';
-import {ReactComponent as IcMenuDots} from 'presentation/Common/resources/images/ic_menu_dots.svg'
 import ProfileImage from "presentation/Common/resources/images/profile_image.png";
+import LongMenu from "./LongMenu";
+import {AuthContext} from "../../../../context/AuthContext";
+import {Navigate, useNavigate} from "react-router-dom";
 
 
 export const Sidebar = ({onDismiss, className, isVisible, children}) => {
+    const {setAccessToken, setRefreshToken} = useContext(AuthContext)
+    const navigate = useNavigate();
+
     return (
         <div className={className}>
             <div
@@ -35,7 +40,12 @@ z-10  overflow-y-scroll lg:sticky fixed min-w-[288px] h-dvh py-4 px-6 bg-card fl
                             <h1 className="text-onBackground text-[24px]">محمد خالد</h1>
                             <p className="text-onBackgroundCaption text-[12px] w-full text-nowrap overflow-hidden overflow-ellipsis">mohammadKhalid@nahrain.iq</p>
                         </div>
-                        <IcMenuDots className="text-onBackground flex-grow cursor-pointer"/>
+                        <LongMenu className={`text-onBackground rotate-90 flex-grow me-11`}
+                                  onLogoutClick={() => {
+                                      setAccessToken(null)
+                                      setRefreshToken(null)
+                                      navigate("/");
+                                  }}/>
                     </div>
                 </div>
             </div>

@@ -26,7 +26,7 @@ export const Schedule = () => {
 
                 </div>
                 <div>
-                    <div className={`flex flex-row gap-2 items-center mt-4`}>
+                    <div className={`flex flex-wrap gap-2 items-center mt-4 text-nowrap`}>
                         <span className={`bg-[#FAEFB4] py-1 px-3 rounded-full text-[#AC8D3F]`}>
                     Drafted
                 </span>
