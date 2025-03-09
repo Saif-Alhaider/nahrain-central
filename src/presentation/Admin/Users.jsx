@@ -2,6 +2,7 @@ import {ReactComponent as IcUsers} from 'presentation/Common/resources/images/ic
 import {ReactComponent as IcAddCircle} from 'presentation/Common/resources/images/ic_add_circle.svg'
 import React, {useCallback, useEffect, useRef, useState} from "react";
 import {useTranslation} from "react-i18next";
+import {AdminCard} from "./AdminCard";
 
 const products = [
     {
@@ -41,21 +42,9 @@ export const Users = () => {
 
     return (
         <div className={`bg-background p-6 h-fit flex-1`}>
-            <div className={`flex flex-wrap justify-between gap-x-8 gap-y-4`}>
-                <div className={`flex flex-row gap-2`}>
-                    <IcUsers className={`w-6 h-6 min-w-6 min-h-6 flex-none text-onBackground`}/>
-                    <div className={`flex flex-col gap-2`}>
-                        <h1 className={`text-2xl text-onBackground font-semibold`}>{t("users_management")}</h1>
-                        <p className={`text-[16px] text-onBackgroundCaption`}>{t('users_screen_description')}</p>
-                    </div>
-                </div>
-                <button
-                    className={`flex-1 justify-center text-onBackground text-nowrap border rounded-lg border-softGray py-3 px-6 text-lg flex flex-row gap-2 items-center`}>
-                    <span>{t('add_new_user')}</span>
-                    <IcAddCircle/>
-                </button>
-            </div>
-            <hr className="border-[0.5px] my-4 border-strokeGray unselectable"/>
+            <AdminCard title={t("users_management")} description={t('users_screen_description')}
+                       ButtonIcon={IcAddCircle} buttonTitle={t('add_new_user')} TitleIcon={IcUsers}/>
+
             <div className={`flex flex-wrap justify-between gap-4`}>
                 <div className={`md:flex-1 min-w-[340px]`}>
                     <h1 className={`text-xl text-onBackground font-medium`}>{t("professors")}</h1>

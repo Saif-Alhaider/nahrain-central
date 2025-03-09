@@ -121,5 +121,10 @@
   "students_description": "Students can view their schedules, track attendance, check grades, access course materials, and stay updated on upcoming exams.",
   "name": "Name",
   "date_created": "Date Created",
-  "email": "Email"
+  "email": "Email",
+  "schedule_description": "Create, manage, and review schedules. Edit or delete drafts, while approved schedules are locked. Duplicate approved schedules to make changes.",
+  "create_new_schedule": "Create New Schedule",
+  "create_new_schedule_description": "Create a new schedule and view key statistics, including professors' weekly hours and fixed lab times.",
+  "new_schedule": "New Schedule",
+  "all_schedules": "All Schedules"
 }

@@ -18,6 +18,7 @@ export const MainScaffold = ({ SidebarComponent,role }) => {
     const titles = {
         '/': role.authority === 'ADMIN' ? t("dashboard") : t("home"),
         '/users': t("users"),
+        '/schedule': t("schedule"),
         '/lectures-schedule': t('lectures_schedule'),
         '/recorded-lectures': t('recorded_lectures'),
         '/record-absence': t('record_absence'),
