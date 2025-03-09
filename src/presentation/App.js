@@ -45,7 +45,6 @@ function App() {
 
 
     document.body.classList.add(currentTheme === "deviceTheme" ? theme : currentTheme);
-    NahrainLogger.log(role)
 
     return (
         <div

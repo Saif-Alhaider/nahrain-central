@@ -111,5 +111,15 @@
   "logout": "Logout",
   "dashboard": "Dashboard",
   "users": "Users",
-  "schedule": "Schedule"
+  "schedule": "Schedule",
+  "users_management": "Users Management",
+  "users_screen_description": "View and manage all professors and students. Add new users, update their details, and ensure accurate records.",
+  "add_new_user": "Add New User",
+  "professors": "Professors",
+  "professors_description": "Professors can teach multiple stages,record attendance, publish grades, schedule exams, and share educational resources.",
+  "students": "Students",
+  "students_description": "Students can view their schedules, track attendance, check grades, access course materials, and stay updated on upcoming exams.",
+  "name": "Name",
+  "date_created": "Date Created",
+  "email": "Email"
 }
