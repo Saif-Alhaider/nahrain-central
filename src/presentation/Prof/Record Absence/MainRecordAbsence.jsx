@@ -100,7 +100,7 @@ const ChooseLectureType = ({onClickContinue}) => {
         </div>
 
         <button onClick={() => selectedType !== null ? onClickContinue() : null}
-                className=" bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mb-6">{t("next_button")}
+                className={`bg-primary w-full mx-auto ${maxWidth} w-full text-white h-14 rounded-lg text-[24px] mb-6`}>{t("next_button")}
         </button>
     </div>)
 }
@@ -134,7 +134,7 @@ export const ChooseWhichStage = ({profMaterials, onNavigate}) => {
                         onNavigate(); // Call function before navigating
                     }
                 }}
-                className="cursor-pointer bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mb-6 flex items-center justify-center"
+                className={`cursor-pointer bg-primary mx-auto w-full ${maxWidth} text-white h-14 rounded-lg text-[24px] mb-6 flex items-center justify-center`}
             >
                 {t("attendance_button_text")}
             </Link>

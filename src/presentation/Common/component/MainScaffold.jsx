@@ -10,7 +10,6 @@ import {ReactComponent as IcDoubleArrow} from 'presentation/Common/resources/ima
 import {ReactComponent as IcArrowDown} from 'presentation/Common/resources/images/ic_arrow_down.svg';
 import {ReactComponent as IcDivider} from 'presentation/Common/resources/images/ic_divider.svg';
 import {Appbar} from "./appbar/Appbar";
-import {NahrainLogger} from "../../../debug/NahrainLogger";
 
 export const MainScaffold = ({ SidebarComponent,role }) => {
     const [t, i18] = useTranslation("global");
@@ -104,7 +103,7 @@ export const DialogSidebar = ({isVisible, onDismiss, children}) => {
         <div
             className={`absolute overflow-y-hidden lg:w-[40%] md:w-[55%] w-[100%] h-dvh bg-card end-0 p-4 
                 ${isVisible ? '' : 'ltr:translate-x-full rtl:-translate-x-full'}
-                ${isMaximize ? 'w-full' : ''}
+                ${isMaximize ? '!w-full' : ''}
                 `}
             style={{
                 transition: 'all 350ms cubic-bezier(0.4, 0, 0.2, 1),background-color linear',

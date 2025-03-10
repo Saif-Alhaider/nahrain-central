@@ -5,7 +5,7 @@ import 'output.css';
 import ProfileImage from "presentation/Common/resources/images/profile_image.png";
 import LongMenu from "./LongMenu";
 import {AuthContext} from "../../../../context/AuthContext";
-import {Navigate, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 export const Sidebar = ({onDismiss, className, isVisible, children}) => {

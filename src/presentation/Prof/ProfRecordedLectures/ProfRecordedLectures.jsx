@@ -119,7 +119,7 @@ const SelectContentType = ({onClickContinue}) => {
         </div>
 
         <button onClick={() => selectedType !== null ? onClickContinue() : null}
-                className=" bg-primary w-full max-w-full text-white h-14 rounded-lg text-[24px] mb-6">{t("next_button")}
+                className={`${maxWidth} bg-primary w-full mx-auto text-white h-14 rounded-lg text-[24px] mb-6`}>{t("next_button")}
         </button>
     </div>)
 }
