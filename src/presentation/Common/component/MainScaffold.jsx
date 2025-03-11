@@ -101,14 +101,14 @@ export const DialogSidebar = ({isVisible, onDismiss, children}) => {
         />
 
         <div
-            className={`absolute overflow-y-hidden lg:w-[40%] md:w-[55%] w-[100%] h-dvh bg-card end-0 p-4 
+            className={`absolute lg:w-[40%] md:w-[55%] w-[100%] h-dvh bg-card end-0 p-4 
                 ${isVisible ? '' : 'ltr:translate-x-full rtl:-translate-x-full'}
                 ${isMaximize ? '!w-full' : ''}
                 `}
             style={{
                 transition: 'all 350ms cubic-bezier(0.4, 0, 0.2, 1),background-color linear',
             }}>
-            <div className={`flex flex-row text-onBackground gap-2`}>
+            <div className={`flex flex-row text-onBackground gap-2 pb-2`}>
                 {isMaximize ? (<IcMinimize
                     className="cursor-pointer invisible w-0 md:visible md:w-fit"
                     onClick={() => setIsMaximize(false)}
@@ -126,7 +126,7 @@ export const DialogSidebar = ({isVisible, onDismiss, children}) => {
                 <IcArrowDown className={`cursor-pointer`}/>
                 <IcArrowDown className={`rotate-180 cursor-pointer`}/>
             </div>
-            <div className={`pt-12 pb-4 h-full`}>
+            <div className={`pt-12 pb-4 h-full !overflow-y-scroll`}>
                 {children}
             </div>
         </div>
