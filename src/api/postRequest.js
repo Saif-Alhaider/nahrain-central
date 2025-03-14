@@ -17,18 +17,19 @@ export const postRequest = async (path, data, onSuccess, onError, token) => {
     }
 };
 
-export const getRequest = async (path, onSuccess, onError) => {
-    try {
-        const response = await axiosInstance.get(path);
-
-        if (onSuccess) {
-            onSuccess(response.data);
-        }
-    } catch (error) {
-        if (onError) {
-            onError(error);
-        }
-    }
+export const getRequest = ({path, params, token, onSuccess, onError}) => {
+    const headers = token ? {Authorization: `Bearer ${token}`} : {}; // Add token only if defined
+    axiosInstance.get(path, {headers, params})
+        .then((response) => {
+            if (onSuccess) {
+                onSuccess(response.data);
+            }
+        })
+        .catch((error) => {
+            if (onError) {
+                onError(error);
+            }
+        });
 };
 
 export const getImageRequest = async (path, onSuccess, onError, token) => {

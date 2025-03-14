@@ -120,6 +120,8 @@
   "professors_description": "Professors can teach multiple stages,record attendance, publish grades, schedule exams, and share educational resources.",
   "students": "Students",
   "students_description": "Students can view their schedules, track attendance, check grades, access course materials, and stay updated on upcoming exams.",
+  "admins": "Admins",
+  "admin_description": "Admins can create users, assign semester grades, create syllabuses, view charts and analyses, and manage the academic platform.",
   "name": "Name",
   "date_created": "Date Created",
   "email": "Email",
@@ -130,5 +132,6 @@
   "all_schedules": "All Schedules",
   "syllabus": "Syllabus",
   "create_new_syllable": "Create New Syllabus",
-  "syllabus_description": "The Syllabus Management Screen provides an overview of all course materials, allowing admins to filter, search, and manage them efficiently. Users can quickly add, edit, or delete materials, assign professors, and track lab requirements."
+  "syllabus_description": "The Syllabus Management Screen provides an overview of all course materials, allowing admins to filter, search, and manage them efficiently. Users can quickly add, edit, or delete materials, assign professors, and track lab requirements.",
+  "no_current_data": "No data available yet. Please check back later."
 }
