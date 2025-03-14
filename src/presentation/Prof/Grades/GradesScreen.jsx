@@ -180,7 +180,7 @@ export const TableReact = () => {
         return () => window.removeEventListener("resize", updateWidth);
     }, [updateWidth]);
 
-    let isWrapped = screenWidth >= 7 * 84
+    let isWrapped = screenWidth >= 8 * 84
     const borderForBodies = `border-0 ${isWrapped ? 'border-b border-card' : ''}`;
     const lastBody = `${isWrapped ? 'border-0' : 'border-b border-card'}`;
     const thBg = `${isWrapped ? 'bg-card' : 'bg-none'}`;

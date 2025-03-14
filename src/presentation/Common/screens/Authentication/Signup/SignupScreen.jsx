@@ -25,33 +25,40 @@ export const SignupScreen = () => {
 export const SignupForm = ({className}) => {
     const [t] = useTranslation("global");
     const [email, setEmail] = useState(null)
+    const [fullName, setFullName] = useState(null)
     const [password, setPassword] = useState(null)
     const [confirmPassword, setConfirmPassword] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [isEmailValid, setIsEmailValid] = useState(true)
+    const [isFullNameValid, setIsFullNameValid] = useState(true)
     const [isPasswordValid, setIsPasswordValid] = useState(true)
     const navigate = useNavigate();
-    const {setAccessToken ,setRefreshToken} = useContext(AuthContext)
+    const {setAccessToken, setRefreshToken} = useContext(AuthContext)
 
     const onClickSignup = useCallback(async () => {
         setIsLoading(true)
-        if (isValidNahrainEmail(email) && password === confirmPassword) {
-            const requestBody = RegisterRequest(email, password)
-
-            await postRequest(AuthConfig.REGISTER, requestBody, onSignupSuccess, onSignupFail);
-            return
-        }
-        setIsLoading(false)
         if (!isValidNahrainEmail(email)) {
             setIsEmailValid(false)
         } else {
             setIsEmailValid(true)
+        }
+        if (!validateArabicName(fullName)) {
+            setIsFullNameValid(false)
+        } else {
+            setIsFullNameValid(true)
         }
         if (password !== confirmPassword || !password && !confirmPassword) {
             setIsPasswordValid(false)
         } else {
             setIsPasswordValid(true)
         }
+        if (isEmailValid && isFullNameValid && password === confirmPassword) {
+            const requestBody = RegisterRequest(fullName, email, password)
+
+            await postRequest(AuthConfig.REGISTER, requestBody, onSignupSuccess, onSignupFail);
+            return
+        }
+        setIsLoading(false)
     })
 
     const onSignupSuccess = (data) => {
@@ -68,7 +75,12 @@ export const SignupForm = ({className}) => {
     return (
         <form className={`${className}`}>
             <h1 className="text-[32px] text-onBackground w-full xl:text-start text-center font-semibold">{t('signup')}</h1>
-            <NahrainInput type={`email`} className={`mt-12`} placeholder={"John@nahrainuniv.edu.iq"}
+            <NahrainInput type={`text`} className={`mt-12`} placeholder={"Full Name"}
+                          onChange={setFullName}/>
+            {!isFullNameValid ?
+                <h1 className={`animate-fade-up animate-once animate-duration-[400ms] text-error`}>{t("invalid_full_name")}</h1> : null}
+
+            <NahrainInput type={`email`} className={`mt-4`} placeholder={"John@nahrainuniv.edu.iq"}
                           onChange={setEmail}/>
             {!isEmailValid ?
                 <h1 className={`animate-fade-up animate-once animate-duration-[400ms] text-error`}>{t("invalid_email")}</h1> : null}
@@ -110,4 +122,5 @@ export const SignupForm = ({className}) => {
 }
 
 const isValidNahrainEmail = (email) => /^[a-zA-Z0-9._%+-]+@nahrainuniv(\.edu(\.iq)?)?$/.test(email);
+const validateArabicName = (name) => /^[\u0600-\u06FF\s]{2,} [\u0600-\u06FF\s]{2,} [\u0600-\u06FF\s]{2,}$/.test(name);
 

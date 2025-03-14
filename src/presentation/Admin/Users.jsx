@@ -179,19 +179,19 @@ export const UsersTable = ({className}) => {
                 </tr>
             ))}
             </thead>
-            <tbody className={`flex-1 ${isWrapped ? 'flex-none' : ''}`}>
+            <tbody className={`flex-1`}>
             {products?.map((data, index) => (
                 <tr
-                    className={`flex flex-col ${isWrapped ? 'table-row mb-0' : ''}`}
+                    className={`flex flex-col w-full ${isWrapped ? 'table-row mb-0' : ''}`}
                     key={index}
                 >
-                    <td className={`${borderForBodies} py-3 px-4 text-nowrap`}>
+                    <td className={`${borderForBodies} py-3 px-4 truncate`}>
                         {data?.name}
                     </td>
-                    <td className={`${borderForBodies} py-3 px-4 text-nowrap`}>
+                    <td className={`${borderForBodies} py-3 px-4 truncate`}>
                         {data?.date_created}
                     </td>
-                    <td className={`border-b border-card py-3 px-4 text-nowrap`}>
+                    <td className={`border-b border-card py-3 px-4 truncate`}>
                         {data?.email}
                     </td>
                 </tr>

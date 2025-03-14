@@ -3,6 +3,7 @@ import {NahrainLogger} from "../debug/NahrainLogger";
 
 const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL_DEV,
+    withCredentials:true
 })
 
 axiosInstance.interceptors.request.use(

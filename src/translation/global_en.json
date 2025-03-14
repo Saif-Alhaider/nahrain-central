@@ -100,6 +100,7 @@
   "search": "Search",
   "recording_history": "Recording History",
   "invalid_email": "Invalid email. Please use an email from nahrainuniv.edu.iq or nahrainuniv.",
+  "invalid_full_name": "Please enter your full name in Arabic, consisting of exactly 3 parts.",
   "invalid_password": "Please make sure the confirm password matches the password.",
   "please_fill_totp": "Please fill all the TOTP boxes.",
   "totp_failed": "TOTP verification failed. Please try again.",

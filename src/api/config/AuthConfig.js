@@ -7,10 +7,11 @@ export const AuthConfig = {
 }
 
 
-export const RegisterRequest = (email, password) => {
+export const RegisterRequest = (fullName,email, password) => {
     return {
         email: email,
-        password: password
+        password: password,
+        fullName:fullName
     }
 }
 

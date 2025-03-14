@@ -99,6 +99,7 @@
   "search": "بحث",
   "recording_history": "التسجيلات السابقة",
   "invalid_email": "بريد إلكتروني غير صالح. الرجاء استخدام بريد تابع لـ nahrainuniv.edu.iq أو nahrainuniv.",
+  "invalid_full_name": "الرجاء إدخال الاسم الثلاثي باللغة العربية.",
   "invalid_password": "يرجى التأكد من أن تأكيد كلمة المرور يطابق كلمة المرور.",
   "please_fill_totp": "يرجى ملء جميع مربعات التوثيق.",
   "totp_failed": "فشل التحقق من رمز TOTP. يرجى المحاولة مرة أخرى.",
