@@ -76,7 +76,7 @@ export const Users = () => {
         fetchUsers("profs", usersData.profs.currentPage)
 
 
-        fetchUsers("student", usersData.students.currentPage)
+        fetchUsers("students", usersData.students.currentPage)
     }, []);
 
     const fetchUsers = (type, pageNumber) => {
