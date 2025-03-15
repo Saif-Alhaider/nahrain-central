@@ -24,7 +24,7 @@ import {PendingApprovalRoutes} from "../routes/PendingApprovalRoutes";
 import {AuthContext} from "../context/AuthContext";
 import {NahrainLogger} from "../debug/NahrainLogger";
 import {StudentRecordedLectures} from "./Student/StudentRecordedLectures/StudentRecordedLectures";
-import {Users} from "./Admin/Users";
+import {Users} from "./Admin/users/Users";
 import {Schedule} from "./Admin/Schedule";
 import {Syllabus} from "./Admin/Syllabus";
 

@@ -20,12 +20,12 @@ export const DropDown = ({
     };
 
     return (
-        <FormControl className={className}>
+        <FormControl className={`${className}`}>
             <Select
                 IconComponent={() => (
                     <IcArrowIcon className={"text-onBackground pointer-events-none"} />
                 )}
-                className="px-4 py-2 !text-onBackground border-strokeGray focus:border-red-600"
+                className="px-4 py-2 !text-onBackground border-strokeGray"
                 sx={{
                     '& .MuiSelect-select': {
                         paddingRight: 0,
@@ -39,6 +39,7 @@ export const DropDown = ({
                     color: 'inherit',
                     borderRadius: '8px'
                 }}
+                dir={'ltr'}
                 displayEmpty
                 renderValue={(value: unknown) => {
                     return (

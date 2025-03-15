@@ -6,7 +6,7 @@ export const ProgressBar = ({ max, current,className }) => {
     };
 
     return (
-        <div className={`${className} flex items-center space-x-2`}>
+        <div className={`${className} flex items-center gap-2`}>
             {Array.from({ length: max }).map((_, index) => (
                 <div
                     key={index}

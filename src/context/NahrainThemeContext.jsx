@@ -8,36 +8,34 @@ export const NahrainThemeContext = createContext({
     setCurrentLanguage: () => null,
     currentFont: "font-notoSans",
     setCurrentFont: () => null,
-    isDialogSidebarVisible: false,
-    setIsDialogSidebarVisible: () => null,
-    dialogSidebarChild: null,
-    setDialogSidebarChild: () => null,
-    onDismissSidebarDialog: () => {},
-    setOnDismissSidebarDialog: (fn: () => void) => {}, // Function setter
-})
 
-export const NahrainThemeProvider = ({children}) => {
-    const [currentTheme, setCurrentTheme] = useState(() => {
-        return localStorage.getItem('theme') || 'light';
+    dialogSidebar: {
+        isVisible: false,
+        child: null,
+        onDismiss: () => {},
+        indicatorMaxScreens: null,
+        indicatorCurrentScreen: null
+    },
+    setDialogSidebar: () => null
+});
+
+export const NahrainThemeProvider = ({ children }) => {
+    const [currentTheme, setCurrentTheme] = useState(() => localStorage.getItem('theme') || 'light');
+    const [currentLanguage, setCurrentLanguage] = useState(() => localStorage.getItem('language') || Object.keys(supportedLanguages)[0]);
+    const [currentFont, setCurrentFont] = useState(() => localStorage.getItem('font') || "font-notoSans");
+
+    const [dialogSidebar, setDialogSidebar] = useState({
+        isVisible: false,
+        child: null,
+        onDismiss: () => {},
+        indicatorMaxScreens: null,
+        indicatorCurrentScreen: null
     });
-    const [currentLanguage, setCurrentLanguage] = useState(() => {
-        return localStorage.getItem('language') || Object.keys(supportedLanguages)[0];
-    });
-
-    const [currentFont, setCurrentFont] = useState(() => {
-        return localStorage.getItem('font') || "font-notoSans";
-    });
-
-    const [isDialogSidebarVisible, setIsDialogSidebarVisible] = useState(false);
-
-    const [dialogSidebarChild, setDialogSidebarChild] = useState(null)
-
-    const [onDismissSidebarDialog, setOnDismissSidebarDialog] = useState(() => {});
-
 
     useEffect(() => {
         localStorage.setItem('theme', currentTheme);
     }, [currentTheme]);
+
     useEffect(() => {
         localStorage.setItem('language', currentLanguage);
     }, [currentLanguage]);
@@ -46,21 +44,16 @@ export const NahrainThemeProvider = ({children}) => {
         localStorage.setItem('font', currentFont);
     }, [currentFont]);
 
-
     const value = {
-        setCurrentTheme,
         currentTheme,
+        setCurrentTheme,
         currentLanguage,
         setCurrentLanguage,
         currentFont,
         setCurrentFont,
-        isDialogSidebarVisible,
-        setIsDialogSidebarVisible,
-        dialogSidebarChild,
-        setDialogSidebarChild,
-        onDismissSidebarDialog,
-        setOnDismissSidebarDialog
-    }
+        dialogSidebar,
+        setDialogSidebar
+    };
 
-    return <NahrainThemeContext.Provider value={value}>{children}</NahrainThemeContext.Provider>
-}
+    return <NahrainThemeContext.Provider value={value}>{children}</NahrainThemeContext.Provider>;
+};
