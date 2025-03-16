@@ -9,7 +9,9 @@ export const AuthConfig = {
 export const AdminConfig={
     GET_ALL_ADMINS:"/admin/admins",
     GET_ALL_PROFS:"/admin/profs",
-    GET_ALL_STUDENT:"/admin/students"
+    GET_ALL_STUDENT:"/admin/students",
+    GET_ALL_PENDING_USERS:"/admin/pending-users",
+    CREATE_NEW_USER:"/admin/users"
 }
 
 export const RegisterRequest = (fullName,email, password) => {
@@ -30,5 +32,17 @@ export const LoginRequest = (email, password) => {
     return {
         email: email,
         password: password
+    }
+}
+
+export const CreateNewUserRequest = ({fullName, birthDate, email, gender, phoneNumber, province, role}) => {
+    return {
+        fullName: fullName,
+        birthDate: birthDate,
+        email: email,
+        gender: gender,
+        phoneNumber: phoneNumber,
+        province: province,
+        role: role
     }
 }

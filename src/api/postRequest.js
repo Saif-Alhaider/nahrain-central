@@ -1,20 +1,19 @@
 import axiosInstance from "./axiosInstance";
 
 
-export const postRequest = async (path, data, onSuccess, onError, token) => {
-    try {
-        const headers = token ? {Authorization: `Bearer ${token}`} : {}; // Add token only if defined
-
-        const response = await axiosInstance.post(path, data, {headers});
-
-        if (onSuccess) {
-            onSuccess(response.data);
-        }
-    } catch (error) {
-        if (onError) {
-            onError(error);
-        }
-    }
+export const postRequest = (path, data, onSuccess, onError,token) => {
+    const headers = token ? {Authorization: `Bearer ${token}`} : {}; // Add token only if defined
+    axiosInstance.post(path, data, {headers})
+        .then((response) => {
+            if (onSuccess) {
+                onSuccess(response.data);
+            }
+        })
+        .catch((error) => {
+            if (onError) {
+                onError(error);
+            }
+        });
 };
 
 export const getRequest = ({path, params, token, onSuccess, onError}) => {

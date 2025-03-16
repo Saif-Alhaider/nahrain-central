@@ -41,7 +41,7 @@ export const DialogSidebarSelectUserType = ({onClickNext}) => {
                 />
             </div>
             <div className={`sticky bg-card w-full bottom-0 py-4 mt-2 items-end`}>
-                <NahrainButton onClick={() => selectedType && onClickNext()}
+                <NahrainButton onClick={() => selectedType && onClickNext(selectedType)}
                                className={`w-full`}>
                     <p className="text-2xl font-semibold">{t("next_button")}</p>
                 </NahrainButton>

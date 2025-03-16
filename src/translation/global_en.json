@@ -151,7 +151,7 @@
   "contact_info": "Contact Information",
   "phone_number": "Phone Number",
   "additional_info": "Additional Information",
-  "providence": "Providence",
+  "province": "Province",
   "Al-Anbar": "Al-Anbar",
   "Babylon": "Babylon",
   "Baghdad": "Baghdad",
@@ -172,5 +172,7 @@
   "Wasit": "Wasit",
   "create_new_user": "Create New User",
   "new_user_created": "New User Created 🎉",
-  "new_user_created_successfully": "The user account has been successfully created and is now ready for use."
+  "new_user_created_successfully": "The user account has been successfully created and is now ready for use.",
+  "pending_users": "Pending Users",
+  "pending_users_description": "These users are awaiting approval from the administration. They will not be able to access or use the platform until their information is verified and their accounts are approved."
 }

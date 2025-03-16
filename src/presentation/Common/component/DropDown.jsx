@@ -23,7 +23,7 @@ export const DropDown = ({
         <FormControl className={`${className}`}>
             <Select
                 IconComponent={() => (
-                    <IcArrowIcon className={"text-onBackground pointer-events-none"} />
+                    <IcArrowIcon className={"text-onBackground pointer-events-none"}/>
                 )}
                 className="px-4 py-2 !text-onBackground border-strokeGray"
                 sx={{
@@ -53,7 +53,7 @@ export const DropDown = ({
                         </div>
                     );
                 }}
-                value={newText}
+                value={newText || ""}
                 onChange={handleChange}
                 variant={'outlined'}
             >

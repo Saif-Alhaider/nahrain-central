@@ -49,7 +49,7 @@ const LoginForm = ({className}) => {
 
         const requestBody = LoginRequest(email, password)
 
-        await postRequest(AuthConfig.LOGIN, requestBody, onLoginSuccess, onLoginFail);
+        postRequest(AuthConfig.LOGIN, requestBody, onLoginSuccess, onLoginFail);
     })
 
     const onLoginSuccess = (data) => {

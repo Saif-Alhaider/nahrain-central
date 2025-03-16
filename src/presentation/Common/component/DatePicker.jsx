@@ -3,7 +3,7 @@ import {ReactComponent as IcCalendar} from "presentation/Common/resources/images
 import {useTranslation} from "react-i18next";
 
 
-export const DatePicker = ({className}) => {
+export const DatePicker = ({ className, onChange }) => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [showCalendar, setShowCalendar] = useState(false);
     const [showYearPicker, setShowYearPicker] = useState(false);
@@ -36,6 +36,10 @@ export const DatePicker = ({className}) => {
         date.setDate(day);
         setSelectedDate(date);
         setShowCalendar(false);
+
+        if (onChange) {
+            onChange(date);
+        }
     };
 
     const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
@@ -109,17 +113,16 @@ export const DatePicker = ({className}) => {
         if (showYearPicker && yearListRef.current) {
             const selectedYearElement = yearListRef.current.querySelector(".font-bold");
             if (selectedYearElement) {
-                selectedYearElement.scrollIntoView({behavior: "smooth", block: "center"});
+                selectedYearElement.scrollIntoView({ behavior: "smooth", block: "center" });
             }
         }
     }, [showYearPicker]);
 
     const [t] = useTranslation("global");
 
-
     return (
         <div className={`${className} relative`} ref={calendarRef}>
-            <IcCalendar className={`absolute top-4 start-4 text-onBackgroundCaption`}/>
+            <IcCalendar className={`absolute top-4 start-4 text-onBackgroundCaption`} />
             <input
                 type="text"
                 readOnly
@@ -140,7 +143,7 @@ export const DatePicker = ({className}) => {
                             className="font-semibold cursor-pointer hover:text-secondary text-onBackground"
                             onClick={() => setShowYearPicker(true)}
                         >
-                            {new Date(currentYear, currentMonth).toLocaleString("default", {month: "long"})} {currentYear}
+                            {new Date(currentYear, currentMonth).toLocaleString("default", { month: "long" })} {currentYear}
                         </span>
                         <button onClick={goToNextMonth} className="p-1 hover:bg-card rounded text-onBackground">
                             &gt;
@@ -167,3 +170,4 @@ export const DatePicker = ({className}) => {
         </div>
     );
 };
+
