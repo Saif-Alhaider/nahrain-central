@@ -202,7 +202,7 @@ export const UsersTable = ({users, className}) => {
             key={index}
         >
             <td className={`${borderForBodies} py-3 px-4 truncate`}>
-                {data?.fullName}
+                <p className={`text-secondary cursor-pointer`}>{data?.fullName}</p>
             </td>
             <td className={`${borderForBodies} py-3 px-4 truncate`}>
                 {formatDate(data?.date, currentLanguage)}

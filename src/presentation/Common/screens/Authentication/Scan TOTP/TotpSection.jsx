@@ -20,7 +20,7 @@ const InputFocusMove = ({ className, onValueChange }) => {
     };
 
     return (
-        <div className={`flex flex-row justify-between ${className}`}>
+        <div className={`flex flex-row justify-between ${className}`} dir={`ltr`}>
             {Array.from({ length: 6 }).map((_, index) => (
                 <input
                     type="number"
