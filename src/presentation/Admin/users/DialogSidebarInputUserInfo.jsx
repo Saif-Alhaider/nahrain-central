@@ -1,6 +1,6 @@
 import {NahrainInput} from "../../Common/component/NahrainInput";
 import {DropDown} from "../../Common/component/DropDown";
-import {MenuItem} from "@mui/material";
+import {CircularProgress, MenuItem} from "@mui/material";
 import {NahrainButton} from "../../Common/component/NahrainButton";
 import React, {useCallback, useContext, useState} from "react";
 import {ReactComponent as IcEmail} from "presentation/Common/resources/images/ic_email.svg";
@@ -34,12 +34,14 @@ export const DialogSidebarInputUserInfo = ({role,onClickNext}) => {
         const requestBody = CreateNewUserRequest(userData);
 
         postRequest(AdminConfig.CREATE_NEW_USER, requestBody, onSuccess, onFail, accessToken);
-        setIsLoading(false);
     }, [accessToken, userData]);
 
 
-    const onSuccess = () => onClickNext()
-    const onFail = () => null
+    const onSuccess = () => {
+        setIsLoading(false);
+        onClickNext()
+    }
+    const onFail = () => setIsLoading(false);
 
     const handleChange = (field, value) => {
         setUserData((prev) => ({...prev, [field]: value}));
@@ -129,7 +131,8 @@ export const DialogSidebarInputUserInfo = ({role,onClickNext}) => {
                 <NahrainButton onClick={() => {
                     onClickSubmitInfo()
                 }} className={`w-full`}>
-                    <p className="text-2xl font-semibold">{t("create_new_user")}</p>
+                    {isLoading ? <CircularProgress sx={{color: "rgba(var(--on-primary))"}}/> :
+                        <p className="text-2xl font-semibold">{t("continue")}</p>}
                 </NahrainButton>
             </div>
         </div>
