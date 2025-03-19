@@ -33,13 +33,19 @@ export const TotpScreen = () => {
         const requestBody = TotpRequest(totpCode);
 
         if (token !== null) {
-            await postRequest(AuthConfig.VERIFY_TOTP, requestBody, onNavigateHome, onTotpFail, token);
+            await postRequest({
+                path: AuthConfig.VERIFY_TOTP,
+                data: requestBody,
+                onSuccess: onNavigateHome,
+                onError: onTotpFail,
+                token: token
+            });
         } else {
             onTotpFail();
         }
 
         setIsLoading(false);
-    }, [totpCode]);
+    }, [t]);
 
     const onTotpFail = (error) => {
         setSnackbarState({open: true, message: t("totp_failed")});

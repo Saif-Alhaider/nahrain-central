@@ -17,7 +17,7 @@ export const postRequest = ({path, data, onSuccess, onError, token}) => {
         });
 };
 
-export const putRequest = (path, data, onSuccess, onError, token) => {
+export const putRequest = ({path, data, onSuccess, onError, token}) => {
     const headers = token ? {Authorization: `Bearer ${token}`} : {}; // Add token only if defined
     axiosInstance.put(path, data, {headers})
         .then((response) => {

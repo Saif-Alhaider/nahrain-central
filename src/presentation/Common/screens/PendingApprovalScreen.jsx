@@ -17,18 +17,16 @@ export const PendingApprovalScreen = () => {
         if (hasFetched.current) return;
         hasFetched.current = true;
 
-        postRequest(
-            AuthConfig.REFRESH_TOKEN,
-            {
-                refreshToken: refreshToken
+        postRequest({
+            path: AuthConfig.REFRESH_TOKEN,
+            data: {refreshToken: refreshToken},
+            onSuccess: (data) => {
+                setAccessToken(data.payload.token);
+                setNahrainEmail(data.payload.user.email);
+                setFullName(data.payload.user.fullName);
             },
-            (data) => {
-                setAccessToken(data.payload.token)
-                setNahrainEmail(data.payload.user.email)
-                setFullName(data.payload.user.fullName)
-            },
-            (error) => NahrainLogger.error("Failed to fetch refresh token:"),
-        );
+            onError: (error) => NahrainLogger.error("Failed to fetch refresh token: " + error),
+        });
     }, []);
 
 

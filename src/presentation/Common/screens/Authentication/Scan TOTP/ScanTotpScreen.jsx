@@ -45,9 +45,15 @@ export const ScanTotpScreen = () => {
         setIsLoading(true);
         const requestBody = TotpRequest(totpCode);
 
-        await postRequest(AuthConfig.VERIFY_TOTP, requestBody, onNavigateHome, onSignupFail, accessToken);
+        await postRequest({
+            path: AuthConfig.VERIFY_TOTP,
+            data: requestBody,
+            onSuccess: onNavigateHome,
+            onError: onSignupFail,
+            token: accessToken
+        });
         setIsLoading(false);
-    }, [totpCode, accessToken]);
+    }, [accessToken, t]);
 
     const onSignupFail = (error) => {
         setSnackbarState({open: true, message: t("totp_failed")});
@@ -81,7 +87,7 @@ export const ScanTotpScreen = () => {
                 {t("enter_verification_code")}
             </h1>
             <TotpSection className="xl:my-6 mt-2 mb-4 h-16 w-full xl:gap-8 gap-4"
-                            onValueChange={code => setTotpCode(code)}
+                         onValueChange={code => setTotpCode(code)}
             />
 
             <NahrainButton onClick={onClickSubmitTotp}>

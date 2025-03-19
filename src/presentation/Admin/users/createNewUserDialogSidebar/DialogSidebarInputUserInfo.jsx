@@ -33,7 +33,13 @@ export const DialogSidebarInputUserInfo = ({role, onClickNext}) => {
         setIsLoading(true);
         const requestBody = CreateNewUserRequest(userData);
 
-        postRequest(AdminConfig.CREATE_NEW_USER, requestBody, onSuccess, onFail, accessToken);
+        postRequest({
+            path: AdminConfig.CREATE_NEW_USER,
+            data: requestBody,
+            onSuccess: onSuccess,
+            onError: onFail,
+            token: accessToken
+        });
     }, [accessToken, userData]);
 
 

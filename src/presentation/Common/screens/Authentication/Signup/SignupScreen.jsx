@@ -57,7 +57,12 @@ export const SignupForm = ({className}) => {
         if (isEmailValid && isFullNameValid && password === confirmPassword) {
             const requestBody = RegisterRequest(fullName, email, password)
 
-            postRequest(AuthConfig.REGISTER, requestBody, onSignupSuccess, onSignupFail);
+            postRequest({
+                path: AuthConfig.REGISTER,
+                data: requestBody,
+                onSuccess: onSignupSuccess,
+                onError: onSignupFail
+            });
             return
         }
         setIsLoading(false)

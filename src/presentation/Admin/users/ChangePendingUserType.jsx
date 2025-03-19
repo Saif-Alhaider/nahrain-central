@@ -6,7 +6,7 @@ import {ReactComponent as IcStudent} from "presentation/Common/resources/images/
 import {ContentBox} from "../../Common/component/MainScaffold";
 import {NahrainButton} from "../../Common/component/NahrainButton";
 import {AdminConfig, ChangeUserType} from "../../../api/config/AuthConfig";
-import {postRequest, putRequest} from "../../../api/postRequest";
+import {putRequest} from "../../../api/postRequest";
 import {AuthContext} from "../../../context/AuthContext";
 
 export const ChangePendingUserType = ({userId, onSuccess, onFail}) => {
@@ -18,16 +18,21 @@ export const ChangePendingUserType = ({userId, onSuccess, onFail}) => {
     const UserType = Object.freeze({
         ADMIN: "ADMIN", PROF: "PROF", STUDENT: "STUDENT"
     });
-    console.log(userId)
 
     const onChangeUserType = useCallback(() => {
         setIsLoading(true);
         const requestBody = ChangeUserType({role: selectedType});
 
-        putRequest(AdminConfig.PENDING_USER + userId, requestBody, () => {
-            onSuccess()
-            setIsLoading(false)
-        }, onFail, accessToken);
+        putRequest({
+            path: AdminConfig.PENDING_USER + userId,
+            data: requestBody,
+            onSuccess: () => {
+                onSuccess();
+                setIsLoading(false);
+            },
+            onError: onFail,
+            token: accessToken
+        });
     }, [accessToken, selectedType, onSuccess, onFail, userId]);
 
 
