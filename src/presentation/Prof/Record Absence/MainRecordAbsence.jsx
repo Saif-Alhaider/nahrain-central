@@ -9,13 +9,11 @@ import {wait} from "@testing-library/user-event/dist/utils";
 import {NahrainThemeContext} from "../../../context/NahrainThemeContext";
 import {Link} from "react-router-dom";
 
-export const MainRecordAbsence = ({className}) => {
+export const MainRecordAbsence = ({ className }) => {
     const [t] = useTranslation("global");
-    const {
-        isDialogSidebarVisible, setIsDialogSidebarVisible, setDialogSidebarChild, setOnDismissSidebarDialog
-    } = useContext(NahrainThemeContext)
+    const { dialogSidebar, setDialogSidebar } = useContext(NahrainThemeContext);
 
-    const [currentSidebarDialogScreen, setCurrentSidebarDialogScreen] = useState(0)
+    const [currentSidebarDialogScreen, setCurrentSidebarDialogScreen] = useState(0);
 
     let profMaterials = [
         {
@@ -26,51 +24,65 @@ export const MainRecordAbsence = ({className}) => {
             stage: "Senior",
             name: "اخلاقيات المهنة",
         }
-    ]
+    ];
 
-    const publishContentScreens = [<ChooseLectureType
-        onClickContinue={() => setCurrentSidebarDialogScreen(currentSidebarDialogScreen + 1)}
-    />,
-    <ChooseWhichStage profMaterials={profMaterials} onNavigate={()=>{
-        setIsDialogSidebarVisible(false)
-        wait(350).then(r => setCurrentSidebarDialogScreen(0))
-    }}/>
-    ]
-    useEffect(() => {
-        setOnDismissSidebarDialog(() => () => {
-            setIsDialogSidebarVisible(false)
-            wait(350).then(r => setCurrentSidebarDialogScreen(0))
-        });
-    }, [setOnDismissSidebarDialog]);
+    const publishContentScreens = [
+        <ChooseLectureType onClickContinue={() => setCurrentSidebarDialogScreen(currentSidebarDialogScreen + 1)} />,
+        <ChooseWhichStage
+            profMaterials={profMaterials}
+            onNavigate={() => {
+                setDialogSidebar(prev => ({ ...prev, isVisible: false }));
+                wait(350).then(r => setCurrentSidebarDialogScreen(0));
+            }}
+        />
+    ];
 
     useEffect(() => {
-        setDialogSidebarChild(publishContentScreens[currentSidebarDialogScreen]);
-    }, [currentSidebarDialogScreen, setDialogSidebarChild]);
-
-
-
+        setDialogSidebar(prev => ({
+            ...prev,
+            onDismiss: () => {
+                setDialogSidebar(prev => ({ ...prev, isVisible: false }));
+                wait(350).then(r => setCurrentSidebarDialogScreen(0));
+            },
+            child: publishContentScreens[currentSidebarDialogScreen],
+            indicatorMaxScreens: publishContentScreens.length,
+            indicatorCurrentScreen: currentSidebarDialogScreen
+        }));
+    }, [setDialogSidebar, currentSidebarDialogScreen]);
 
     return (
         <div className={`${className} w-full bg-background p-6`}>
-        <DetailedActionCard
-            onClick={() => {
-                setDialogSidebarChild(publishContentScreens[currentSidebarDialogScreen])
-                setIsDialogSidebarVisible(!isDialogSidebarVisible)
-            }
-            }
-            title={t("attendance_title")}
-            description={t("attendance_description")}
-            buttonTitle={t("attendance_button_text")}
-        />
+            <DetailedActionCard
+                onClick={() => {
+                    setDialogSidebar(prev => ({
+                        ...prev,
+                        isVisible: !prev.isVisible,
+                        child: publishContentScreens[currentSidebarDialogScreen],
+                        indicatorMaxScreens: publishContentScreens.length,
+                        indicatorCurrentScreen: currentSidebarDialogScreen
+                    }));
+                }}
+                title={t("attendance_title")}
+                description={t("attendance_description")}
+                buttonTitle={t("attendance_button_text")}
+            />
 
             <h1 className={`text-onBackground text-2xl font-semibold mt-4`}>{t("recording_history")}</h1>
 
-        <MaterialDetailedCard className={`mt-4`} dayOfWeek="MON" dayOfMonth={22}
-                              examFormat={"Theoretical"} assessmentType={"Lecture"} startTime={"10:00"}
-                              endTime={"10:30"}
-                              material={"Communication 1"} stage={"Junior"}/>
-    </div>)
-}
+            <MaterialDetailedCard
+                className={`mt-4`}
+                dayOfWeek="MON"
+                dayOfMonth={22}
+                examFormat={"Theoretical"}
+                assessmentType={"Lecture"}
+                startTime={"10:00"}
+                endTime={"10:30"}
+                material={"Communication 1"}
+                stage={"Junior"}
+            />
+        </div>
+    );
+};
 
 
 const ChooseLectureType = ({onClickContinue}) => {

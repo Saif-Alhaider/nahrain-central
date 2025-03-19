@@ -36,7 +36,7 @@ export default function LongMenu({ className, onProfileClick, onLogoutClick }) {
                 aria-expanded={open ? 'true' : undefined}
                 aria-haspopup="true"
                 onClick={handleClick}
-                sx={{ color: 'var(--onBackground)' }}
+                sx={{ color: 'var(--onBackground)' ,width:"0px"}}
             >
                 <MoreVertIcon />
             </IconButton>

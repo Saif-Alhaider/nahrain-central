@@ -92,7 +92,7 @@ export const SignupForm = ({className}) => {
     }, [onClickSignup]);
 
     return (
-        <form className={`${className}`} onSubmit={(e) => e.preventDefault()}>
+        <form className={`${className}`} onSubmit={(e) => e.preventDefault()} autoComplete={'off'}>
             <h1 className="text-[32px] text-onBackground w-full xl:text-start text-center font-semibold">{t('signup')}</h1>
             <NahrainInput type={`text`} className={`mt-12`} placeholder={"Full Name"}
                           onChange={setFullName}/>

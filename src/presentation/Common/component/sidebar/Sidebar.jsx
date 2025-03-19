@@ -40,7 +40,7 @@ z-10  overflow-y-scroll lg:sticky fixed min-w-[288px] h-dvh py-4 px-6 bg-card fl
                             <h1 className="text-onBackground text-[24px] truncate text-nowrap ">{fullName}</h1>
                             <p className="text-onBackgroundCaption text-[12px] w-full text-nowrap overflow-hidden overflow-ellipsis">{nahrainEmail}</p>
                         </div>
-                        <LongMenu className={`text-onBackground rotate-90 flex-grow me-11`}
+                        <LongMenu className={`text-onBackground rotate-90 flex-grow me-11 w-0`}
                                   onLogoutClick={() => {
                                       localStorage.clear()
                                       setAccessToken(null)
