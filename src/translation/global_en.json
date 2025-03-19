@@ -174,5 +174,7 @@
   "new_user_created": "New User Created 🎉",
   "new_user_created_successfully": "The user account has been successfully created and is now ready for use.",
   "pending_users": "Pending Users",
-  "pending_users_description": "These users are awaiting approval from the administration. They will not be able to access or use the platform until their information is verified and their accounts are approved."
+  "pending_users_description": "These users are awaiting approval from the administration. They will not be able to access or use the platform until their information is verified and their accounts are approved.",
+  "change_user_role": "Change User Role",
+  "change_user_role_description": "Select a new role for the pending user. You can assign them as a student, professor, or admin to grant them the appropriate permissions within the system."
 }

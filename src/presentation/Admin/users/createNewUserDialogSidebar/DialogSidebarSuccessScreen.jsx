@@ -1,5 +1,5 @@
 import {useTranslation} from "react-i18next";
-import {NahrainButton} from "../../Common/component/NahrainButton";
+import {NahrainButton} from "../../../Common/component/NahrainButton";
 import React from "react";
 
 export const DialogSidebarSuccessScreen = ({onDismiss}) => {

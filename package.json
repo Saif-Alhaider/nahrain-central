@@ -26,8 +26,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "env-cmd -f .env react-scripts start",
+    "build": "env-cmd -f .env.prod react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "env-cmd": "^10.1.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14"
   }

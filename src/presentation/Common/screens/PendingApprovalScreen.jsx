@@ -9,7 +9,7 @@ import {NahrainLogger} from "../../../debug/NahrainLogger";
 
 export const PendingApprovalScreen = () => {
     const [t] = useTranslation("global");
-    const {refreshToken, setAccessToken,setRefreshToken} = useContext(AuthContext);
+    const {refreshToken, setAccessToken, setRefreshToken, setNahrainEmail, setFullName} = useContext(AuthContext);
 
     const hasFetched = useRef(false);
 
@@ -22,7 +22,11 @@ export const PendingApprovalScreen = () => {
             {
                 refreshToken: refreshToken
             },
-            (data) => setAccessToken(data.payload.token),
+            (data) => {
+                setAccessToken(data.payload.token)
+                setNahrainEmail(data.payload.user.email)
+                setFullName(data.payload.user.fullName)
+            },
             (error) => NahrainLogger.error("Failed to fetch refresh token:"),
         );
     }, []);

@@ -9,9 +9,10 @@ import {CircularProgress} from "@mui/material";
 import {getRequest} from "../../../api/postRequest";
 import {AdminConfig} from "../../../api/config/AuthConfig";
 import {AuthContext} from "../../../context/AuthContext";
-import {DialogSidebarSelectUserType} from "./DialogSidebarSelectUserType";
-import {DialogSidebarInputUserInfo} from "./DialogSidebarInputUserInfo";
-import {DialogSidebarSuccessScreen} from "./DialogSidebarSuccessScreen";
+import {DialogSidebarSelectUserType} from "./createNewUserDialogSidebar/DialogSidebarSelectUserType";
+import {DialogSidebarInputUserInfo} from "./createNewUserDialogSidebar/DialogSidebarInputUserInfo";
+import {DialogSidebarSuccessScreen} from "./createNewUserDialogSidebar/DialogSidebarSuccessScreen";
+import {ChangePendingUserType} from "./ChangePendingUserType";
 
 export const Users = () => {
     const [t, i18] = useTranslation("global");
@@ -58,7 +59,7 @@ export const Users = () => {
 
     const updateUsersData = (type, data) => {
         const users = data.payload.users.map((user) => ({
-            fullName: user.fullName, email: user.email, date: user.date,
+            fullName: user.fullName, email: user.email, id: user.id, date: user.date,
         }));
 
         setUsersData((prevState) => ({
@@ -75,7 +76,7 @@ export const Users = () => {
     useEffect(() => {
         setDialogSidebar(prev => ({
             ...prev,
-            onDismiss: () => setDialogSidebar(prev => ({...prev, isVisible: false})),
+            onDismiss: () => setDialogSidebar(prev => ({...prev, isVisible: false, child: null})),
             child: sidebarDialogScreens[dialogSidebarState.currentDialogSidebarScreen],
             indicatorMaxScreens: sidebarDialogScreens.length,
             indicatorCurrentScreen: dialogSidebarState.currentDialogSidebarScreen
@@ -128,9 +129,13 @@ export const Users = () => {
                    ButtonIcon={IcAddCircle} buttonTitle={t('add_new_user')} TitleIcon={IcUsers}
                    onButtonClick={() => {
                        setDialogSidebar(prev => ({
-                           ...prev, isVisible: !prev.isVisible
-                       }));
-                   }}
+                               ...prev,
+                               isVisible: !prev.isVisible,
+                               currentDialogSidebarScreen: 0
+                           })
+                       );
+                   }
+                   }
         />
 
         <UsersSection title={t("admins")} description={t("admin_description")} users={usersData.admins}
@@ -151,12 +156,36 @@ export const Users = () => {
         <UsersSection title={t("pending_users")} description={t("pending_users_description")}
                       users={usersData.pendingUsers}
                       isLoading={usersData.admins.loading}
-                      onPageChange={(page) => handlePageChange("pendingUsers", page)}/>
+                      onPageChange={(page) => handlePageChange("pendingUsers", page)}
+                      onUserClick={(userId) => {
+                          setDialogSidebar(prev => ({
+                                  ...prev,
+                                  isVisible: !prev.isVisible,
+                                  child: <ChangePendingUserType userId={userId}
+                                                                onSuccess={() => updateToFinishScreen(setDialogSidebar, () => {
+                                                                    dialogSidebar.onDismiss()
+                                                                })}/>,
+                                  indicatorMaxScreens: null,
+                                  indicatorCurrentScreen: null
+                              })
+                          );
+                      }}
+        />
     </div>)
 }
 
+function updateToFinishScreen(setDialogSidebar, onDismiss) {
+    setDialogSidebar(prev => ({
+            ...prev,
+            child: <DialogSidebarSuccessScreen onDismiss={() => onDismiss?.()}/>,
+            indicatorMaxScreens: null,
+            indicatorCurrentScreen: null
+        })
+    );
+}
 
-export const UsersTable = ({users, className}) => {
+
+export const UsersTable = ({users, onUserClick, className}) => {
     const {currentLanguage} = useContext(NahrainThemeContext)
 
     const [t, i18] = useTranslation("global");
@@ -202,7 +231,8 @@ export const UsersTable = ({users, className}) => {
             key={index}
         >
             <td className={`${borderForBodies} py-3 px-4 truncate`}>
-                <p className={`text-secondary cursor-pointer`}>{data?.fullName}</p>
+                <p className={`text-secondary cursor-pointer`}
+                   onClick={() => onUserClick(data?.id)}>{data?.fullName}</p>
             </td>
             <td className={`${borderForBodies} py-3 px-4 truncate`}>
                 {formatDate(data?.date, currentLanguage)}
@@ -216,7 +246,7 @@ export const UsersTable = ({users, className}) => {
 };
 
 
-export const UsersSection = ({title, description, users, isLoading, onPageChange}) => {
+export const UsersSection = ({title, description, users, isLoading, onPageChange, onUserClick}) => {
     const usersPerPage = 4
     const totalPages = Math.ceil(users.totalUsers / usersPerPage);
     return (<div className={`flex flex-wrap justify-between gap-4`}>
@@ -228,7 +258,8 @@ export const UsersSection = ({title, description, users, isLoading, onPageChange
             <div className={`flex flex-col ltr:items-end rtl:items-start gap-3 flex-1`}>
                 <div className="mt-4 border border-onBackgroundCaption rounded-t-lg w-full">
                     <h1 className="text-onBackground bg-card h-12 ps-4 flex items-center visible sm:hidden rounded-t-lg">{title}</h1>
-                    <UsersTable users={users.data} className="rounded-t-lg md:min-w-[600px]"/>
+                    <UsersTable users={users.data} className="rounded-t-lg md:min-w-[600px]"
+                                onUserClick={(userId) => onUserClick?.(userId)}/>
                 </div>
 
                 <div className={`flex flex-row gap-2`}>

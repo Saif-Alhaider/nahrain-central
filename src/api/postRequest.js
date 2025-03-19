@@ -1,17 +1,33 @@
 import axiosInstance from "./axiosInstance";
 
 
-export const postRequest = (path, data, onSuccess, onError,token) => {
+export const postRequest = ({path, data, onSuccess, onError, token}) => {
     const headers = token ? {Authorization: `Bearer ${token}`} : {}; // Add token only if defined
     axiosInstance.post(path, data, {headers})
         .then((response) => {
             if (onSuccess) {
-                onSuccess(response.data);
+                onSuccess?.(response.data);
             }
         })
         .catch((error) => {
             if (onError) {
-                onError(error);
+                console.log(error)
+                onError?.(error);
+            }
+        });
+};
+
+export const putRequest = (path, data, onSuccess, onError, token) => {
+    const headers = token ? {Authorization: `Bearer ${token}`} : {}; // Add token only if defined
+    axiosInstance.put(path, data, {headers})
+        .then((response) => {
+            if (onSuccess) {
+                onSuccess?.(response.data);
+            }
+        })
+        .catch((error) => {
+            if (onError) {
+                onError?.(error);
             }
         });
 };

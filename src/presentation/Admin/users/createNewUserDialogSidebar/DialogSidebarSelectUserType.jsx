@@ -1,10 +1,10 @@
-import {ContentBox} from "../../Common/component/MainScaffold";
+import {ContentBox} from "../../../Common/component/MainScaffold";
 import {ReactComponent as IcAdmin} from "presentation/Common/resources/images/ic_admin.svg"
 import {ReactComponent as IcProf} from "presentation/Common/resources/images/ic_prof.svg"
 import {ReactComponent as IcStudent} from "presentation/Common/resources/images/ic_student.svg"
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {NahrainButton} from "../../Common/component/NahrainButton";
+import {NahrainButton} from "../../../Common/component/NahrainButton";
 
 export const DialogSidebarSelectUserType = ({onClickNext}) => {
     const [selectedType, setSelectedType] = useState(null);

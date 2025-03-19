@@ -1,5 +1,5 @@
 import {BaseAuthentication} from "../BaseAuthentication";
-import React, {useCallback, useContext, useState} from "react";
+import React, {useCallback, useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import finishSignup from "../Finish Signup/resources/finishSignup.png";
 import {NahrainButton} from "presentation/Common/component/NahrainButton";
@@ -35,7 +35,7 @@ export const SignupForm = ({className}) => {
     const navigate = useNavigate();
     const {setAccessToken, setRefreshToken} = useContext(AuthContext)
 
-    const onClickSignup = useCallback(async () => {
+    const onClickSignup = useCallback(() => {
         setIsLoading(true)
         if (!isValidNahrainEmail(email)) {
             setIsEmailValid(false)
@@ -52,10 +52,12 @@ export const SignupForm = ({className}) => {
         } else {
             setIsPasswordValid(true)
         }
+
+
         if (isEmailValid && isFullNameValid && password === confirmPassword) {
             const requestBody = RegisterRequest(fullName, email, password)
 
-            await postRequest(AuthConfig.REGISTER, requestBody, onSignupSuccess, onSignupFail);
+            postRequest(AuthConfig.REGISTER, requestBody, onSignupSuccess, onSignupFail);
             return
         }
         setIsLoading(false)
@@ -72,8 +74,20 @@ export const SignupForm = ({className}) => {
         setIsLoading(false)
     }
 
+    useEffect(() => {
+        const handleEnterPress = (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                onClickSignup()
+            }
+        };
+
+        document.addEventListener("keydown", handleEnterPress);
+        return () => document.removeEventListener("keydown", handleEnterPress);
+    }, [onClickSignup]);
+
     return (
-        <form className={`${className}`}>
+        <form className={`${className}`} onSubmit={(e) => e.preventDefault()}>
             <h1 className="text-[32px] text-onBackground w-full xl:text-start text-center font-semibold">{t('signup')}</h1>
             <NahrainInput type={`text`} className={`mt-12`} placeholder={"Full Name"}
                           onChange={setFullName}/>

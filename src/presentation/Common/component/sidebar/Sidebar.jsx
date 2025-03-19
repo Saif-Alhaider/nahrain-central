@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom";
 
 
 export const Sidebar = ({onDismiss, className, isVisible, children}) => {
-    const {setAccessToken, setRefreshToken} = useContext(AuthContext)
+    const {setAccessToken, setRefreshToken, fullName, nahrainEmail} = useContext(AuthContext)
     const navigate = useNavigate();
 
     return (
@@ -37,11 +37,12 @@ z-10  overflow-y-scroll lg:sticky fixed min-w-[288px] h-dvh py-4 px-6 bg-card fl
                              src={ProfileImage}
                              alt="Rounded avatar" draggable={false}/>
                         <div className="w-[140px] ">
-                            <h1 className="text-onBackground text-[24px]">محمد خالد</h1>
-                            <p className="text-onBackgroundCaption text-[12px] w-full text-nowrap overflow-hidden overflow-ellipsis">mohammadKhalid@nahrain.iq</p>
+                            <h1 className="text-onBackground text-[24px] truncate text-nowrap ">{fullName}</h1>
+                            <p className="text-onBackgroundCaption text-[12px] w-full text-nowrap overflow-hidden overflow-ellipsis">{nahrainEmail}</p>
                         </div>
                         <LongMenu className={`text-onBackground rotate-90 flex-grow me-11`}
                                   onLogoutClick={() => {
+                                      localStorage.clear()
                                       setAccessToken(null)
                                       setRefreshToken(null)
                                       navigate("/");

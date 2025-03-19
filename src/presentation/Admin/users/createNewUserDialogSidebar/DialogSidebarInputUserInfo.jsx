@@ -1,7 +1,7 @@
-import {NahrainInput} from "../../Common/component/NahrainInput";
-import {DropDown} from "../../Common/component/DropDown";
+import {NahrainInput} from "../../../Common/component/NahrainInput";
+import {DropDown} from "../../../Common/component/DropDown";
 import {CircularProgress, MenuItem} from "@mui/material";
-import {NahrainButton} from "../../Common/component/NahrainButton";
+import {NahrainButton} from "../../../Common/component/NahrainButton";
 import React, {useCallback, useContext, useState} from "react";
 import {ReactComponent as IcEmail} from "presentation/Common/resources/images/ic_email.svg";
 import {ReactComponent as IcUsers} from "presentation/Common/resources/images/ic_users.svg";
@@ -9,12 +9,12 @@ import {ReactComponent as IcPhone} from "presentation/Common/resources/images/ic
 import {ReactComponent as IcTextSquare} from "presentation/Common/resources/images/ic_text_square.svg";
 import {DatePicker} from "presentation/Common/component/DatePicker"
 import {useTranslation} from "react-i18next";
-import {AdminConfig, CreateNewUserRequest} from "../../../api/config/AuthConfig";
-import {postRequest} from "../../../api/postRequest";
-import {AuthContext} from "../../../context/AuthContext";
+import {AdminConfig, CreateNewUserRequest} from "../../../../api/config/AuthConfig";
+import {postRequest} from "../../../../api/postRequest";
+import {AuthContext} from "../../../../context/AuthContext";
 
 
-export const DialogSidebarInputUserInfo = ({role,onClickNext}) => {
+export const DialogSidebarInputUserInfo = ({role, onClickNext}) => {
     const [t] = useTranslation("global");
     const [isLoading, setIsLoading] = useState(false);
     const {accessToken} = useContext(AuthContext)

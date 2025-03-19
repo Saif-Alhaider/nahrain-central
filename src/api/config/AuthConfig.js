@@ -3,22 +3,24 @@ export const AuthConfig = {
     LOGIN: "/auth/login",
     TOTP_IMAGE: "/totp",
     VERIFY_TOTP: "/verify-totp",
-    REFRESH_TOKEN:"/auth/refreshtoken",
+    REFRESH_TOKEN: "/auth/refreshtoken",
 }
 
-export const AdminConfig={
-    GET_ALL_ADMINS:"/admin/admins",
-    GET_ALL_PROFS:"/admin/profs",
-    GET_ALL_STUDENT:"/admin/students",
-    GET_ALL_PENDING_USERS:"/admin/pending-users",
-    CREATE_NEW_USER:"/admin/users"
+export const AdminConfig = {
+    GET_ALL_ADMINS: "/admin/admins",
+    GET_ALL_PROFS: "/admin/profs",
+    GET_ALL_STUDENT: "/admin/students",
+    GET_ALL_PENDING_USERS: "/admin/pending-users",
+    CREATE_NEW_USER: "/admin/users",
+    PENDING_USER:"/admin/users/pending/"
+
 }
 
-export const RegisterRequest = (fullName,email, password) => {
+export const RegisterRequest = (fullName, email, password) => {
     return {
         email: email,
         password: password,
-        fullName:fullName
+        fullName: fullName
     }
 }
 
@@ -44,5 +46,12 @@ export const CreateNewUserRequest = ({fullName, birthDate, email, gender, phoneN
         phoneNumber: phoneNumber,
         province: province,
         role: role
+    }
+}
+
+
+export const ChangeUserType = ({role}) => {
+    return {
+        "role": role
     }
 }

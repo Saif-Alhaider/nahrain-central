@@ -14,7 +14,7 @@ export const StudentSidebar = ({currentScreen, onDismiss, className, isVisible})
     return (
         <Sidebar onDismiss={onDismiss} isVisible={isVisible} className={className}>
             <div className="flex flex-col h-full">
-                <p className="text-onBackgroundCaption text-[16px] my-4">Menu</p>
+                <p className="text-onBackgroundCaption text-[16px] my-4">{t("menu")}</p>
                 <div className="flex flex-col gap-2 unselectable">
                     <MenuItem onDismiss={onDismiss} icon={IcHome} text={t("home")} to='/'
                               isActive={currentScreen === t("home")}/>
