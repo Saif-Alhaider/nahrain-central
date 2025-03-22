@@ -24,8 +24,8 @@ export const AdminSidebar = ({currentScreen, onDismiss, className, isVisible}) =
 
                     <MenuItem onDismiss={onDismiss} icon={IcCalendar} to='/schedule'
                               text={t('schedule')} isActive={currentScreen === t('schedule')}/>
-                    <MenuItem onDismiss={onDismiss} icon={IcBook} to='/syllabus'
-                              text={t('syllabus')} isActive={currentScreen === t('syllabus')}/>
+                    <MenuItem onDismiss={onDismiss} icon={IcBook} to='/curriculum'
+                              text={t('curriculum')} isActive={currentScreen === t('curriculum')}/>
                 </div>
                 <div className="flex-grow flex flex-col justify-end gap-2 mt-4">
                     <MenuItem onDismiss={onDismiss} icon={IcSettings} to='/settings'
