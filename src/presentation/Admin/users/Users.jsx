@@ -55,7 +55,7 @@ export const Users = () => {
         }/>,
         <DialogSidebarInputUserInfo role={dialogSidebarState.selectedRole}
                                     onClickNext={() => handleDialogSidebarChange("currentDialogSidebarScreen", dialogSidebarState.currentDialogSidebarScreen + 1)}/>,
-        <DialogSidebarSuccessScreen onDismiss={() => dialogSidebar.onDismiss()}/>]
+        <DialogSidebarSuccessScreen title={t("new_user_created")} description={t("new_user_created_successfully")} onDismiss={() => dialogSidebar.onDismiss()}/>]
 
     const updateUsersData = (type, data) => {
         const users = data.payload.users.map((user) => ({
@@ -76,7 +76,10 @@ export const Users = () => {
     useEffect(() => {
         setDialogSidebar(prev => ({
             ...prev,
-            onDismiss: () => setDialogSidebar(prev => ({...prev, isVisible: false, child: null})),
+            onDismiss: () => {
+                setDialogSidebar(prev => ({...prev, isVisible: false,}))
+                setDialogSidebarState(prev => ({...prev, currentDialogSidebarScreen: 0}))
+            },
             child: sidebarDialogScreens[dialogSidebarState.currentDialogSidebarScreen],
             indicatorMaxScreens: sidebarDialogScreens.length,
             indicatorCurrentScreen: dialogSidebarState.currentDialogSidebarScreen

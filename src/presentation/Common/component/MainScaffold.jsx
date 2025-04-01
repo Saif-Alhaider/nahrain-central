@@ -121,7 +121,7 @@ export const DialogSidebar = ({isVisible, onDismiss, indicatorMaxScreens, indica
                         onClick={() => setIsMaximize(true)}
                     />)}
                     <IcDoubleArrow
-                        className={`${isVisible ? "rotate-0" : "rotate-[-180deg]"} transition-transform ease-linear cursor-pointer`}
+                        className={`${isVisible ? "ltr:rotate-0 rtl:rotate-180" : "rotate-[-180deg]"} transition-transform ease-linear cursor-pointer`}
                         onClick={() => {
                             onDismiss()
                             setIsMaximize(false)

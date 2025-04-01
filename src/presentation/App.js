@@ -26,7 +26,7 @@ import {NahrainLogger} from "../debug/NahrainLogger";
 import {StudentRecordedLectures} from "./Student/StudentRecordedLectures/StudentRecordedLectures";
 import {Users} from "./Admin/users/Users";
 import {Schedule} from "./Admin/Schedule";
-import {Curriculum} from "./Admin/Curriculum";
+import {Curriculum} from "./Admin/Curriculum/Curriculum";
 
 
 function App() {
