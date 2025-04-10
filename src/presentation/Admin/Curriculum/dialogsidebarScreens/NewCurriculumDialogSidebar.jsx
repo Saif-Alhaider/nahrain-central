@@ -9,15 +9,21 @@ import {
 import {ReactComponent as IcSetting} from "presentation/Common/resources/images/ic_setting_bold.svg"
 import {ReactComponent as IcBulb} from "presentation/Common/resources/images/ic_bulb_bold.svg"
 
-export const NewCurriculumDialogSidebar = ({curriculumId,onClickNext}) => {
+export const NewCurriculumDialogSidebar = ({onClickNext}) => {
     const [selectedType, setSelectedType] = useState(null);
-    const [isLoading, setIsLoading] = useState(null);
+    const [isLoading] = useState(null);
     const [t] = useTranslation("global");
-    const {accessToken} = useContext(AuthContext)
-
     const UserType = Object.freeze({
         LAB: "LAB", THEORETICAL: "THEORETICAL", THEORETICAL_AND_LAB: "THEORETICAL_AND_LAB"
     });
+
+    const handleNext = () => {
+        if (!selectedType) {
+            // Show validation error
+            return;
+        }
+        onClickNext(selectedType); // Pass the selected type
+    };
 
 
     return (<div className={`max-w-[700px] flex flex-col h-full justify-between mx-auto relative`}>
@@ -51,7 +57,7 @@ export const NewCurriculumDialogSidebar = ({curriculumId,onClickNext}) => {
         </div>
 
         <div className={`sticky bg-card w-full bottom-0 py-4 mt-2 items-end`}>
-            <NahrainButton onClick={onClickNext}
+            <NahrainButton onClick={handleNext}
                 className={`w-full`} isLoading={isLoading}>
                 <p className="text-2xl font-semibold">{t("next_button")}</p>
             </NahrainButton>

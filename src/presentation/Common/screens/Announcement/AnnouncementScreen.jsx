@@ -1,5 +1,5 @@
 import {ReactComponent as Iclock} from "presentation/Prof/Exams/resources/ic_clock.svg";
-import {ReactComponent as IcLink} from "presentation/Common/screens/Announcement/resources/ic_link.svg";
+import {ReactComponent as IcLink} from "presentation/Common/resources/images/ic_link.svg";
 import {ReactComponent as IcUsers} from "presentation/Common/screens/Announcement/resources/ic_users.svg";
 import {ReactComponent as IcNoteBook} from "presentation/Prof/Exams/resources/ic_notebook.svg";
 import React from "react";

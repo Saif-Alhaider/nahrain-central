@@ -10,11 +10,15 @@ import {CircularProgress} from "@mui/material";
 export const SelectProfDialogSidebar = ({onClickNext}) => {
     const [isLoading, setIsLoading] = useState(true);
     const [t] = useTranslation("global");
-    const {accessToken} = useContext(AuthContext)
+    const {accessToken} = useContext(AuthContext);
 
     const initialState = {
         profs: {
-            data: [], loading: true, totalUsers: 0, pageSize: 1, currentPage: 1,
+            data: [],
+            loading: true,
+            totalUsers: 0,
+            pageSize: 1,
+            currentPage: 1,
         },
         selectedIds: [],
         searchQuery: ""
@@ -23,35 +27,33 @@ export const SelectProfDialogSidebar = ({onClickNext}) => {
     const [usersData, setUsersData] = useState(initialState);
     const hasFetched = useRef(false);
 
+    const fetchUsers = (pageNumber) => {
 
-    const fetchUsers = (type, pageNumber) => {
-        const pathMap = {
-            admins: AdminConfig.GET_ALL_ADMINS,
-            profs: AdminConfig.GET_ALL_PROFS,
-            students: AdminConfig.GET_ALL_STUDENT,
-            pendingUsers: AdminConfig.GET_ALL_PENDING_USERS
-        };
 
         getRequest({
-            path: pathMap[type],
+            path: AdminConfig.GET_ALL_PROFS,
             params: {
-                pageNumber: pageNumber - 1, // api expects 0-based index
+                pageNumber: pageNumber - 1,
                 pageSize: 20,
             },
-            onSuccess: (data) => updateUsersData(type, data),
+            onSuccess: (data) => updateUsersData(data),
             onError: (err) => NahrainLogger.log(err),
             token: accessToken,
         });
-        setIsLoading(false)
+        setIsLoading(false);
     };
 
-    const updateUsersData = (type, data) => {
+    const updateUsersData = (data) => {
         const users = data.payload.users.map((user) => ({
-            fullName: user.fullName, email: user.email, id: user.id, date: user.date,
+            fullName: user.fullName,
+            email: user.email,
+            id: user.id,
+            date: user.date,
         }));
 
         setUsersData((prevState) => ({
-            ...prevState, [type]: {
+            ...prevState,
+            "profs": {
                 data: users,
                 loading: false,
                 totalUsers: data.payload.totalNumberOfUsers,
@@ -64,8 +66,8 @@ export const SelectProfDialogSidebar = ({onClickNext}) => {
     useEffect(() => {
         if (hasFetched.current) return;
         hasFetched.current = true;
-        setIsLoading(true)
-        fetchUsers("profs", usersData.profs.currentPage)
+        setIsLoading(true);
+        fetchUsers(usersData.profs.currentPage);
     }, []);
 
     const updateUserSelection = (id, isSelected) => {
@@ -89,42 +91,62 @@ export const SelectProfDialogSidebar = ({onClickNext}) => {
         });
     };
 
+    const handleNext = () => {
+        onClickNext(usersData.selectedIds);
+    };
+
+    const handleSkip = () => {
+        onClickNext([]);
+    };
 
     return (
         <div className={`max-w-[700px] flex flex-col h-full justify-between mx-auto relative`}>
             <div>
                 <div className={`mb-4`}>
-                    <h1 className={`text-onBackground text-2xl font-semibold`}>{t("select_professors_for_curriculum")}</h1>
-                    <p className={`text-onBackgroundCaption text-[16px] mt-2`}>{t("select_professors_for_curriculum_description")}</p>
+                    <h1 className={`text-onBackground text-2xl font-semibold`}>
+                        {t("select_professors_for_curriculum")}
+                    </h1>
+                    <p className={`text-onBackgroundCaption text-[16px] mt-2`}>
+                        {t("select_professors_for_curriculum_description")}
+                    </p>
                 </div>
                 {isLoading ? (
                     <CircularProgress sx={{color: "rgba(var(--on-primary))"}}/>
                 ) : usersData.profs.data.length > 0 ? (
                     usersData.profs.data.map((prof) => (
                         <ProfSelectableCard
+                            key={prof.id}
                             name={prof.fullName}
-                            selected={prof.isSelected}
-                            onClick={() => updateUserSelection(prof.id, !prof.isSelected)}
+                            selected={usersData.selectedIds.includes(prof.id)}
+                            onClick={() => updateUserSelection(prof.id, !usersData.selectedIds.includes(prof.id))}
                         />
                     ))
                 ) : (
-                    <h1 className={`text-onBackground font-semibold border p-2 rounded-lg border-softGray`}>{t("no_professors_available")}</h1>
+                    <h1 className={`text-onBackground font-semibold border p-2 rounded-lg border-softGray`}>
+                        {t("no_professors_available")}
+                    </h1>
                 )}
             </div>
 
             <div className={`sticky bg-card w-full bottom-0 py-4 mt-2 items-end`}>
-                <NahrainButton onClick={()=> onClickNext()}
-                    className={`w-full`} isLoading={isLoading}>
+                <NahrainButton
+                    onClick={handleNext}
+                    className={`w-full`}
+                    isLoading={isLoading}
+                    disabled={isLoading}
+                >
                     <p className="text-2xl font-semibold">{t("next_button")}</p>
                 </NahrainButton>
                 <button
-                    className="border-2 border-strokeGray text-onBackground flex-grow w-full h-14 rounded-lg text-[24px] mt-4">
+                    onClick={handleSkip}
+                    className="border-2 border-strokeGray text-onBackground flex-grow w-full h-14 rounded-lg text-[24px] mt-4"
+                >
                     {t("skip")}
                 </button>
             </div>
         </div>
-    )
-}
+    );
+};
 
 
 export const ProfSelectableCard = ({className, name, selected, onClick}) => {

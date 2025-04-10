@@ -1,4 +1,5 @@
 import axiosInstance from "./axiosInstance";
+import {NahrainLogger} from "../debug/NahrainLogger";
 
 
 export const postRequest = ({path, data, onSuccess, onError, token}) => {
@@ -11,7 +12,7 @@ export const postRequest = ({path, data, onSuccess, onError, token}) => {
         })
         .catch((error) => {
             if (onError) {
-                console.log(error)
+                NahrainLogger.log(error)
                 onError?.(error);
             }
         });

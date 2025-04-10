@@ -3,11 +3,11 @@ import {useTranslation} from "react-i18next";
 import {ReactComponent as IcAdmin} from "presentation/Common/resources/images/ic_admin.svg"
 import {ReactComponent as IcProf} from "presentation/Common/resources/images/ic_prof.svg"
 import {ReactComponent as IcStudent} from "presentation/Common/resources/images/ic_student.svg"
-import {ContentBox} from "../../Common/component/MainScaffold";
-import {NahrainButton} from "../../Common/component/NahrainButton";
-import {AdminConfig, ChangeUserType} from "../../../api/config/AuthConfig";
-import {putRequest} from "../../../api/postRequest";
-import {AuthContext} from "../../../context/AuthContext";
+import {ContentBox} from "../../../Common/component/MainScaffold";
+import {NahrainButton} from "../../../Common/component/NahrainButton";
+import {AdminConfig, ChangeUserType} from "../../../../api/config/AuthConfig";
+import {putRequest} from "../../../../api/postRequest";
+import {AuthContext} from "../../../../context/AuthContext";
 
 export const ChangePendingUserType = ({userId, onSuccess, onFail}) => {
     const [selectedType, setSelectedType] = useState(null);
@@ -23,17 +23,23 @@ export const ChangePendingUserType = ({userId, onSuccess, onFail}) => {
         setIsLoading(true);
         const requestBody = ChangeUserType({role: selectedType});
 
-        putRequest({
-            path: AdminConfig.PENDING_USER + userId,
-            data: requestBody,
-            onSuccess: () => {
-                onSuccess();
-                setIsLoading(false);
-            },
-            onError: onFail,
-            token: accessToken
-        });
-    }, [accessToken, selectedType, onSuccess, onFail, userId]);
+        if (selectedType === UserType.STUDENT) {
+            onSuccess(selectedType)
+        } else {
+            putRequest({
+                path: AdminConfig.PENDING_USER + userId,
+                data: requestBody,
+                onSuccess: () => {
+                    onSuccess();
+                    setIsLoading(false);
+                },
+                onError: onFail,
+                token: accessToken
+            });
+        }
+
+
+    }, [accessToken, selectedType, onSuccess, onFail, userId, UserType.STUDENT]);
 
 
     return (<div className={`max-w-[700px] flex flex-col h-full justify-between mx-auto relative`}>

@@ -13,42 +13,49 @@ import {ContentBox} from "../../../Common/component/MainScaffold";
 export const CurriculumInfo = ({onClickNext}) => {
 
     const [t] = useTranslation("global");
-    const [isLoading, setIsLoading] = useState(false);
-    const [userData, setUserData] = useState({
+    const [isLoading] = useState(false);
+    const [curriculumData, setCurriculumData] = useState({
         material_name: "",
         sources: [],
         course: null,
         stage: null
     });
 
+    const handleNext = () => {
+        if (!curriculumData.material_name || !curriculumData.course || !curriculumData.stage) {
+            return;
+        }
+        onClickNext(curriculumData);
+    };
+
     const CourseNumber = Object.freeze({
         FIRST: "FIRST", SECOND: "SECOND"
     });
 
     const Stage = Object.freeze({
-        FRESHMAN: "FRESHMAN", SOPHOMORE: "SOPHOMORE", JUNIOR: "JUNIOR", SENIOR: "SENIOR"
+        FRESHMAN: "FIRST", SOPHOMORE: "SECOND", JUNIOR: "THIRD", SENIOR: "FOURTH"
     });
 
     const handleChange = (field, value) => {
-        setUserData((prev) => ({...prev, [field]: value}));
+        setCurriculumData((prev) => ({...prev, [field]: value}));
     };
 
     const addSource = () => {
-        setUserData((prev) => ({
+        setCurriculumData((prev) => ({
             ...prev,
             sources: [...prev.sources, ""], // Append empty source
         }));
     };
 
     const removeSource = (index) => {
-        setUserData((prev) => ({
+        setCurriculumData((prev) => ({
             ...prev,
             sources: prev.sources.filter((_, i) => i !== index), // Remove by index
         }));
     };
 
     const handleSourceChange = (index, value) => {
-        setUserData((prev) => {
+        setCurriculumData((prev) => {
             const updatedSources = [...prev.sources];
             updatedSources[index] = value;
             return {...prev, sources: updatedSources};
@@ -73,14 +80,14 @@ export const CurriculumInfo = ({onClickNext}) => {
                     className={`mt-2`}
                     placeholder={"الكترون 2"}
                     icon={<IcTextSquare/>}
-                    onChange={(e) => handleChange("material_name", e.target.value)}
+                    onChange={(value) => handleChange("material_name", value)}
                 />
             </div>
 
             <div className={`mt-6`}>
                 <h1 className={`font-medium text-onBackground text-[16px]`}>المصادر</h1>
                 <AnimatePresence>
-                    {userData.sources.map((source, index) => (
+                    {curriculumData.sources.map((source, index) => (
                         <motion.div
                             key={index}
                             variants={itemVariants}
@@ -95,7 +102,7 @@ export const CurriculumInfo = ({onClickNext}) => {
                                 placeholder={"مصدر"}
                                 icon={<IcBook/>}
                                 value={source}
-                                onChange={(e) => handleSourceChange(index, e.target.value)}
+                                onChange={(value) => handleSourceChange(index, value)}
                             />
                             <button
                                 className={`size-9 text-xl font-semibold bg-error text-onPrimary rounded-lg`}
@@ -124,13 +131,13 @@ export const CurriculumInfo = ({onClickNext}) => {
             <div className={`flex  gap-4 `}>
                 <ContentBox
                     onClick={() => handleChange("course", CourseNumber.FIRST)}
-                    enabled={userData.course === CourseNumber.FIRST}
+                    enabled={curriculumData.course === CourseNumber.FIRST}
                     title={'الكورس الاول'}
                 />
 
                 <ContentBox
                     onClick={() => handleChange("course", CourseNumber.SECOND)}
-                    enabled={userData.course === CourseNumber.SECOND}
+                    enabled={curriculumData.course === CourseNumber.SECOND}
                     title={"الكورس الثاني"}
                 />
             </div>
@@ -139,34 +146,32 @@ export const CurriculumInfo = ({onClickNext}) => {
             <div className={`flex flex-col  gap-4 `}>
                 <ContentBox
                     onClick={() => handleChange("stage", Stage.FRESHMAN)}
-                    enabled={userData.stage === Stage.FRESHMAN}
+                    enabled={curriculumData.stage === Stage.FRESHMAN}
                     title={t('freshman')}
                 />
 
                 <ContentBox
                     onClick={() => handleChange("stage", Stage.SOPHOMORE)}
-                    enabled={userData.stage === Stage.SOPHOMORE}
+                    enabled={curriculumData.stage === Stage.SOPHOMORE}
                     title={t('sophomore')}
                 />
 
                 <ContentBox
                     onClick={() => handleChange("stage", Stage.JUNIOR)}
-                    enabled={userData.stage === Stage.JUNIOR}
+                    enabled={curriculumData.stage === Stage.JUNIOR}
                     title={t('junior')}
                 />
 
                 <ContentBox
                     onClick={() => handleChange("stage", Stage.SENIOR)}
-                    enabled={userData.stage === Stage.SENIOR}
+                    enabled={curriculumData.stage === Stage.SENIOR}
                     title={t('senior')}
                 />
 
             </div>
 
             <div className={`sticky bg-card w-full bottom-0 py-4 mt-2`}>
-                <NahrainButton onClick={() => {
-                    onClickNext()
-                }} className={`w-full`}>
+                <NahrainButton onClick={handleNext} className={`w-full`}>
                     {isLoading ? (
                         <CircularProgress sx={{color: "rgba(var(--on-primary))"}}/>
                     ) : (

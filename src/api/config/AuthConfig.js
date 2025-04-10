@@ -12,7 +12,8 @@ export const AdminConfig = {
     GET_ALL_STUDENT: "/admin/students",
     GET_ALL_PENDING_USERS: "/admin/pending-users",
     CREATE_NEW_USER: "/admin/users",
-    PENDING_USER:"/admin/users/pending/"
+    PENDING_USER:"/admin/users/pending/",
+    CREATE_NEW_CURRICULUM:"/admin/curricula"
 
 }
 
@@ -50,8 +51,9 @@ export const CreateNewUserRequest = ({fullName, birthDate, email, gender, phoneN
 }
 
 
-export const ChangeUserType = ({role}) => {
+export const ChangeUserType = ({role, stage}) => {
     return {
-        "role": role
+        "role": role,
+        "stage":stage
     }
 }

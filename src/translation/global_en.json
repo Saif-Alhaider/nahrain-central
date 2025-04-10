@@ -183,5 +183,7 @@
   "select_professors_for_curriculum_description": "Assign professors to this curriculum. A single curriculum can be taught by multiple professors, with different instructors handling theoretical and practical (lab) sessions separately.",
   "general_material_info": "General Info",
   "material_name": "Material Name",
-  "no_professors_available": "No professors have been added yet. Please check back later or contact your administrator for assistance."
+  "no_professors_available": "No professors have been added yet. Please check back later or contact your administrator for assistance.",
+  "curriculum_created_successfully": "Curriculum Created Successfully 🎉",
+  "curriculum_created_successfully_description": "Your new curriculum has been successfully created and is now ready for use. You can start adding courses, materials, and assigning it to academic years."
 }

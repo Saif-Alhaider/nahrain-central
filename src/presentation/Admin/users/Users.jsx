@@ -12,7 +12,8 @@ import {AuthContext} from "../../../context/AuthContext";
 import {DialogSidebarSelectUserType} from "./createNewUserDialogSidebar/DialogSidebarSelectUserType";
 import {DialogSidebarInputUserInfo} from "./createNewUserDialogSidebar/DialogSidebarInputUserInfo";
 import {DialogSidebarSuccessScreen} from "./createNewUserDialogSidebar/DialogSidebarSuccessScreen";
-import {ChangePendingUserType} from "./ChangePendingUserType";
+import {ChangePendingUserType} from "./setPendingType/ChangePendingUserType";
+import {SetStudentStage} from "./setPendingType/SetStudentStage";
 
 export const Users = () => {
     const [t, i18] = useTranslation("global");
@@ -55,7 +56,9 @@ export const Users = () => {
         }/>,
         <DialogSidebarInputUserInfo role={dialogSidebarState.selectedRole}
                                     onClickNext={() => handleDialogSidebarChange("currentDialogSidebarScreen", dialogSidebarState.currentDialogSidebarScreen + 1)}/>,
-        <DialogSidebarSuccessScreen title={t("new_user_created")} description={t("new_user_created_successfully")} onDismiss={() => dialogSidebar.onDismiss()}/>]
+        <DialogSidebarSuccessScreen title={t("new_user_created")} description={t("new_user_created_successfully")}
+                                    onDismiss={() => dialogSidebar.onDismiss()}/>]
+
 
     const updateUsersData = (type, data) => {
         const users = data.payload.users.map((user) => ({
@@ -165,22 +168,62 @@ export const Users = () => {
                                   ...prev,
                                   isVisible: !prev.isVisible,
                                   child: <ChangePendingUserType userId={userId}
-                                                                onSuccess={() => updateToFinishScreen(setDialogSidebar, () => {
-                                                                    dialogSidebar.onDismiss()
-                                                                })}/>,
+                                                                onSuccess={role => {
+                                                                    if (role === "STUDENT") {
+                                                                        updateToSetStudentStage({
+                                                                            title: t("new_user_created"),
+                                                                            description: t("new_user_created_successfully"),
+                                                                            role: role,
+                                                                            userId: userId,
+                                                                            setDialogSidebar: setDialogSidebar,
+                                                                            dialogSidebar:dialogSidebar
+                                                                        })
+                                                                    } else {
+                                                                        updateToFinishScreen(
+                                                                            {
+                                                                                title: t("new_user_created"),
+                                                                                description: t("new_user_created_successfully"),
+                                                                                setDialogSidebar: setDialogSidebar,
+                                                                                onDismiss: () => {
+                                                                                    dialogSidebar.onDismiss()
+                                                                                },
+                                                                            })
+                                                                    }
+                                                                }}/>,
                                   indicatorMaxScreens: null,
                                   indicatorCurrentScreen: null
                               })
-                          );
-                      }}
+                          )
+                          ;
+                      }
+                      }
         />
     </div>)
 }
 
-function updateToFinishScreen(setDialogSidebar, onDismiss) {
+function updateToFinishScreen({title, description, setDialogSidebar, onDismiss}) {
     setDialogSidebar(prev => ({
             ...prev,
-            child: <DialogSidebarSuccessScreen onDismiss={() => onDismiss?.()}/>,
+            child: <DialogSidebarSuccessScreen title={title} description={description} onDismiss={() => onDismiss?.()}/>,
+            indicatorMaxScreens: null,
+            indicatorCurrentScreen: null
+        })
+    );
+}
+
+function updateToSetStudentStage({title, description,dialogSidebar, setDialogSidebar, role, userId}) {
+
+    setDialogSidebar(prev => ({
+            ...prev,
+            child: <SetStudentStage role={role} userId={userId} onSuccess={() => updateToFinishScreen(
+                {
+                    title: title,
+                    description: description,
+                    setDialogSidebar: setDialogSidebar,
+                    onDismiss: () => {
+                        dialogSidebar.onDismiss()
+                    },
+                })}/>,
             indicatorMaxScreens: null,
             indicatorCurrentScreen: null
         })
