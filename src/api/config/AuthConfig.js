@@ -13,7 +13,7 @@ export const AdminConfig = {
     GET_ALL_PENDING_USERS: "/admin/pending-users",
     CREATE_NEW_USER: "/admin/users",
     PENDING_USER:"/admin/users/pending/",
-    CREATE_NEW_CURRICULUM:"/admin/curricula"
+    CURRICULUM:"/admin/curricula"
 
 }
 

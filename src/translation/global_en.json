@@ -36,9 +36,13 @@
   "homework": "Homework",
   "homework_and_exams": "Homework and Exams",
   "freshman": "Freshman",
+  "first_year": "First Year",
   "sophomore": "Sophomore",
+  "second_year": "Second Year",
   "junior": "Junior",
+  "third_year": "Third Year",
   "senior": "Senior",
+  "final_year": "Fourth Year",
   "theoretical_and_lab": "Theoretical and Lab",
   "theoretical": "theoretical",
   "Lab": "Lab",
@@ -185,5 +189,7 @@
   "material_name": "Material Name",
   "no_professors_available": "No professors have been added yet. Please check back later or contact your administrator for assistance.",
   "curriculum_created_successfully": "Curriculum Created Successfully 🎉",
-  "curriculum_created_successfully_description": "Your new curriculum has been successfully created and is now ready for use. You can start adding courses, materials, and assigning it to academic years."
+  "curriculum_created_successfully_description": "Your new curriculum has been successfully created and is now ready for use. You can start adding courses, materials, and assigning it to academic years.",
+  "no_curriculum_available": "No curriculum available"
+
 }
