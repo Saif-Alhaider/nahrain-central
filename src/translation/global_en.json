@@ -190,6 +190,14 @@
   "no_professors_available": "No professors have been added yet. Please check back later or contact your administrator for assistance.",
   "curriculum_created_successfully": "Curriculum Created Successfully 🎉",
   "curriculum_created_successfully_description": "Your new curriculum has been successfully created and is now ready for use. You can start adding courses, materials, and assigning it to academic years.",
-  "no_curriculum_available": "No curriculum available"
+  "no_curriculum_available": "No curriculum available",
+  "error_loading_curricula": "Failed to load the curricula. Please check your internet connection or try again later. If the problem persists, contact support.",
+  "retry": "Retry",
+  "curriculum_info_name_placeholder": "Electron II",
+  "resources": "Resources",
+  "book_resource_placeholder": "Book/resource name...",
+  "add_new_resource_button": "Add New Resource",
+  "academic_info": "Academic Info",
+  "choose_course": "Choose Course"
 
 }

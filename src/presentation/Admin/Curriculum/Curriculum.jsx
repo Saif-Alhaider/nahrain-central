@@ -160,7 +160,7 @@ export const Curriculum = () => {
                     <CircularProgress />
                 </div>
             ) : curriculums.error ? (
-                <div className="bg-errorBackground p-4 rounded-lg text-error my-4">
+                <div className="bg-errorBackground p-4 rounded-lg text-error my-4 text-center">
                     <p>{t('error_loading_curricula')}</p>
                     <button
                         onClick={fetchCurriculums}

@@ -78,14 +78,14 @@ export const CurriculumInfo = ({onClickNext}) => {
                 <NahrainInput
                     type={`text`}
                     className={`mt-2`}
-                    placeholder={"الكترون 2"}
+                    placeholder={t(`curriculum_info_name_placeholder`)}
                     icon={<IcTextSquare/>}
                     onChange={(value) => handleChange("material_name", value)}
                 />
             </div>
 
             <div className={`mt-6`}>
-                <h1 className={`font-medium text-onBackground text-[16px]`}>المصادر</h1>
+                <h1 className={`font-medium text-onBackground text-[16px]`}>{t(`resources`)}</h1>
                 <AnimatePresence>
                     {curriculumData.sources.map((source, index) => (
                         <motion.div
@@ -99,7 +99,7 @@ export const CurriculumInfo = ({onClickNext}) => {
                             <NahrainInput
                                 type={`text`}
                                 className={`flex-1`}
-                                placeholder={"مصدر"}
+                                placeholder={t(`book_resource_placeholder`)}
                                 icon={<IcBook/>}
                                 value={source}
                                 onChange={(value) => handleSourceChange(index, value)}
@@ -117,32 +117,31 @@ export const CurriculumInfo = ({onClickNext}) => {
                     className={`mt-2 bg-background text-onBackground p-2 rounded flex flex-row gap-2 font-semibold`}
                     onClick={addSource}
                 >
-                    <span>اضافة مصدر</span>
+                    <span>{t(`add_new_resource_button`)}</span>
                     <IcAdd/>
                 </button>
             </div>
 
-            <h1 className={`text-xl mt-6 text-onBackground font-semibold`}>
-                معلومات اكاديمية <span className={`text-error`}>*</span>
+            <h1 className={`text-xl mt-6 text-onBackground font-semibold`}>{t(`academic_info`)} <span className={`text-error`}>*</span>
             </h1>
 
-            <h1 className={`font-medium text-onBackground text-[16px] mt-6 mb-2`}>اختيار الكورس</h1>
+            <h1 className={`font-medium text-onBackground text-[16px] mt-6 mb-2`}>{t(`choose_course`)}</h1>
 
             <div className={`flex  gap-4 `}>
                 <ContentBox
                     onClick={() => handleChange("course", CourseNumber.FIRST)}
                     enabled={curriculumData.course === CourseNumber.FIRST}
-                    title={'الكورس الاول'}
+                    title={t(`first_course`)}
                 />
 
                 <ContentBox
                     onClick={() => handleChange("course", CourseNumber.SECOND)}
                     enabled={curriculumData.course === CourseNumber.SECOND}
-                    title={"الكورس الثاني"}
+                    title={t(`second_course`)}
                 />
             </div>
 
-            <h1 className={`font-medium text-onBackground text-[16px] mt-6 mb-2`}>المرحلة الدراسية</h1>
+            <h1 className={`font-medium text-onBackground text-[16px] mt-6 mb-2`}>{t(`stage`)}</h1>
             <div className={`flex flex-col  gap-4 `}>
                 <ContentBox
                     onClick={() => handleChange("stage", Stage.FRESHMAN)}
