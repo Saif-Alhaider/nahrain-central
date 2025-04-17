@@ -8,8 +8,8 @@ import {NahrainLogger} from "../../../../debug/NahrainLogger";
 import {CircularProgress} from "@mui/material";
 
 export const SelectProfDialogSidebar = ({onClickNext}) => {
-    const [isLoading, setIsLoading] = useState(true);
     const [t] = useTranslation("global");
+    const [isLoading,setIsLoading]= useState(false)
     const {accessToken} = useContext(AuthContext);
 
     const initialState = {
@@ -40,7 +40,6 @@ export const SelectProfDialogSidebar = ({onClickNext}) => {
             onError: (err) => NahrainLogger.log(err),
             token: accessToken,
         });
-        setIsLoading(false);
     };
 
     const updateUsersData = (data) => {
@@ -50,6 +49,7 @@ export const SelectProfDialogSidebar = ({onClickNext}) => {
             id: user.id,
             date: user.date,
         }));
+
 
         setUsersData((prevState) => ({
             ...prevState,
@@ -66,7 +66,6 @@ export const SelectProfDialogSidebar = ({onClickNext}) => {
     useEffect(() => {
         if (hasFetched.current) return;
         hasFetched.current = true;
-        setIsLoading(true);
         fetchUsers(usersData.profs.currentPage);
     }, []);
 
@@ -92,6 +91,7 @@ export const SelectProfDialogSidebar = ({onClickNext}) => {
     };
 
     const handleNext = () => {
+        setIsLoading(true)
         onClickNext(usersData.selectedIds);
     };
 
@@ -110,7 +110,7 @@ export const SelectProfDialogSidebar = ({onClickNext}) => {
                         {t("select_professors_for_curriculum_description")}
                     </p>
                 </div>
-                {isLoading ? (
+                {usersData.profs.loading ? (
                     <CircularProgress sx={{color: "rgba(var(--on-primary))"}}/>
                 ) : usersData.profs.data.length > 0 ? (
                     usersData.profs.data.map((prof) => (

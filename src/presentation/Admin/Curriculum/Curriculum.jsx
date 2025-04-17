@@ -144,8 +144,8 @@ export const Curriculum = () => {
     }, [setDialogSidebar, dialogSidebarState.currentDialogSidebarScreen]);
 
     return (
-        <div className={`bg-background p-6 h-fit `}>
-            <AdminCard TitleIcon={IcBook} title={t("curriculum")} buttonTitle={t("create_new_curriculum")}
+        <div className={`bg-background h-fit `}>
+            <AdminCard className={`px-6 pt-6`} TitleIcon={IcBook} title={t("curriculum")} buttonTitle={t("create_new_curriculum")}
                        ButtonIcon={IcAddCircle} description={t("curriculum_description")} onButtonClick={
                 () => {
                     setDialogSidebar(prev => ({
@@ -160,7 +160,7 @@ export const Curriculum = () => {
                     <CircularProgress />
                 </div>
             ) : curriculums.error ? (
-                <div className="bg-errorBackground p-4 rounded-lg text-error my-4 text-center">
+                <div className="bg-errorBackground p-6 rounded-lg text-error my-4 text-center">
                     <p>{t('error_loading_curricula')}</p>
                     <button
                         onClick={fetchCurriculums}
@@ -172,26 +172,29 @@ export const Curriculum = () => {
             ) : (
                 ['first_year', 'second_year', 'third_year', 'final_year'].map((year) => (
                     <div key={year} className="mt-8">
-                        <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center justify-between mb-4 mx-6">
                             <h2 className="text-2xl font-bold text-onBackground">
                                 {t(year)} {curriculums[year]?.size > 0 && `(${curriculums[year].size})`}
                             </h2>
                         </div>
 
                         {(curriculums[year]?.size || 0 > 0) ? (
-                            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
-                                {mapCurriculumData(curriculums[year]).items.map((curriculum) => (
-                                    <SettingsCard
-                                        key={curriculum.id}
-                                        materialType={curriculum.type}
-                                        materialName={curriculum.name}
-                                        profNames={curriculum.profs.map(p => p.name)}
-                                        resources={curriculum.resources}
-                                    />
-                                ))}
+                            <div className="relative">
+                                <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide w-full">
+                                    {mapCurriculumData(curriculums[year]).items.map((curriculum) => (
+                                        <div key={curriculum.id} className="flex-shrink-0 w-[300px] first:ml-4 first:mr-6 last:mr-4 last:ml-12">
+                                            <SettingsCard
+                                                materialType={curriculum.type}
+                                                materialName={curriculum.name}
+                                                profNames={curriculum.profs.map(p => p.name)}
+                                                resources={curriculum.resources}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         ) : (
-                            <div className="bg-card rounded-lg p-8 text-center">
+                            <div className="bg-card rounded-lg p-8 text-center mx-6">
                                 <p className="text-onBackgroundCaption">
                                     {t('no_curriculum_available')}
                                 </p>
