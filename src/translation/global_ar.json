@@ -197,6 +197,6 @@
   "book_resource_placeholder": "اسم الكتاب/المصدر...",
   "add_new_resource_button": "إضافة مصدر جديد",
   "academic_info": "معلومات اكديمية",
-  "choose_course": "اختيار الكورس"
-
+  "choose_course": "اختيار الكورس",
+  "something_went_wrong": "حصل خطاد الرجاء اعادة المحاولة"
 }

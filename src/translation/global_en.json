@@ -198,6 +198,7 @@
   "book_resource_placeholder": "Book/resource name...",
   "add_new_resource_button": "Add New Resource",
   "academic_info": "Academic Info",
-  "choose_course": "Choose Course"
+  "choose_course": "Choose Course",
+  "something_went_wrong": "Something Went Wrong Please Retry"
 
 }
