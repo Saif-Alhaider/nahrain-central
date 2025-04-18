@@ -122,19 +122,22 @@ export const CurriculumInfo = ({onClickNext}) => {
                 </button>
             </div>
 
-            <h1 className={`text-xl mt-6 text-onBackground font-semibold`}>{t(`academic_info`)} <span className={`text-error`}>*</span>
+            <h1 className={`text-xl mt-6 text-onBackground font-semibold`}>{t(`academic_info`)} <span
+                className={`text-error`}>*</span>
             </h1>
 
             <h1 className={`font-medium text-onBackground text-[16px] mt-6 mb-2`}>{t(`choose_course`)}</h1>
 
-            <div className={`flex  gap-4 `}>
+            <div className={`flex gap-4 items-stretch`}>
                 <ContentBox
+                    className={`flex-grow`}
                     onClick={() => handleChange("course", CourseNumber.FIRST)}
                     enabled={curriculumData.course === CourseNumber.FIRST}
                     title={t(`first_course`)}
                 />
 
                 <ContentBox
+                    className={`flex-grow`}
                     onClick={() => handleChange("course", CourseNumber.SECOND)}
                     enabled={curriculumData.course === CourseNumber.SECOND}
                     title={t(`second_course`)}

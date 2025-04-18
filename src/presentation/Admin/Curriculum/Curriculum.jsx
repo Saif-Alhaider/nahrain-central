@@ -186,7 +186,7 @@ export const Curriculum = () => {
                                             <SettingsCard
                                                 materialType={curriculum.type}
                                                 materialName={curriculum.name}
-                                                profNames={curriculum.profs.map(p => p.name)}
+                                                profNames={curriculum.profs.map(p => p.fullName)}
                                                 resources={curriculum.resources}
                                             />
                                         </div>

@@ -132,7 +132,6 @@ export const DialogSidebar = ({isVisible, onDismiss, indicatorMaxScreens, indica
                 </div>
                 <ProgressBar current={indicatorCurrentScreen} max={indicatorMaxScreens}
                              className={` my-4`}/>
-                {/*    ${indicatorCurrentScreen && indicatorMaxScreens ? '' : 'hidden'}*/}
 
             </div>
 
@@ -147,7 +146,7 @@ export const DialogSidebar = ({isVisible, onDismiss, indicatorMaxScreens, indica
 
 export const ContentBox = ({className, onClick, icon, title, description, enabled = false}) => {
     return (<div onClick={onClick}
-                 className={`${className} border-2  ${enabled ? `border-primary` : `border-softGray`} cursor-pointer w-full h-fit py-4 px-2 rounded-lg flex flex-row text-onBackground items-center gap-4 justify-between hover:bg-black/10 transition duration-150 ease-in-out`}>
+                 className={`${className} border-2  ${enabled ? `border-primary` : `border-softGray`} cursor-pointer w-full py-4 px-2 rounded-lg flex flex-row text-onBackground items-center gap-4 justify-between hover:bg-black/10 transition duration-150 ease-in-out`}>
         <div className={`flex flex-row gap-4 items-center justify-between`}>
             <div
                 className={`${enabled ? `text-primary` : `text-onBackground`} transition duration-150 ease-in-out`}>{icon}</div>

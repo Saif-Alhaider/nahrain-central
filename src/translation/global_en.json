@@ -193,7 +193,7 @@
   "no_curriculum_available": "No curriculum available",
   "error_loading_curricula": "Failed to load the curricula. Please check your internet connection or try again later. If the problem persists, contact support.",
   "retry": "Retry",
-  "curriculum_info_name_placeholder": "Electron II",
+  "curriculum_info_name_placeholder": "e.g. Electron II",
   "resources": "Resources",
   "book_resource_placeholder": "Book/resource name...",
   "add_new_resource_button": "Add New Resource",
