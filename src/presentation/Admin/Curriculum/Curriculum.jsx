@@ -144,7 +144,7 @@ export const Curriculum = () => {
     }, [setDialogSidebar, dialogSidebarState.currentDialogSidebarScreen]);
 
     return (
-        <div className={`bg-background h-fit `}>
+        <div className={`bg-background h-fit pb-6`}>
             <AdminCard className={`px-6 pt-6`} TitleIcon={IcBook} title={t("curriculum")} buttonTitle={t("create_new_curriculum")}
                        ButtonIcon={IcAddCircle} description={t("curriculum_description")} onButtonClick={
                 () => {
@@ -161,10 +161,10 @@ export const Curriculum = () => {
                 </div>
             ) : curriculums.error ? (
                 <div className="bg-errorBackground p-6 rounded-lg text-error my-4 text-center">
-                    <p>{t('error_loading_curricula')}</p>
+                    <p className={`font-semibold text-xl`}>{t('error_loading_curricula')}</p>
                     <button
                         onClick={fetchCurriculums}
-                        className="mt-2 bg-primary text-onPrimary px-4 py-2 rounded"
+                        className="mt-4 bg-primary text-onPrimary px-4 py-2 rounded font-semibold"
                     >
                         {t('retry')}
                     </button>
@@ -182,7 +182,7 @@ export const Curriculum = () => {
                             <div className="relative">
                                 <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide w-full">
                                     {mapCurriculumData(curriculums[year]).items.map((curriculum) => (
-                                        <div key={curriculum.id} className="flex-shrink-0 w-[300px] first:ml-4 first:mr-6 last:mr-4 last:ml-12">
+                                        <div key={curriculum.id} className="flex-shrink-0 w-[300px] first:ms-6 ms-4 last:me-12">
                                             <SettingsCard
                                                 materialType={curriculum.type}
                                                 materialName={curriculum.name}

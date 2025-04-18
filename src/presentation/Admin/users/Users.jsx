@@ -354,7 +354,7 @@ export const UsersSection = ({title, description, users, isLoading, error, onPag
                     </div>
                     <button
                         onClick={onRetry}
-                        className={`rounded bg-primary px-4 py-2 text-onPrimary hover:bg-primaryDark transition-colors`}
+                        className={`rounded bg-primary px-4 py-2 text-onPrimary hover:bg-primaryDark transition-colors font-semibold`}
                     >
                         {t("retry")}
                     </button>
