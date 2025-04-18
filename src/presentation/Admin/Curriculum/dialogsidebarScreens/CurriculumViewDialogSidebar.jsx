@@ -152,7 +152,7 @@ export const CurriculumViewDialogSidebar = ({id}) => {
                             ))
                         ) : (
                             <p className="text-onBackgroundCaption">
-                                {t("no_resources_added")}
+                                {t("no_resources_assigned")}
                             </p>
                         )}
                     </div>
