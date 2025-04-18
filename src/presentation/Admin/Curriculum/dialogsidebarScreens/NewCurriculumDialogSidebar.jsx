@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import {ContentBox} from "../../../Common/component/MainScaffold";
 import {NahrainButton} from "../../../Common/component/NahrainButton";
 import {
-    ReactComponent as IceTheoreticalAndPractical
+    ReactComponent as IcTheoreticalAndPractical
 } from "presentation/Common/resources/images/ic_theoratical_and_practical.svg"
 import {ReactComponent as IcSetting} from "presentation/Common/resources/images/ic_setting_bold.svg"
 import {ReactComponent as IcBulb} from "presentation/Common/resources/images/ic_bulb_bold.svg"
@@ -49,7 +49,7 @@ export const NewCurriculumDialogSidebar = ({onClickNext}) => {
                 <ContentBox
                     onClick={() => setSelectedType(UserType.THEORETICAL_AND_LAB)}
                     enabled={selectedType === UserType.THEORETICAL_AND_LAB}
-                    icon={<IceTheoreticalAndPractical/>}
+                    icon={<IcTheoreticalAndPractical/>}
                     title={t("theoretical_and_lab")}
                 />
             </div>
@@ -57,7 +57,7 @@ export const NewCurriculumDialogSidebar = ({onClickNext}) => {
 
         <div className={`sticky bg-card w-full bottom-0 py-4 mt-2 items-end`}>
             <NahrainButton onClick={handleNext}
-                className={`w-full`} isLoading={isLoading}>
+                           className={`w-full`} isLoading={isLoading}>
                 <p className="text-2xl font-semibold">{t("next_button")}</p>
             </NahrainButton>
         </div>

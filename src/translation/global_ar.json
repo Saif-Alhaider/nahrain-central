@@ -198,5 +198,8 @@
   "add_new_resource_button": "إضافة مصدر جديد",
   "academic_info": "معلومات اكديمية",
   "choose_course": "اختيار الكورس",
-  "something_went_wrong": "حصل خطاء الرجاء اعادة المحاولة"
+  "something_went_wrong": "حصل خطاء الرجاء اعادة المحاولة",
+  "no_professors_assigned": "لا يوجد أساتذة معينون",
+  "no_resources_added": "لا توجد مصادر مضافة",
+  "curriculum_details": "تفاصيل المنهج"
 }

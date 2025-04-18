@@ -114,7 +114,7 @@ export const CurriculumInfo = ({onClickNext}) => {
                     ))}
                 </AnimatePresence>
                 <button
-                    className={`mt-2 bg-background text-onBackground p-2 rounded flex flex-row gap-2 font-semibold`}
+                    className={`mt-2 border border-softGray text-onBackground p-2 rounded flex flex-row gap-2 font-semibold`}
                     onClick={addSource}
                 >
                     <span>{t(`add_new_resource_button`)}</span>

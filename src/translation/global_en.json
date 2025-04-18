@@ -44,7 +44,7 @@
   "senior": "Senior",
   "final_year": "Fourth Year",
   "theoretical_and_lab": "Theoretical and Lab",
-  "theoretical": "theoretical",
+  "theoretical": "Theoretical",
   "Lab": "Lab",
   "announcement": "Announcement",
   "view_all_students": "View All Students",
@@ -199,6 +199,8 @@
   "add_new_resource_button": "Add New Resource",
   "academic_info": "Academic Info",
   "choose_course": "Choose Course",
-  "something_went_wrong": "Something Went Wrong Please Retry"
-
+  "something_went_wrong": "Something Went Wrong Please Retry",
+  "no_professors_assigned": "No professors assigned",
+  "no_resources_added": "No resources added",
+  "curriculum_details": "Curriculum Details"
 }
