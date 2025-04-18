@@ -227,6 +227,7 @@ export const Curriculum = () => {
                                                         ...prev,
                                                         isVisible: true,
                                                         child: <CurriculumViewDialogSidebar
+                                                            key={curriculum.id}
                                                             id={curriculum.id}
                                                             onDismiss={() => setDialogSidebar(prev => ({
                                                                 ...prev,
