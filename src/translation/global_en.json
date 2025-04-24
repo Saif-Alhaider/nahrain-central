@@ -202,5 +202,12 @@
   "something_went_wrong": "Something Went Wrong Please Retry",
   "no_professors_assigned": "No professors assigned",
   "no_resources_assigned": "No resources added",
-  "curriculum_details": "Curriculum Details"
+  "curriculum_details": "Curriculum Details",
+  "dashboard_description": "Manage users, schedules, absences, and grades in one place.",
+  "upcoming_exams_final": "Upcoming Exams Final",
+  "upcoming_exams_final_description": "Ensure all schedules and materials are uploaded in advance.",
+  "total_students": "Total Students",
+  "total_profs": "Total Professors",
+  "view_all": "View All",
+  "finals": "Finals"
 }

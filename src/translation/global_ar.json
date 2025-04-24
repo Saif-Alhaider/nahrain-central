@@ -201,5 +201,12 @@
   "something_went_wrong": "حصل خطاء الرجاء اعادة المحاولة",
   "no_professors_assigned": "لا يوجد أساتذة معينون",
   "no_resources_assigned": "لا توجد مصادر مضافة",
-  "curriculum_details": "تفاصيل المنهج"
+  "curriculum_details": "تفاصيل المنهج",
+  "dashboard_description": "إدارة المستخدمين والجداول والغياب والدرجات في مكان واحد.",
+  "upcoming_exams_final": "الامتحانات النهائية القادمة",
+  "upcoming_exams_final_description": "تأكد من تحميل جميع الجداول والمواد مسبقًا.",
+  "total_students": "إجمالي الطلاب",
+  "total_profs": "اجمالي الدكاترة",
+  "view_all": "عرض الكل",
+  "finals": "الامتحانات النهائية"
 }
