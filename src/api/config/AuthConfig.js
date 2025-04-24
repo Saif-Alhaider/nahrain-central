@@ -13,8 +13,8 @@ export const AdminConfig = {
     GET_ALL_PENDING_USERS: "/admin/pending-users",
     CREATE_NEW_USER: "/admin/users",
     PENDING_USER:"/admin/users/pending/",
-    CURRICULUM:"/admin/curricula"
-
+    CURRICULUM:"/admin/curricula",
+    COUNT:"/admin/count"
 }
 
 export const RegisterRequest = (fullName, email, password) => {
@@ -38,7 +38,7 @@ export const LoginRequest = (email, password) => {
     }
 }
 
-export const CreateNewUserRequest = ({fullName, birthDate, email, gender, phoneNumber, province, role}) => {
+export const CreateNewUserRequest = ({fullName, birthDate, email, gender, phoneNumber, province, role,stageType}) => {
     return {
         fullName: fullName,
         birthDate: birthDate,
@@ -46,7 +46,8 @@ export const CreateNewUserRequest = ({fullName, birthDate, email, gender, phoneN
         gender: gender,
         phoneNumber: phoneNumber,
         province: province,
-        role: role
+        role: role,
+        stageType:stageType
     }
 }
 

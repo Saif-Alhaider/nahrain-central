@@ -15,7 +15,7 @@ export const CurriculumInfo = ({ onClickNext }) => {
     const [isLoading] = useState(false);
     const [curriculumData, setCurriculumData] = useState({
         material_name: "",
-        sources: null, // Initialize as null
+        sources: null,
         course: null,
         stage: null
     });

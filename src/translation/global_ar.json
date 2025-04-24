@@ -43,6 +43,10 @@
   "third_year": "مرحلة ثالثة",
   "senior": "مرحلة رابعة",
   "final_year": "مرحلة رابعة",
+  "first": "مرحلة أولى",
+  "second": "مرحلة ثانية",
+  "third": "مرحلة ثالثة",
+  "fourth": "مرحلة رابعة",
   "theoretical_and_lab": "نظري و مختبر",
   "theoretical": "نظري",
   "lab": "مختبر",
@@ -202,11 +206,16 @@
   "no_professors_assigned": "لا يوجد أساتذة معينون",
   "no_resources_assigned": "لا توجد مصادر مضافة",
   "curriculum_details": "تفاصيل المنهج",
+  "user_details": "تفاصيل المستخدم",
   "dashboard_description": "إدارة المستخدمين والجداول والغياب والدرجات في مكان واحد.",
   "upcoming_exams_final": "الامتحانات النهائية القادمة",
   "upcoming_exams_final_description": "تأكد من تحميل جميع الجداول والمواد مسبقًا.",
   "total_students": "إجمالي الطلاب",
   "total_profs": "اجمالي الدكاترة",
   "view_all": "عرض الكل",
-  "finals": "الامتحانات النهائية"
+  "finals": "الامتحانات النهائية",
+  "student_info": "معلومات الطالب",
+  "loading": "يتم تحميل",
+  "curriculums": "المناهج",
+  "none": "لا يوجد"
 }

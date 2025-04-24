@@ -7,11 +7,28 @@ import {AdminConfig} from "../../../../api/config/AuthConfig";
 import React, {useContext, useEffect, useRef, useState} from "react";
 import {AuthContext} from "../../../../context/AuthContext";
 import {CircularProgress} from "@mui/material";
+import {NahrainThemeContext} from "../../../../context/NahrainThemeContext";
+import {DialogSidebarUserDetails} from "../../users/DialogSidebarUserDetails";
 
 export const CurriculumViewDialogSidebar = ({id}) => {
     const [t] = useTranslation("global");
     const {accessToken} = useContext(AuthContext);
     const hasFetched = useRef(false);
+    const {setDialogSidebar} = useContext(NahrainThemeContext);
+
+    const handleProfClick = (profId) => {
+        setDialogSidebar(prev => ({
+            ...prev,
+            isVisible: true,
+            onDismiss: () => {
+                setDialogSidebar(prev => ({...prev, isVisible: false}));
+                setDialogSidebar(prev => ({...prev, currentDialogSidebarScreen: 0}));
+            },
+            child: <DialogSidebarUserDetails id={profId} role={"PROF"}/>,
+            indicatorMaxScreens: null,
+            indicatorCurrentScreen: null
+        }));
+    };
 
     const [curriculumState, setCurriculumState] = useState({
         id: null,
@@ -24,7 +41,6 @@ export const CurriculumViewDialogSidebar = ({id}) => {
         loading: true,
     });
 
-    // Map stage types to display names
     const stageTypeMap = {
         FIRST: t("freshman"),
         SECOND: t("sophomore"),
@@ -32,7 +48,6 @@ export const CurriculumViewDialogSidebar = ({id}) => {
         FOURTH: t("senior"),
     };
 
-    // Map curriculum types to display names
     const curriculumTypeMap = {
         THEORETICAL: t("theoretical"),
         LAB: t("lab"),
@@ -127,7 +142,7 @@ export const CurriculumViewDialogSidebar = ({id}) => {
                             (curriculumState.profs || []).map((prof) => (
                                 <div key={prof.id} className="flex items-center gap-3">
                                     <IcUser className="text-onBackground size-5"/>
-                                    <p className="text-onBackground">{prof.fullName}</p>
+                                    <p className="text-secondary cursor-pointer" onClick={()=>handleProfClick(prof.id)}>{prof.fullName}</p>
                                 </div>
                             ))
                         ) : (

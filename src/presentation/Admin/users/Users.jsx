@@ -14,6 +14,8 @@ import {DialogSidebarInputUserInfo} from "./createNewUserDialogSidebar/DialogSid
 import {DialogSidebarSuccessScreen} from "./createNewUserDialogSidebar/DialogSidebarSuccessScreen";
 import {ChangePendingUserType} from "./setPendingType/ChangePendingUserType";
 import {SetStudentStage} from "./setPendingType/SetStudentStage";
+import {DialogSidebarUserDetails} from "./DialogSidebarUserDetails";
+import {NahrainLogger} from "../../../debug/NahrainLogger";
 
 export const Users = () => {
     const [t, i18] = useTranslation("global");
@@ -40,6 +42,22 @@ export const Users = () => {
         selectedRole: null,
         currentDialogSidebarScreen: 0
     }
+
+    const fetchUserDetails = async (userId, role) => {
+        setDialogSidebar(prev => ({
+            ...prev,
+            isVisible: true,
+            child: (
+                <DialogSidebarUserDetails
+                    id={userId}
+                    role={role}
+                    onDismiss={() => setDialogSidebar(prev => ({...prev, isVisible: false}))}
+                />
+            ),
+            indicatorMaxScreens: null,
+            indicatorCurrentScreen: null
+        }));
+    };
 
     const [usersData, setUsersData] = useState(initialState);
     const [dialogSidebarState, setDialogSidebarState] = useState(dialogSidebarInitialState);
@@ -161,7 +179,8 @@ export const Users = () => {
                        setDialogSidebar(prev => ({
                                ...prev,
                                isVisible: !prev.isVisible,
-                               currentDialogSidebarScreen: 0
+                               currentDialogSidebarScreen: 0,
+                               child: sidebarDialogScreens[0]
                            })
                        );
                    }
@@ -173,6 +192,7 @@ export const Users = () => {
             description={t("admin_description")}
             users={usersData.admins}
             isLoading={usersData.admins.loading}
+            onUserClick={(userId) => fetchUserDetails(userId, "ADMIN")}
             error={usersData.admins.error}
             onPageChange={(page) => handlePageChange("admins", page)}
             onRetry={() => handleRetry("admins")}
@@ -182,6 +202,7 @@ export const Users = () => {
             title={t("professors")}
             description={t("professors_description")}
             users={usersData.profs}
+            onUserClick={(userId) => fetchUserDetails(userId, "PROF")}
             isLoading={usersData.profs.loading}
             error={usersData.profs.error}
             onPageChange={(page) => handlePageChange("profs", page)}
@@ -195,6 +216,7 @@ export const Users = () => {
             users={usersData.students}
             isLoading={usersData.students.loading}
             error={usersData.students.error}
+            onUserClick={(userId) => fetchUserDetails(userId, "STUDENT")}
             onPageChange={(page) => handlePageChange("students", page)}
             onRetry={() => handleRetry("students")}
         />
@@ -222,7 +244,7 @@ export const Users = () => {
                                                                   role: role,
                                                                   userId: userId,
                                                                   setDialogSidebar: setDialogSidebar,
-                                                                  dialogSidebar:dialogSidebar
+                                                                  dialogSidebar: dialogSidebar
                                                               })
                                                           } else {
                                                               updateToFinishScreen(
@@ -244,6 +266,7 @@ export const Users = () => {
         />
     </div>)
 }
+
 function updateToFinishScreen({title, description, setDialogSidebar, onDismiss}) {
     setDialogSidebar(prev => ({
             ...prev,
@@ -254,7 +277,7 @@ function updateToFinishScreen({title, description, setDialogSidebar, onDismiss})
     );
 }
 
-function updateToSetStudentStage({title, description,dialogSidebar, setDialogSidebar, role, userId}) {
+function updateToSetStudentStage({title, description, dialogSidebar, setDialogSidebar, role, userId}) {
 
     setDialogSidebar(prev => ({
             ...prev,

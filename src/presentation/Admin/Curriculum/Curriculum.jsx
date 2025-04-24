@@ -280,7 +280,7 @@ const SettingsCard = ({materialType, materialName, profNames = [], resources = [
     const renderItemsWithCount = (items, icon, capitalize = false) => {
         if (items.length === 0) {
             return (
-                <div className="flex items-center gap-2 text-onBackgroundCaption/50">
+                <div className="flex items-center gap-2 text-onBackgroundCaption">
                     {icon}
                     <p>{t(`no_${items === profNames ? 'professors' : 'resources'}_assigned`)}</p>
                 </div>
@@ -309,10 +309,6 @@ const SettingsCard = ({materialType, materialName, profNames = [], resources = [
         <div className="border border-softGray rounded-lg p-2 w-[323px] min-h-[200px]">
             <div className="flex justify-between items-center">
                 {getMaterialIcon()}
-
-                <button className="bg-secondary text-onPrimary rounded-full px-4 py-2">
-                    Edit
-                </button>
             </div>
 
             <h1 className="mt-4 text-onBackground font-semibold text-xl line-clamp-2 capitalize">
@@ -326,7 +322,7 @@ const SettingsCard = ({materialType, materialName, profNames = [], resources = [
             <hr className="border-[0.5px] my-3 border-strokeGray"/>
 
             <div className="flex flex-col gap-1">
-                {renderItemsWithCount(resources, <IcLink className="min-w-4"/>, true)}
+                {renderItemsWithCount(resources, <IcLink className="min-w-4 text-onBackground"/>, true)}
             </div>
         </div>
     );

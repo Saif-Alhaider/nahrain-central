@@ -1,7 +1,36 @@
 import {useTranslation} from "react-i18next";
+import {useContext, useEffect, useState} from "react";
+import {AuthContext} from "../../../context/AuthContext";
+import {getRequest} from "../../../api/postRequest";
+import {AdminConfig} from "../../../api/config/AuthConfig";
 
 export const HomeScreen = () => {
     const [t] = useTranslation("global");
+    const {accessToken} = useContext(AuthContext);
+    const [counts, setCounts] = useState({
+        studentsCount: null,
+        profsCount: null
+    });
+
+    useEffect(() => {
+        fetchCounts();
+    }, []);
+
+    const fetchCounts = () => {
+        getRequest({
+            path: AdminConfig.COUNT,
+            onSuccess: (data) => {
+                setCounts(data.payload);
+            },
+            onError: (err) => {
+                console.error("Failed to fetch counts:", err);
+            },
+            token: accessToken,
+        });
+    };
+    const formatCount = (count: number | null) => {
+        return count === null ? t("loading") : count.toLocaleString();
+    };
     return (
         <div className={`size-full bg-background p-6`}>
             <div className={`flex flex-col gap-2`}>
@@ -10,8 +39,16 @@ export const HomeScreen = () => {
             </div>
             <div className="grid md:!flex md:flex-wrap mt-12 grid-cols-[repeat(auto-fit,minmax(175px,1fr))] gap-2 ">
                 <ExamCard className="max-w-[277px] cursor-pointer"/>
-                <ViewAllCard className="max-w-[277px] grow cursor-pointer" title={t("total_students")} number="1,245"/>
-                <ViewAllCard className="max-w-[277px] grow cursor-pointer" title={t("total_profs")} number="58"/>
+                <ViewAllCard
+                    className="max-w-[277px] grow cursor-pointer"
+                    title={t("total_students")}
+                    number={formatCount(counts.studentsCount)}
+                />
+                <ViewAllCard
+                    className="max-w-[277px] grow cursor-pointer"
+                    title={t("total_profs")}
+                    number={formatCount(counts.profsCount)}
+                />
             </div>
         </div>
     )
@@ -26,14 +63,16 @@ const ExamCard = ({className}) => {
             <h2 className="block md:!hidden text-4xl font-semibold text-onPrimary">{t("finals")}</h2>
             <p className="mt-2 md:!text-md text-2xl text-onBackground dark">Dec 20, 2024</p>
             <p className="mt-4 hidden md:!block text-sm text-onPrimary">
-                Ensure all schedules and materials are uploaded in advance.
+                {t("upcoming_exams_final_description")}
             </p>
         </div>
     );
 };
 
 
-const ViewAllCard = ({className,title,number}) => {
+const ViewAllCard = ({className, title, number}) => {
+    const [t] = useTranslation("global");
+
     return (
         <div
             className={`${className} max-w-[277px] rounded-2xl border border-softGray p-4 flex flex-col justify-between`}>
@@ -44,7 +83,7 @@ const ViewAllCard = ({className,title,number}) => {
                 <h1 className={`text-5xl font-semibold text-onBackground mx-auto mt-2 text-center`}>{number}</h1>
             </div>
             <div className="hidden md:!block text-secondary text-sm font-semibold mt-4 cursor-pointer">
-                View All
+                {t("view_all")}
             </div>
         </div>
     );

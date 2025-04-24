@@ -12,6 +12,7 @@ import {useTranslation} from "react-i18next";
 import {AdminConfig, CreateNewUserRequest} from "../../../../api/config/AuthConfig";
 import {postRequest} from "../../../../api/postRequest";
 import {AuthContext} from "../../../../context/AuthContext";
+import {ContentBox} from "../../../Common/component/MainScaffold";
 
 
 export const DialogSidebarInputUserInfo = ({role, onClickNext}) => {
@@ -26,7 +27,15 @@ export const DialogSidebarInputUserInfo = ({role, onClickNext}) => {
         email: "",
         phoneNumber: "",
         province: "",
-        role: role
+        role: role,
+        stageType:null
+    });
+
+    const Stage = Object.freeze({
+        FRESHMAN: "FIRST",
+        SOPHOMORE: "SECOND",
+        JUNIOR: "THIRD",
+        SENIOR: "FOURTH"
     });
 
     const onClickSubmitInfo = useCallback(() => {
@@ -132,7 +141,37 @@ export const DialogSidebarInputUserInfo = ({role, onClickNext}) => {
                     onValueChange={(value) => handleChange("province", value)}
 
                 />
+
             </div>
+            {role === "STUDENT" && (
+                <>
+                    <h1 className={`text-xl mt-6 text-onBackground font-semibold`}>
+                        {t("student_info")}
+                    </h1>
+                    <div className="flex flex-col gap-4 mt-2">
+                        <ContentBox
+                            onClick={() => handleChange("stageType", Stage.FRESHMAN)}
+                            enabled={userData.stageType === Stage.FRESHMAN}
+                            title={t('freshman')}
+                        />
+                        <ContentBox
+                            onClick={() => handleChange("stageType", Stage.SOPHOMORE)}
+                            enabled={userData.stageType === Stage.SOPHOMORE}
+                            title={t('sophomore')}
+                        />
+                        <ContentBox
+                            onClick={() => handleChange("stageType", Stage.JUNIOR)}
+                            enabled={userData.stageType === Stage.JUNIOR}
+                            title={t('junior')}
+                        />
+                        <ContentBox
+                            onClick={() => handleChange("stageType", Stage.SENIOR)}
+                            enabled={userData.stageType === Stage.SENIOR}
+                            title={t('senior')}
+                        />
+                    </div>
+                </>
+            )}
             <div className={`sticky bg-card w-full bottom-0 py-4 mt-2`}>
                 <NahrainButton onClick={() => {
                     onClickSubmitInfo()
